@@ -1,18 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
 import {FilterValuesType} from "./App";
 
 type TodolistType = {
   title: string;
   tasks: TaskType[];
-  removeTask: (id: number) => void;
-  changeFilter: (value: FilterValuesType) => void;
+  setTasks: (value: TaskType[]) => void
 }
 export type TaskType = {
-  id: number;
+  id: string;
   title: string;
   isDone: boolean
 }
 export const Todolist = (props: TodolistType) => {
+
+  let [filter, setFilter] = useState<FilterValuesType>("all");
+
+
+  const changeFilter = (value: FilterValuesType) => {
+    setFilter(value)
+  }
+  const removeTask = (id: string) => {
+    let filteredTasks = props.tasks.filter((t) => t.id !== id);
+    props.setTasks(filteredTasks)
+  }
+  let tasksForTodolist = props.tasks;
+  if (filter === "completed") {
+    tasksForTodolist = props.tasks.filter((t) => t.isDone)
+  }
+  if (filter === "active") {
+    tasksForTodolist = props.tasks.filter((t) => !t.isDone)
+  }
+  const removeAllTask = () => {
+    props.setTasks([])
+  }
+  const sortTask = () => {
+
+    let sortTask = props.tasks.slice(0, 3);
+
+    props.setTasks(sortTask)
+  }
 
 
   return (
@@ -23,17 +49,19 @@ export const Todolist = (props: TodolistType) => {
         <button>+</button>
       </div>
       <ul>
-        {props.tasks.map((t) => <li><input type="checkbox" checked={t.isDone}/> <span>{t.title}</span>
+        {tasksForTodolist.map((t) => <li><input type="checkbox" checked={t.isDone}/> <span>{t.title}</span>
           <button onClick={() => {
-            props.removeTask(t.id)
+            removeTask(t.id)
           }}>x
           </button>
         </li>)}
       </ul>
+      <button onClick={() => removeAllTask()}>Delete Task</button>
       <div>
-        <button onClick={() => props.changeFilter("all")}>All</button>
-        <button onClick={() => props.changeFilter("active")}>Active</button>
-        <button onClick={() => props.changeFilter("completed")}>Completed</button>
+        <button onClick={() => changeFilter("all")}>All</button>
+        <button onClick={() => changeFilter("active")}>Active</button>
+        <button onClick={() => changeFilter("completed")}>Completed</button>
+        <button onClick={() => sortTask()}>FIRST 1-3 TASK</button>
       </div>
     </div>
   )
