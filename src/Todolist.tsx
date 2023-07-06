@@ -1,12 +1,15 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValuesType} from "./App";
-import {v1} from "uuid";
 
 
 type TodolistType = {
   title: string;
   tasks: TaskType[];
   setTasks: (value: TaskType[]) => void
+  setFilter: (value: FilterValuesType) => void
+  addTask: (value: string) => void
+  changeTaskStatus: (taskId: string, isDone: boolean) => void
+  filter: FilterValuesType
 }
 export type TaskType = {
   id: string;
@@ -16,75 +19,73 @@ export type TaskType = {
 
 
 export const Todolist = (props: TodolistType) => {
-
-  let [filter, setFilter] = useState<FilterValuesType>("all");
-  const changeFilter = (value: FilterValuesType) => {
-    setFilter(value)
-  }//Фильтр Tasks
-  const removeTask = (id: string) => {
-    let filteredTasks = props.tasks.filter((t) => t.id !== id);
-    props.setTasks(filteredTasks)
-  }// Удаление таски
-
-  let tasksForTodolist = props.tasks;//Данные State
-  if (filter === "completed") {
-    tasksForTodolist = props.tasks.filter((t) => t.isDone)
-  } /*Условия сортировки */
-  if (filter === "active") {
-    tasksForTodolist = props.tasks.filter((t) => !t.isDone)
-  }
-
-  const removeAllTask = () => {
-    props.setTasks([])
-  } // Удаляет все таски
-  const sortTask = () => {
-    let sortTask = props.tasks.slice(0, 3);
-    props.setTasks(sortTask)
-  }//Выбирает первые три таски из props.tasks
-  const addTask = (title: string) => {
-    let newTask = {id: v1(), title: title, isDone: false}// Добавили навую таску с уникальным идентификатором
-    let updateNewTask = [newTask, ...props.tasks] // делаем копию Tasks чтобы не изменять tasks
-    // по правилам и добавляем новый массив, сформировав другой
-    props.setTasks(updateNewTask)
-  }// Добавление таски
+  // styles for buttons
+  const styleAll = props.filter === "all" ? "active-filter" : "";
+  const styleActive = props.filter === "active" ? "active-filter" : "";
+  const styleCompleted = props.filter === "completed" ? "active-filter" : "";
+  //----------------------------------------------------------------------------------
 
   const [newTaskTitle, setNewTaskTitle] = useState("")// Создаем стейт для работы с Input
+  const [error, setError] = useState<string | null>(null)// Стейт для установки ошибки инпута и сообщения об ошибке
+
+  const changeFilter = (value: FilterValuesType) => {
+    props.setFilter(value)
+  }//Фильтр Tasks
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTaskTitle(e.currentTarget.value)
   } // Событие изменения в Input
   const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    setError("")
     if (e.key === "Enter") {
-      addTask(newTaskTitle);
+      addTaskTodo()
       setNewTaskTitle("");
     }
-
   }//Событие нажатия кнопки в Input и добавление таски по нажатию ENT
   const addTaskTodo = () => {
-    addTask(newTaskTitle);
-    setNewTaskTitle("");
+    if (newTaskTitle.trim() !== "") {
+      props.addTask(newTaskTitle.trim());
+      setNewTaskTitle("");
+    } else {
+      setError("Введите имя")
+    }
+
   }
+
   return (
     <div>
       <h3>{props.title}</h3>
       <div>
-        <input value={newTaskTitle} onChange={onChangeHandler} onKeyPress={onKeyPressHandler}/>
+        <input className={error ? "error" : ""} value={newTaskTitle} onChange={onChangeHandler}
+               onKeyPress={onKeyPressHandler}/>
         <button onClick={addTaskTodo}>+</button>
+        {error && <div className="error-message">{error}</div>}
       </div>
       <ul>
-        {tasksForTodolist.map((t, index) =>
-          <li key={index}>
-            <input type="checkbox" checked={t.isDone}/>
-            <span>{t.title}</span>
-            <button onClick={(e) => removeTask(t.id)}>x</button>
-          </li>)
+        {props.tasks.map((t, index) => {
+
+            const removeTask = (id: string) => {
+              let filteredTasks = props.tasks.filter((t) => t.id !== id);
+              props.setTasks(filteredTasks)
+            }// Удаление таски
+            const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+              props.changeTaskStatus(t.id, t.isDone) // Добавляем id и значение установки чекбокса
+            }//Установка чекбокса
+            return <li key={index} className={t.isDone ? "is-done" : ""}>
+              <input type="checkbox" checked={t.isDone} onChange={onChangeHandler}/>
+              <span>{t.title}</span>
+              <button onClick={(e) => removeTask(t.id)}>x</button>
+            </li>
+          }
+        )
         }
       </ul>
-      <button onClick={(e) => removeAllTask()}>Delete Task</button>
       <div>
-        <button onClick={(e) => changeFilter("all")}>All</button>
-        <button onClick={(e) => changeFilter("active")}>Active</button>
-        <button onClick={(e) => changeFilter("completed")}>Completed</button>
-        <button onClick={(e) => sortTask()}>FIRST 1-3 TASK</button>
+        <button className={styleAll} onClick={(e) => changeFilter("all")}>All
+        </button>
+        <button className={styleActive} onClick={(e) => changeFilter("active")}>Active
+        </button>
+        <button className={styleCompleted} onClick={(e) => changeFilter("completed")}>Completed
+        </button>
       </div>
     </div>
   )
