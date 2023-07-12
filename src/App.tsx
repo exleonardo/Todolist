@@ -29,7 +29,7 @@ function App() {
   }
 
   const addTask = (title: string) => {
-    let newTask = {id: v1(), title: title, isDone: false}// Добавили навую таску с уникальным идентификатором
+    let newTask = {id: v1(), title: title, isDone: false}// Добавили новую таску с уникальным идентификатором
     let updateNewTask = [newTask, ...tasks] // делаем копию Tasks чтобы не изменять tasks
     // по правилам и добавляем новый массив, сформировав другой
     setTasks(updateNewTask)
