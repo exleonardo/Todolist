@@ -1,4 +1,4 @@
-import React , {ChangeEvent} from 'react';
+import React , {ChangeEvent , useCallback} from 'react';
 import {FilterValuesType} from './AppWithReducers';
 import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
@@ -24,10 +24,12 @@ type PropsType = {
     filter: FilterValuesType
 }
 
-export function Todolist(props: PropsType) {
+export const Todolist = React.memo ( function Todolist(props: PropsType) {
     const dispatch = useDispatch ()
     const tasks = useSelector<AppRootState , TaskType[]> ( (state) => state.tasks[props.id] )
-
+    const addTask = useCallback ( (title: string) => {
+        dispatch ( addTaskAC ( title , props.id ) )
+    } , [] )
 
     const removeTodolist = () => {
         props.removeTodolist ( props.id );
@@ -56,7 +58,7 @@ export function Todolist(props: PropsType) {
                 <Delete/>
             </IconButton>
         </h3>
-        <AddItemForm addItem={(title) => dispatch ( addTaskAC ( title , props.id ) )}/>
+        <AddItemForm addItem={addTask}/>
         <div>
             {
                 tasksForTodolist.map ( t => {
@@ -101,6 +103,6 @@ export function Todolist(props: PropsType) {
             </Button>
         </div>
     </div>
-}
+} )
 
 

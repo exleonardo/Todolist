@@ -1,8 +1,7 @@
-import React , {useReducer , useState} from 'react';
-import '../App.css';
-import {TaskType , Todolist} from '../Todolist';
-import {v1} from 'uuid';
-import {AddItemForm} from '../AddItemForm';
+import React , {useCallback} from 'react';
+import './App.css';
+import {TaskType , Todolist} from './Todolist';
+import {AddItemForm} from './AddItemForm';
 import AppBar from '@mui/material/AppBar/AppBar';
 import {Button , Container , Grid , IconButton , Paper , Toolbar , Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
@@ -10,12 +9,12 @@ import {
     addTodolistAC ,
     changeTodolistFilterAC ,
     changeTodolistTitleAC
-} from "./todolists-reducer";
+} from "./state/todolists-reducer";
 import {
     removeTodolistAC
-} from "./tasks-reducer";
+} from "./state/tasks-reducer";
 import {useDispatch , useSelector} from "react-redux";
-import {AppRootState} from "./store";
+import {AppRootState} from "./state/store";
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -36,24 +35,24 @@ function AppWithRedux() {
     const todolists = useSelector<AppRootState , TodolistType[]> ( (state) => state.todolists )
 
 
-    function changeFilter(value: FilterValuesType , todolistId: string) {
+    const changeFilter = useCallback ( function changeFilter(value: FilterValuesType , todolistId: string) {
         dispatch ( changeTodolistFilterAC ( todolistId , value ) )
-    }
+    } , [] )
 
-    function removeTodolist(todolistId: string) {
+    const removeTodolist = useCallback ( function (todolistId: string) {
         const action = removeTodolistAC ( todolistId )
         dispatch ( action )
-    }
+    } , [] )
 
-    function changeTodolistTitle(id: string , title: string) {
+    const changeTodolistTitle = useCallback ( function (id: string , title: string) {
         const action = changeTodolistTitleAC ( id , title )
         dispatch ( action )
-    }
+    } , [] )
 
-    function addTodolist(title: string) {
+    const addTodolist = useCallback ( function (title: string) {
         const action = addTodolistAC ( title )
         dispatch ( action )
-    }
+    } , [] )
 
     return (
         <div className="App">
