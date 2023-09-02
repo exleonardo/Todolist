@@ -37,22 +37,22 @@ function AppWithRedux() {
 
     const changeFilter = useCallback ( function changeFilter(value: FilterValuesType , todolistId: string) {
         dispatch ( changeTodolistFilterAC ( todolistId , value ) )
-    } , [] )
+    } , [dispatch] )
 
     const removeTodolist = useCallback ( function (todolistId: string) {
         const action = removeTodolistAC ( todolistId )
         dispatch ( action )
-    } , [] )
+    } , [dispatch] )
 
     const changeTodolistTitle = useCallback ( function (id: string , title: string) {
         const action = changeTodolistTitleAC ( id , title )
         dispatch ( action )
-    } , [] )
+    } , [dispatch] )
 
     const addTodolist = useCallback ( function (title: string) {
         const action = addTodolistAC ( title )
         dispatch ( action )
-    } , [] )
+    } , [dispatch] )
 
     return (
         <div className="App">
