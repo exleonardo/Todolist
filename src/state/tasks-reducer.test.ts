@@ -1,7 +1,6 @@
 import {
     addTaskAC ,
     updateTaskAC ,
-    changeTaskTitleAC ,
     removeTaskAC ,
     setTasksAC ,
     tasksReducer

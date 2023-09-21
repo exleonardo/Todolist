@@ -1,9 +1,5 @@
 import {TasksStateType} from '../App';
-import {
-    AddTodolistActionType ,
-    RemoveTodolistActionType ,
-    SetTodolistActionType ,
-} from './todolists-reducer';
+import {AddTodolistActionType , RemoveTodolistActionType , SetTodolistActionType ,} from './todolists-reducer';
 import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../api/todolists-api";
 import {Dispatch} from "redux";
 import {AppRootStateType} from "./store";
@@ -74,18 +70,18 @@ export const setTasksAC = (tasks: Array<TaskType> , todolistId: string) => ({
 }) as const
 
 // Thunks
-export const fetchTaskTC = (todolistId: string): any => (dispatch: Dispatch) => {
+export const fetchTaskTC = (todolistId: string) => (dispatch: Dispatch) => {
     todolistsApi.getTasks ( todolistId ).then ( (res) => {
         dispatch ( setTasksAC ( res.data.items , todolistId ) )
     } )
 }
-export const removeTaskTC = (taskId: string , todolistId: string): any => (dispatch: Dispatch) => {
+export const removeTaskTC = (taskId: string , todolistId: string) => (dispatch: Dispatch) => {
     todolistsApi.deleteTask ( todolistId , taskId ).then ( (res) => {
         const action = removeTaskAC ( taskId , todolistId )
         dispatch ( action )
     } )
 }
-export const addTaskTC = (title: string , todolistId: string ,): any => (dispatch: Dispatch) => {
+export const addTaskTC = (title: string , todolistId: string ,) => (dispatch: Dispatch) => {
     todolistsApi.createTask ( todolistId , title ).then ( (res) => {
         const action = addTaskAC ( res.data.data.item )
         dispatch ( action )
@@ -101,8 +97,7 @@ export type UpdateDomainTaskModelType = {
     deadline?: string
 }
 export const updateTaskTC = (taskId: string , domainModel: UpdateDomainTaskModelType , todolistId: string): any => (dispatch: Dispatch , getState: () => AppRootStateType) => {
-    const state = getState ()
-    const task = state.tasks[todolistId].find ( el => el.id === taskId );
+    const task = getState ().tasks[todolistId].find ( el => el.id === taskId )
     if ( !task ) {
         console.warn ( "Task not found" );
         return
