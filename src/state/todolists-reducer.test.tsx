@@ -7,17 +7,16 @@ import {
 } from './todolists-reducer';
 import {v1} from 'uuid';
 
-let startState:TodolistDomainType[]
+let startState: TodolistDomainType[]
 let todolistId1 = v1 ();
 let todolistId2 = v1 ();
-beforeEach(()=>{
+beforeEach ( () => {
     startState = [
-        { id: todolistId1 , title: "What to learn" , filter: "all" ,addedDate:'',order:0 } ,
-        { id: todolistId2 , title: "What to buy" , filter: "all" ,addedDate:'',order:0}
+        { id: todolistId1 , title: "What to learn" , filter: "all" , addedDate: '' , order: 0 } ,
+        { id: todolistId2 , title: "What to buy" , filter: "all" , addedDate: '' , order: 0 }
     ]
-})
+} )
 test ( 'correct todolist should be removed' , () => {
-
 
 
     const endState = todolistsReducer ( startState , removeTodolistAC ( todolistId1 ) )
@@ -30,7 +29,12 @@ test ( 'correct todolist should be added' , () => {
 
     let newTodolistTitle = "New Todolist";
 
-    const endState = todolistsReducer ( startState , addTodolistAC ( newTodolistTitle ) )
+    const endState = todolistsReducer ( startState , addTodolistAC ( {
+        id: v1 () ,
+        title: newTodolistTitle ,
+        addedDate: '' ,
+        order: 0
+    } ) )
 
     expect ( endState.length ).toBe ( 3 );
     expect ( endState[0].title ).toBe ( newTodolistTitle );
@@ -62,7 +66,7 @@ test ( 'correct filter of todolist should be changed' , () => {
 
 test ( 'todolists should be set the state' , () => {
 
-    const action = setTodolistsAC ( startState  );
+    const action = setTodolistsAC ( startState );
     const endState = todolistsReducer ( [] , action );
 
     expect ( endState.length ).toBe ( 2 );
