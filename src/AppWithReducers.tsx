@@ -10,7 +10,7 @@ import {
     removeTodolistAC ,
     todolistsReducer
 } from './state/todolists-reducer';
-import {addTaskAC , updateTaskAC , changeTaskTitleAC , removeTaskAC , tasksReducer} from './state/tasks-reducer';
+import {addTaskAC , updateTaskAC , removeTaskAC , tasksReducer} from './state/tasks-reducer';
 import {TaskPrioties , TaskStatuses , TaskType} from "./api/todolists-api";
 import {Menu} from "@mui/icons-material";
 import {AddItemForm} from "./AddItemForm";
