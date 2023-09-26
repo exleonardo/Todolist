@@ -9,17 +9,26 @@ import {todolistsReducer} from "./state/todolists-reducer";
 import {TaskPrioties , TaskStatuses} from "./api/todolists-api";
 import {AppRootStateType} from "./state/store";
 import thunkMiddleWare from "redux-thunk";
+import appReducer from "./app/app-reducer";
 
 
 const rootReducer = combineReducers ( {
     tasks: tasksReducer ,
-    todolists: todolistsReducer
+    todolists: todolistsReducer ,
+    app: appReducer
 } )
 
 const initialGlobalState: AppRootStateType = {
     todolists: [
-        { id: "todolistId1" , title: "What to learn" , filter: "all" , addedDate: '' , order: 0 } ,
-        { id: "todolistId2" , title: "What to buy" , filter: "all" , addedDate: '' , order: 0 }
+        {
+            id: "todolistId1" ,
+            title: "What to learn" ,
+            filter: "all" ,
+            addedDate: '' ,
+            order: 0 ,
+            entityStatus: "idle"
+        } ,
+        { id: "todolistId2" , title: "What to buy" , filter: "all" , addedDate: '' , order: 0 , entityStatus: "idle" }
     ] ,
     tasks: {
         "todolistId1": [
@@ -78,6 +87,10 @@ const initialGlobalState: AppRootStateType = {
                 description: ''
             }
         ]
+    } ,
+    app: {
+        error: null ,
+        status: 'idle'
     }
 };
 

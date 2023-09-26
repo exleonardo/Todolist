@@ -3,6 +3,7 @@ import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../api/to
 import {AppRootStateType , AppThunk} from "./store";
 import {Dispatch} from "redux";
 import {TasksStateType} from "../app/App";
+import {setErrorAC , SetErrorActionType , setStatusAC , SetStatusActionType} from "../app/app-reducer";
 
 
 const initialState: TasksStateType = {}
@@ -70,11 +71,14 @@ export const setTasksAC = (tasks: Array<TaskType> , todolistId: string) => ({
 } as const)
 
 // Thunks
-export const fetchTaskTC = (todolistId: string): AppThunk => (dispatch: Dispatch<ActionsTaskType>) => {
-    todolistsApi.getTasks ( todolistId ).then ( (res) => {
-        dispatch ( setTasksAC ( res.data.items , todolistId ) )
-    } )
-}
+export const fetchTaskTC = (todolistId: string): AppThunk =>
+    (dispatch: Dispatch<ActionsTaskType>) => {
+        dispatch ( setStatusAC ( 'loading' ) )
+        todolistsApi.getTasks ( todolistId ).then ( (res) => {
+            dispatch ( setTasksAC ( res.data.items , todolistId ) )
+            dispatch ( setStatusAC ( 'succesed' ) )
+        } )
+    }
 export const removeTaskTC = (taskId: string , todolistId: string): AppThunk => (dispatch: Dispatch<ActionsTaskType>) => {
     todolistsApi.deleteTask ( todolistId , taskId ).then ( (res) => {
         const action = removeTaskAC ( taskId , todolistId )
@@ -82,9 +86,20 @@ export const removeTaskTC = (taskId: string , todolistId: string): AppThunk => (
     } )
 }
 export const addTaskTC = (title: string , todolistId: string): AppThunk => (dispatch: Dispatch<ActionsTaskType>) => {
+    dispatch ( setStatusAC ( 'loading' ) )
     todolistsApi.createTask ( todolistId , title ).then ( (res) => {
-        const action = addTaskAC ( res.data.data.item )
-        dispatch ( action )
+        if ( res.data.resultCode === 0 ) {
+            const action = addTaskAC ( res.data.data.item )
+            dispatch ( action )
+            dispatch ( setStatusAC ( 'succesed' ) )
+        } else {
+            if ( res.data.messages.length ) {
+                dispatch ( setErrorAC ( res.data.messages[0] ) )
+            } else {
+                dispatch ( setErrorAC ( 'some error' ) )
+            }
+            dispatch ( setStatusAC ( 'failed' ) )
+        }
     } )
 }
 export type UpdateDomainTaskModelType = {
@@ -127,3 +142,5 @@ export type ActionsTaskType =
     | AddTodolistActionType
     | RemoveTodolistActionType
     | SetTodolistActionType
+    | SetErrorActionType
+    | SetStatusActionType
