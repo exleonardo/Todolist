@@ -5,10 +5,10 @@ import {
     setTasksAC ,
     tasksReducer
 } from './tasks-reducer';
-import {TasksStateType} from '../App';
 import {addTodolistAC , removeTodolistAC , setTodolistsAC} from './todolists-reducer';
 import {TaskPrioties , TaskStatuses} from "../api/todolists-api";
 import {v1} from "uuid";
+import {TasksStateType} from "../app/App";
 
 let startState: TasksStateType = {};
 beforeEach ( () => {
