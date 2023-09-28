@@ -9,10 +9,9 @@ import App from "./App";
 const meta: Meta<typeof App> = {
     title: 'App/Stories' ,
     component: App ,
-    // This component will have an automatically generated Autodocs entry:
-    // https://storybook.js.org/docs/react/writing-docs/autodocs
-
-    // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+    args: {
+        demo: true
+    } ,
     decorators: [ReduxStoreProviderDecorator]
 };
 

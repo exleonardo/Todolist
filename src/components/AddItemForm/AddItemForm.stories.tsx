@@ -1,15 +1,27 @@
 import React from "react";
+import type {Meta , StoryObj} from '@storybook/react';
 import {AddItemForm} from "./AddItemForm";
 import {action} from '@storybook/addon-actions'
 
-export default {
-    title: "AddItemForm" ,
+
+const meta: Meta<typeof AddItemForm> = {
+    title: 'Todolist/AddItemForm' ,
     component: AddItemForm ,
     parameters: {
         layout: 'centered' ,
+    } ,
+    tags: ['autodocs'] ,
+    //argTypes пропсы которые заданы не явно задаем необязательные параметры
+    argTypes: {
+        addItem: { action: 'clicked' , description: 'Button clicked inside form' }
     }
-}
-const callback = action ( "button add was pressed inside the form" )
-export const AddItemFormBaseExample = () => {
-    return <AddItemForm addItem={callback}/>
+};
+
+export default meta;
+type Story = StoryObj<typeof AddItemForm>;
+export const AddItemFormStory: Story = {}
+export const AddItemFormDisabledStory: Story = {
+    args: {
+        disabled: true
+    }
 }

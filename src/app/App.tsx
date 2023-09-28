@@ -1,6 +1,12 @@
 import React from 'react'
 import './App.css';
-import {AppBar , Button , Container , IconButton , LinearProgress , Toolbar , Typography} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import AppBar from "@mui/material/AppBar";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import LinearProgress from "@mui/material/LinearProgress";
+import Toolbar from "@mui/material/Toolbar";
 import {Menu} from "@mui/icons-material";
 import {TaskType} from "../api/todolists-api";
 import {TodolistsList} from "./features/Todolist/TodolistsList";
@@ -13,8 +19,11 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
+type PropsType = {
+    demo?: boolean
+}
 
-function App() {
+function App({ demo = false , ...props }: PropsType) {
     const status = useSelector<AppRootStateType , RequestStatusType> ( (state) => state.app.status )
     return (
         <div className="App">
@@ -32,7 +41,7 @@ function App() {
                 {status === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
-                <TodolistsList/>
+                <TodolistsList demo={demo}/>
             </Container>
         </div>
     );
