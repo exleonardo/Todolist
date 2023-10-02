@@ -1,6 +1,8 @@
 import {setAppErrorAC , setAppStatusAC , SetErrorActionType , SetStatusActionType} from "../app/app-reducer";
 import {ResponseType} from '../api/todolists-api'
 import {Dispatch} from "redux";
+import {AxiosError} from "axios";
+
 
 export const handleServerAppError = <D>(data: ResponseType<D> , dispatch: Dispatch<SetErrorActionType | SetStatusActionType>) => {
     if ( data.messages.length ) {
@@ -10,7 +12,9 @@ export const handleServerAppError = <D>(data: ResponseType<D> , dispatch: Dispat
     }
     dispatch ( setAppStatusAC ( 'failed' ) )
 }
-export const handleServerNetworkError = (error: { messages: string } , dispatch: Dispatch) => {
-    dispatch ( setAppErrorAC ( error.messages ? error.messages : 'Some error occurred' ) )
+
+// нужно типизировать аксиос объектом который вернет сервер
+export const handleServerNetworkError = (error: AxiosError<any> , dispatch: Dispatch) => {
+    dispatch ( setAppErrorAC ( error.message ? error.message : 'Some error occurred' ) )
     dispatch ( setAppStatusAC ( 'failed' ) )
 }

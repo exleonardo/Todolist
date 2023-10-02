@@ -16,16 +16,18 @@ import {Grid , Paper} from "@mui/material";
 import {AddItemForm} from "../../../components/AddItemForm/AddItemForm";
 import {Todolist} from "../../../features/TodolistsList/Todolist/Todolist";
 import {TasksStateType} from "../../App";
+import {Navigate} from "react-router-dom";
 
 type TodolistsListPropsType = {
     demo?: boolean
 }
 export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false , ...props }) => {
-    const todolists = useSelector<AppRootStateType , Array<TodolistDomainType>> ( state => state.todolists )
-    const tasks = useSelector<AppRootStateType , TasksStateType> ( state => state.tasks )
+    const todolists = useSelector<AppRootStateType , Array<TodolistDomainType>> ( state => state.todolists );
+    const tasks = useSelector<AppRootStateType , TasksStateType> ( state => state.tasks );
+    const isLoggedIn = useSelector<AppRootStateType , boolean> ( state => state.auth.isLoggedIn )
     const dispatch = useAppDispatch ();
     useEffect ( () => {
-            if ( demo ) {
+            if ( demo || !isLoggedIn ) {
                 return
             }
             dispatch ( fetchTodolistTC () )
@@ -71,6 +73,9 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false ,
         const thunk = addTodolistTC ( title );
         dispatch ( thunk );
     } , [dispatch] );
+    if ( !isLoggedIn ) {
+        return <Navigate to={'/login'}/>
+    }
     return <>
         <Grid container style={{ padding: "20px" }}>
             <AddItemForm addItem={addTodolist}/>

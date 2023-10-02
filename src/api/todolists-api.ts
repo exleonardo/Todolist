@@ -38,8 +38,25 @@ export const todolistsApi = {
         return instanse.put<ResponseType<TaskType>> ( `todo-lists/${todolistId}/tasks/${taskId}` , model )
     }
 }
-
+export const authApi = {
+    auth(data: LoginParamsType) {
+        return instanse.post<ResponseType<{ userId?: number }>> ( "auth/login" , data )
+    } ,
+    me() {
+        return instanse.get<ResponseType<{ id: number, email: string, login: string }>> ( "auth/me" )
+    } ,
+    logout() {
+        return instanse.delete<ResponseType> ( "auth/login" )
+    }
+}
 //Types
+export type LoginParamsType = {
+    email: string;
+    password: string;
+    rememberMe: boolean;
+    captcha?: string;
+
+}
 export type TodolistType = {
     id: string,
     title: string,
