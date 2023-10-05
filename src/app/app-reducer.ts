@@ -35,7 +35,7 @@ export const initializedTC = (): AppThunk => (dispatch) => {
 
         }
         dispatch ( setAppInitializedAC ( true ) )
-    } )
+    } ).finally ( () => dispatch ( setAppInitializedAC ( true ) ) )
 }
 export const setAppInitializedAC = (value: boolean) => ({ type: 'APP/SET-IS-INITIALIZED' , value } as const)
 const initialState: AppReducerStateType = {
