@@ -1,10 +1,15 @@
-import {AddTodolistActionType , RemoveTodolistActionType , SetTodolistActionType ,} from './todolists-reducer';
 import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../api/todolists-api";
 import {AppRootStateType , AppThunk} from "./store";
 import {Dispatch} from "redux";
 import {TasksStateType} from "../app/App";
 import {setAppStatusAC} from "../app/app-reducer";
 import {handleServerAppError , handleServerNetworkError} from "../utils/error-utils";
+import {
+    addTodolistAC ,
+    AddTodolistActionType , removeTodolistAC ,
+    RemoveTodolistActionType ,
+    SetTodolistActionType , setTodolistsAC
+} from "./todolists-reducer";
 
 
 const initialState: TasksStateType = {}
@@ -26,19 +31,19 @@ export const tasksReducer = (state: TasksStateType = initialState , action: Acti
                         ...action.model
                     } : el )
             }
-        case 'ADD-TODOLIST':
+        case addTodolistAC.type:
             return {
                 ...state ,
-                [action.todolist.id]: []
+                [action.payload.todolist.id]: []
             }
-        case 'REMOVE-TODOLIST': {
+        case removeTodolistAC.type: {
             const copyState = { ...state };
-            delete copyState[action.id];
+            delete copyState[action.payload.id];
             return copyState;
         }
-        case "SET-TODOLISTS":
+        case setTodolistsAC.type:
             const copyState = { ...state }
-            action.todolists.forEach ( (tl) => {
+            action.payload.todolists.forEach ( (tl) => {
                 copyState[tl.id] = []
             } )
             return copyState
@@ -86,7 +91,7 @@ export const removeTaskTC = (taskId: string , todolistId: string): AppThunk => (
         dispatch ( action )
     } )
 }
-export const addTaskTC = (title: string , todolistId: string): AppThunk => (dispatch) => {
+export const addTaskTC = (title: string , todolistId: string): AppThunk => dispatch => {
     dispatch ( setAppStatusAC ( { status: 'loading' } ) )
     todolistsApi.createTask ( todolistId , title ).then ( (res) => {
         if ( res.data.resultCode === 0 ) {
