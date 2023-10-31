@@ -40,7 +40,8 @@ const slice = createSlice ( {
                 state[index].entityStatus = action.payload.status
             }
         }
-    }
+    } ,
+    
 } )
 export const todolistsReducer = slice.reducer
 export const {
