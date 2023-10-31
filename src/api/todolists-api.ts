@@ -55,7 +55,6 @@ export type LoginParamsType = {
     password: string;
     rememberMe: boolean;
     captcha?: string;
-
 }
 export type TodolistType = {
     id: string,

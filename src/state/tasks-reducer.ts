@@ -3,7 +3,7 @@ import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../api/to
 import {AppRootStateType , AppThunk} from "./store";
 import {Dispatch} from "redux";
 import {TasksStateType} from "../app/App";
-import {setAppStatusAC , SetErrorActionType , SetStatusActionType} from "../app/app-reducer";
+import {setAppStatusAC} from "../app/app-reducer";
 import {handleServerAppError , handleServerNetworkError} from "../utils/error-utils";
 
 
@@ -73,11 +73,11 @@ export const setTasksAC = (tasks: Array<TaskType> , todolistId: string) => ({
 
 // Thunks
 export const fetchTaskTC = (todolistId: string): AppThunk =>
-    (dispatch: Dispatch<ActionsTaskType>) => {
-        dispatch ( setAppStatusAC ( 'loading' ) )
+    (dispatch) => {
+        dispatch ( setAppStatusAC ( { status: 'loading' } ) )
         todolistsApi.getTasks ( todolistId ).then ( (res) => {
             dispatch ( setTasksAC ( res.data.items , todolistId ) )
-            dispatch ( setAppStatusAC ( 'succesed' ) )
+            dispatch ( setAppStatusAC ( { status: 'succesed' } ) )
         } )
     }
 export const removeTaskTC = (taskId: string , todolistId: string): AppThunk => (dispatch: Dispatch<ActionsTaskType>) => {
@@ -86,13 +86,13 @@ export const removeTaskTC = (taskId: string , todolistId: string): AppThunk => (
         dispatch ( action )
     } )
 }
-export const addTaskTC = (title: string , todolistId: string): AppThunk => (dispatch: Dispatch<ActionsTaskType>) => {
-    dispatch ( setAppStatusAC ( 'loading' ) )
+export const addTaskTC = (title: string , todolistId: string): AppThunk => (dispatch) => {
+    dispatch ( setAppStatusAC ( { status: 'loading' } ) )
     todolistsApi.createTask ( todolistId , title ).then ( (res) => {
         if ( res.data.resultCode === 0 ) {
             const action = addTaskAC ( res.data.data.item )
             dispatch ( action )
-            dispatch ( setAppStatusAC ( 'succesed' ) )
+            dispatch ( setAppStatusAC ( { status: 'succesed' } ) )
         } else {
             handleServerAppError ( res.data , dispatch )
         }
@@ -146,5 +146,3 @@ export type ActionsTaskType =
     | AddTodolistActionType
     | RemoveTodolistActionType
     | SetTodolistActionType
-    | SetErrorActionType
-    | SetStatusActionType
