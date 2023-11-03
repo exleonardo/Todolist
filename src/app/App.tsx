@@ -13,7 +13,7 @@ import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackbar";
 import {useSelector} from "react-redux";
 import {AppRootStateType , useAppDispatch} from "../state/store";
 import {initializedTC , RequestStatusType} from "./app-reducer";
-import {BrowserRouter , Navigate , Route , Routes} from "react-router-dom";
+import {Navigate , Route , Routes} from "react-router-dom";
 import {Login} from "../features/Login/Login";
 import {CircularProgress} from "@mui/material";
 import {logoutTC} from "../features/Login/authReducer";
@@ -36,7 +36,7 @@ function App({ demo = false , ...props }: PropsType) {
             dispatch ( initializedTC () )
         }
 
-    } , [dispatch] );
+    } , [demo , dispatch] );
     const logoutHandler = useCallback ( () => {
         dispatch ( logoutTC () )
     } , [dispatch] )
@@ -44,28 +44,27 @@ function App({ demo = false , ...props }: PropsType) {
         return <div style={{ position: 'fixed' , top: '30%' , width: '100%' , left: '50%' }}><CircularProgress/></div>
     }
 
-    return (<BrowserRouter>
-            <div className="App">
-                <CustomizedSnackbars/>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
-                            <Menu/>
-                        </IconButton>
-                        {isLoggedIn && <Button onClick={logoutHandler} color="inherit">Log out</Button>}
-                    </Toolbar>
-                    {status === 'loading' && <LinearProgress/>}
-                </AppBar>
-                <Container fixed>
-                    <Routes>
-                        <Route path={'/'} element={<TodolistsList demo={demo}/>}/>
-                        <Route path={"/login"} element={<Login/>}/>
-                        <Route path={'/404'} element={<h1>404: PAGE NOT FOUND</h1>}/>
-                        <Route path={'*'} element={<Navigate to='/404'/>}/>
-                    </Routes>
-                </Container>
-            </div>
-        </BrowserRouter>
+    return (
+        <div className="App">
+            <CustomizedSnackbars/>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" color="inherit" aria-label="menu">
+                        <Menu/>
+                    </IconButton>
+                    {isLoggedIn && <Button onClick={logoutHandler} color="inherit">Log out</Button>}
+                </Toolbar>
+                {status === 'loading' && <LinearProgress/>}
+            </AppBar>
+            <Container fixed>
+                <Routes>
+                    <Route path={'/'} element={<TodolistsList demo={demo}/>}/>
+                    <Route path={"/login"} element={<Login/>}/>
+                    <Route path={'/404'} element={<h1>404: PAGE NOT FOUND</h1>}/>
+                    <Route path={'*'} element={<Navigate to='/404'/>}/>
+                </Routes>
+            </Container>
+        </div>
     );
 }
 

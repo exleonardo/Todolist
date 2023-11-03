@@ -1,7 +1,7 @@
 import React from 'react'
 import {Provider} from "react-redux";
 
-import {applyMiddleware , combineReducers , legacy_createStore} from "redux";
+import {combineReducers} from "redux";
 
 import {v1} from "uuid";
 import {tasksReducer} from "./state/tasks-reducer";
@@ -12,7 +12,7 @@ import thunkMiddleWare from "redux-thunk";
 import {appReducer} from "./app/app-reducer";
 import {authReducer} from "./features/Login/authReducer";
 import {configureStore} from "@reduxjs/toolkit";
-import {BrowserRouter} from "react-router-dom";
+import {MemoryRouter} from "react-router-dom";
 
 
 const rootReducer = combineReducers ( {
@@ -111,9 +111,6 @@ export const storyBookStore = configureStore ( {
 
 
 export const ReduxStoreProviderDecorator = (storyFn: () => React.ReactNode) => {
-    return <Provider store={storyBookStore}>{storyFn ()}</Provider>
-}
+    return <MemoryRouter><Provider store={storyBookStore}>{storyFn ()}</Provider></MemoryRouter>
 
-export const BrowserRouterDecorator = () => {
-    <BrowserRouter></BrowserRouter>
 }
