@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="refactor tests">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2V1XWQnexF7HR0sqtBbZgmq7pXW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/it-incubator/social-network",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "D:/it-incubator/Todolist/node_modules/react-scripts",
+    "nodejs_package_manager_path": "yarn",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "preferences.general",
+    "ts.external.directory.path": "D:\\it-incubator\\Todolist\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\it-incubator\Todolist\src\features\Login" />
+      <recent name="D:\it-incubator\Todolist\src" />
+      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist\Task" />
+      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist" />
+      <recent name="D:\it-incubator\Todolist\src\app" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="D:\it-incubator\Todolist\src\app\features\Todolist\TodolistsList.tsx" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.jest:integration">
+    <configuration name="jest:integration" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="jest:integration" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="storybook" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="storybook" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test:integration" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test:integration" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.storybook" />
+        <item itemvalue="npm.test:integration" />
+        <item itemvalue="npm.jest:integration" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="" />
+      <created>1694004591647</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694004591647</updated>
+      <workItem from="1694004601258" duration="6372000" />
+      <workItem from="1694427806795" duration="2938000" />
+      <workItem from="1694447780157" duration="277000" />
+      <workItem from="1694448086543" duration="40204000" />
+      <workItem from="1694885473727" duration="1248000" />
+      <workItem from="1694975349649" duration="972000" />
+      <workItem from="1695108766583" duration="1107000" />
+      <workItem from="1695118566252" duration="14978000" />
+      <workItem from="1695146117576" duration="43838000" />
+      <workItem from="1695328198699" duration="75000" />
+      <workItem from="1695371522339" duration="8321000" />
+      <workItem from="1695671499902" duration="41037000" />
+      <workItem from="1696235187549" duration="3596000" />
+      <workItem from="1696253263491" duration="16623000" />
+      <workItem from="1696420310144" duration="2940000" />
+      <workItem from="1696502554383" duration="1366000" />
+      <workItem from="1696625680434" duration="2154000" />
+      <workItem from="1696941472204" duration="10084000" />
+      <workItem from="1697110053545" duration="7550000" />
+      <workItem from="1698755012409" duration="582000" />
+      <workItem from="1698755657647" duration="17865000" />
+      <workItem from="1698925532847" duration="21917000" />
+    </task>
+    <task id="LOCAL-00001" summary="add snapshot">
+      <option name="closed" value="true" />
+      <created>1694009735403</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694009735403</updated>
+    </task>
+    <task id="LOCAL-00002" summary="refactor Type">
+      <option name="closed" value="true" />
+      <created>1694789572652</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694789572652</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add thunk and tests">
+      <option name="closed" value="true" />
+      <created>1695151608759</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695151608759</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add thunk creator">
+      <option name="closed" value="true" />
+      <created>1695300042455</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695300042455</updated>
+    </task>
+    <task id="LOCAL-00005" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1695302507259</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695302507260</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1695304505961</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695304505961</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add type Thunk adnn type Dispatch">
+      <option name="closed" value="true" />
+      <created>1695320905837</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695320905837</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1695734613799</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695734613799</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add error loading , status loading">
+      <option name="closed" value="true" />
+      <created>1695758091396</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695758091396</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add error loading ,status">
+      <option name="closed" value="true" />
+      <created>1695915248358</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695915248358</updated>
+    </task>
+    <task id="LOCAL-00011" summary="login">
+      <option name="closed" value="true" />
+      <created>1696278690490</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696278690490</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add RTK , refactor">
+      <option name="closed" value="true" />
+      <created>1698760390044</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698760390044</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor code after add RTK">
+      <option name="closed" value="true" />
+      <created>1698779105645</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698779105645</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1698784599804</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698784599804</updated>
+    </task>
+    <task id="LOCAL-00015" summary="refactor tests">
+      <option name="closed" value="true" />
+      <created>1699011346263</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1699011346264</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add snapshot" />
+    <MESSAGE value="refactor Type" />
+    <MESSAGE value="add thunk and tests" />
+    <MESSAGE value="add thunk creator" />
+    <MESSAGE value="add type Thunk adnn type Dispatch" />
+    <MESSAGE value="add error loading , status loading" />
+    <MESSAGE value="add error loading ,status" />
+    <MESSAGE value="login" />
+    <MESSAGE value="add RTK , refactor" />
+    <MESSAGE value="refactor code after add RTK" />
+    <MESSAGE value="refactor" />
+    <MESSAGE value="refactor tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor tests" />
+  </component>
+</project>
