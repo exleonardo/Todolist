@@ -32,7 +32,10 @@ function App({ demo = false , ...props }: PropsType) {
     const isLoggedIn = useSelector<AppRootStateType , boolean> ( (state) => state.auth.isLoggedIn );
     const dispatch = useAppDispatch ()
     useEffect ( () => {
-        dispatch ( initializedTC () )
+        if ( !demo ) {
+            dispatch ( initializedTC () )
+        }
+
     } , [dispatch] );
     const logoutHandler = useCallback ( () => {
         dispatch ( logoutTC () )

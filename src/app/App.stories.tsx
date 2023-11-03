@@ -15,8 +15,9 @@ const meta: Meta<typeof App> = {
     decorators: [ReduxStoreProviderDecorator]
 };
 
+
 export default meta;
-type Story = StoryObj<typeof App>;
+export type Story = StoryObj<typeof App>;
 
 // More on component templates:
 // https://storybook.js.org/docs/react/writing-stories/introduction#using-args

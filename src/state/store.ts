@@ -18,6 +18,7 @@ const rootReducer = combineReducers ( {
     app: appReducer ,
     auth: authReducer
 } )
+
 // непосредственно создаём store
 // export const store = legacy_createStore ( rootReducer , applyMiddleware ( thunkMiddleWare ) )
 export const store = configureStore ( {

@@ -11,13 +11,16 @@ import {AppRootStateType} from "./state/store";
 import thunkMiddleWare from "redux-thunk";
 import {appReducer} from "./app/app-reducer";
 import {authReducer} from "./features/Login/authReducer";
+import {configureStore} from "@reduxjs/toolkit";
+import {BrowserRouter} from "react-router-dom";
 
 
 const rootReducer = combineReducers ( {
     tasks: tasksReducer ,
     todolists: todolistsReducer ,
     app: appReducer ,
-    auth: authReducer
+    auth: authReducer ,
+
 } )
 
 const initialGlobalState: AppRootStateType = {
@@ -92,17 +95,25 @@ const initialGlobalState: AppRootStateType = {
     } ,
     app: {
         error: null ,
-        status: 'idle' ,
-        isInitialized: false
+        status: 'succesed' ,
+        isInitialized: true
     } ,
     auth: {
-        isLoggedIn: false
+        isLoggedIn: true
     }
 };
 
-export const storyBookStore = legacy_createStore ( rootReducer , initialGlobalState , applyMiddleware ( thunkMiddleWare ) );
+export const storyBookStore = configureStore ( {
+    reducer: rootReducer ,
+    preloadedState: initialGlobalState ,
+    middleware: getDefaultMiddleware => getDefaultMiddleware ().prepend ( thunkMiddleWare )
+} );
 
 
 export const ReduxStoreProviderDecorator = (storyFn: () => React.ReactNode) => {
     return <Provider store={storyBookStore}>{storyFn ()}</Provider>
+}
+
+export const BrowserRouterDecorator = () => {
+    <BrowserRouter></BrowserRouter>
 }
