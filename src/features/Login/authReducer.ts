@@ -23,12 +23,12 @@ export const authReducer = slice.reducer
 export const { setIsLoggedInAC } = slice.actions
 
 //Thunk
-export const loginTC = (data: LoginParamsType): AppThunk => dispatch => {
+export const loginTC = (data: LoginParamsType): AppThunk => async dispatch => {
     dispatch ( setAppStatusAC ( { status: 'loading' } ) )
     authApi.auth ( data ).then ( (res) => {
 
         if ( res.data.resultCode === 0 ) {
-
+            dispatch ( setIsLoggedInAC ( { value: true } ) )
             dispatch ( setAppStatusAC ( { status: 'succesed' } ) )
         } else {
             handleServerAppError ( res.data , dispatch )

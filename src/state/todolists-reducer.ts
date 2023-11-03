@@ -17,7 +17,7 @@ const slice = createSlice ( {
             }
         } ,
         addTodolistAC(state , action: PayloadAction<{ todolist: TodolistType }>) {
-            state.push ( { ...action.payload.todolist , filter: 'all' , entityStatus: "idle" } )
+            state.unshift ( { ...action.payload.todolist , filter: 'all' , entityStatus: "idle" } )
         } ,
         changeTodolistTitleAC(state , action: PayloadAction<{ id: string, title: string }>) {
             const index = state.findIndex ( tl => tl.id === action.payload.id )
@@ -41,7 +41,7 @@ const slice = createSlice ( {
             }
         }
     } ,
-    
+
 } )
 export const todolistsReducer = slice.reducer
 export const {
@@ -53,7 +53,6 @@ export const {
     changeTodolistEntityStatusAC
 } = slice.actions
 
-//Actions
 
 //Thunk
 export const fetchTodolistTC = (): AppThunk => {
@@ -97,9 +96,6 @@ export const changeTodolistTitleTC = (id: string , title: string): AppThunk => {
 //types
 
 export type FilterValuesType = "all" | "active" | "completed";
-export type AddTodolistActionType = ReturnType<typeof addTodolistAC>
-export type RemoveTodolistActionType = ReturnType<typeof removeTodolistAC>
-export type SetTodolistActionType = ReturnType<typeof setTodolistsAC>
 export type TodolistDomainType = TodolistType & {
     filter: FilterValuesType
     entityStatus: RequestStatusType

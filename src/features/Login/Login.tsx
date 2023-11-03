@@ -40,14 +40,18 @@ export const Login = () => {
             password: '' ,
             rememberMe: false ,
         } ,
-        onSubmit: values => {
-            dispatch ( loginTC ( values ) )
+        onSubmit: async (values , _) => {
+            _.setSubmitting ( true )
+            const res = await dispatch ( loginTC ( values ) )
+            _.setSubmitting ( false )
             formik.resetForm ()
+
         } ,
     } );
     if ( isLoggedIn ) {
         return <Navigate to={'/'}/>
     }
+    console.log ( formik.isSubmitting )
     return <Grid container justifyContent={'center'}>
         <Grid item justifyContent={'center'}>
             <form onSubmit={formik.handleSubmit}>
@@ -64,19 +68,20 @@ export const Login = () => {
                     </FormLabel>
                     <FormGroup>
                         <TextField label="Email" margin="normal" {...formik.getFieldProps ( 'email' )}
+                                   error={!!(formik.errors.email && formik.touched.email)}
+                                   helperText={formik.errors.email && formik.touched.email}
                         />
-                        {formik.touched.email && formik.errors.email &&
-                            <div style={{ color: 'red' }}>{formik.errors.email}</div>}
                         <TextField type="password" label="Password"
                                    margin="normal" {...formik.getFieldProps ( 'password' )}
+                                   error={!!(formik.errors.password && formik.touched.password)}
+                                   helperText={formik.errors.password && formik.touched.password}
 
                         />
-                        {formik.touched.password && formik.errors.password &&
-                            <div style={{ color: 'red' }}>{formik.errors.password}</div>}
                         <FormControlLabel label={'Remember me'}
                                           control={<Checkbox {...formik.getFieldProps ( 'rememberMe' )}
                                                              checked={formik.values.rememberMe}/>}/>
-                        <Button type={'submit'} variant={'contained'} color={'primary'}>
+                        <Button type={'submit'} variant={'contained'} color={'primary'}
+                                disabled={formik.isSubmitting}>
                             Login
                         </Button>
                     </FormGroup>
