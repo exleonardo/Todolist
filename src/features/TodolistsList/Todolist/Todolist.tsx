@@ -7,8 +7,8 @@ import {Task} from './Task/Task'
 import {Button , IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 import {TaskStatuses , TaskType} from "../../../api/todolists-api";
-import {FilterValuesType , TodolistDomainType} from "../../../state/todolists-reducer";
-import {fetchTaskTC} from "../../../state/tasks-reducer";
+import {FilterValuesType , TodolistDomainType} from "./todolists-reducer";
+import {fetchTaskTC} from "./Task/tasks-reducer";
 import {useAppDispatch} from "../../../state/store";
 
 
@@ -26,13 +26,7 @@ type PropsType = {
 }
 
 export const Todolist = React.memo ( function ({ demo = false , ...props }: PropsType) {
-    const dispatch = useAppDispatch ();
-    useEffect ( () => {
-        if ( demo ) {
-            return
-        }
-        dispatch ( fetchTaskTC ( props.todolist.id ) )
-    } , [] );
+
     const addTask = useCallback ( (title: string) => {
         props.addTask ( title , props.todolist.id )
     } , [props.addTask , props.todolist.id] )
@@ -56,7 +50,7 @@ export const Todolist = React.memo ( function ({ demo = false , ...props }: Prop
     if ( props.todolist.filter === 'completed' ) {
         tasksForTodolist = props.tasks.filter ( t => t.status === TaskStatuses.Completed )
     }
-
+   
     return <div>
         <h3><EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
             <IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>

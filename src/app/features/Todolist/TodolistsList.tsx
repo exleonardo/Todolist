@@ -9,8 +9,8 @@ import {
     FilterValuesType ,
     removeTodolistTC ,
     TodolistDomainType
-} from "../../../state/todolists-reducer";
-import {addTaskTC , removeTaskTC , updateTaskTC} from "../../../state/tasks-reducer";
+} from "../../../features/TodolistsList/Todolist/todolists-reducer";
+import {addTaskTC , removeTaskTC , updateTaskTC} from "../../../features/TodolistsList/Todolist/Task/tasks-reducer";
 import {TaskStatuses} from "../../../api/todolists-api";
 import {Grid , Paper} from "@mui/material";
 import {AddItemForm} from "../../../components/AddItemForm/AddItemForm";

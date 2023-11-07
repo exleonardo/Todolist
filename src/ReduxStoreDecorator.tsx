@@ -4,8 +4,8 @@ import {Provider} from "react-redux";
 import {combineReducers} from "redux";
 
 import {v1} from "uuid";
-import {tasksReducer} from "./state/tasks-reducer";
-import {todolistsReducer} from "./state/todolists-reducer";
+import {tasksReducer} from "./features/TodolistsList/Todolist/Task/tasks-reducer";
+import {todolistsReducer} from "./features/TodolistsList/Todolist/todolists-reducer";
 import {TaskPrioties , TaskStatuses} from "./api/todolists-api";
 import {AppRootStateType} from "./state/store";
 import thunkMiddleWare from "redux-thunk";

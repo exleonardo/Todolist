@@ -4,8 +4,8 @@ import {
     removeTaskAC ,
     setTasksAC ,
     tasksReducer
-} from './tasks-reducer';
-import {addTodolistAC , removeTodolistAC , setTodolistsAC} from './todolists-reducer';
+} from '../features/TodolistsList/Todolist/Task/tasks-reducer';
+import {addTodolistAC , removeTodolistAC , setTodolistsAC} from '../features/TodolistsList/Todolist/todolists-reducer';
 import {TaskPrioties , TaskStatuses} from "../api/todolists-api";
 import {v1} from "uuid";
 import {TasksStateType} from "../app/App";

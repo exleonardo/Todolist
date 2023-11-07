@@ -1,10 +1,11 @@
-import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../api/todolists-api";
-import {AppRootStateType , AppThunk} from "./store";
-import {TasksStateType} from "../app/App";
-import {setAppStatusAC} from "../app/app-reducer";
-import {handleServerAppError , handleServerNetworkError} from "../utils/error-utils";
-import {addTodolistAC , removeTodolistAC , setTodolistsAC} from "./todolists-reducer";
+import {TaskPrioties , TaskType , todolistsApi , UpdateTaskType} from "../../../../api/todolists-api";
+import {AppRootStateType , AppThunk} from "../../../../state/store";
+import {TasksStateType} from "../../../../app/App";
+import {setAppStatusAC} from "../../../../app/app-reducer";
+import {handleServerAppError , handleServerNetworkError} from "../../../../utils/error-utils";
+import {addTodolistAC , clearTodosData , removeTodolistAC , setTodolistsAC} from "../todolists-reducer";
 import {createSlice , PayloadAction} from "@reduxjs/toolkit";
+import {action} from "@storybook/addon-actions";
 
 
 const initialState: TasksStateType = {}
@@ -50,13 +51,16 @@ const slice = createSlice ( {
             action.payload.todolists.forEach ( (tl) => {
                 state[tl.id] = []
             } )
+        } );
+        builder.addCase ( clearTodosData , (state , action) => {
+            return {}
         } )
     }
 } )
 
 
 export const tasksReducer = slice.reducer
-export const { removeTaskAC , addTaskAC , updateTaskAC , setTasksAC } = slice.actions
+export const { removeTaskAC , addTaskAC , updateTaskAC , setTasksAC , } = slice.actions
 
 // Thunks
 export const fetchTaskTC = (todolistId: string): AppThunk =>
