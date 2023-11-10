@@ -1,9 +1,9 @@
-import { AppThunk } from "../../state/store"
+import { AppThunk } from "state/store"
 
-import { authApi, LoginParamsType } from "../../api/todolists-api"
-import { handleServerAppError, handleServerNetworkError } from "../../utils/error-utils"
+import { authApi, LoginParamsType } from "api/todolists-api"
+import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { setAppStatusAC } from "../../app/app-reducer"
+import { setAppStatusAC } from "app/app-reducer"
 import { clearTodosData } from "../TodolistsList/Todolist/todolists-reducer"
 
 const initialState = {

@@ -1,9 +1,10 @@
-import { todolistsApi, TodolistType } from "../../../api/todolists-api"
-import { AppThunk } from "../../../state/store"
-import { RequestStatusType, setAppStatusAC } from "../../../app/app-reducer"
-import { handleServerNetworkError } from "../../../utils/error-utils"
+import { todolistsApi, TodolistType } from "api/todolists-api"
+import { AppThunk } from "state/store"
+import { RequestStatusType, setAppStatusAC } from "app/app-reducer"
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchTaskTC } from "./Task/tasks-reducer"
+import { handleServerNetworkError } from "utils/error-utils"
 
 const initialState: Array<TodolistDomainType> = []
 const slice = createSlice({

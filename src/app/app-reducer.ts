@@ -1,11 +1,11 @@
-import { AppThunk } from "../state/store"
-import { authApi } from "../api/todolists-api"
-import { setIsLoggedInAC } from "../features/Login/authReducer"
+import { AppThunk } from "state/store"
+import { authApi } from "api/todolists-api"
+import { setIsLoggedInAC } from "features/Login/authReducer"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState: AppReducerStateType = {
+const initialState = {
   status: "idle",
-  error: null,
+  error: null as null | string,
   //true когда приложение проинициализировалось (проверили юзера, получили настройки ... )
   isInitialized: false,
 }
@@ -28,6 +28,7 @@ const slice = createSlice({
 export const appReducer = slice.reducer
 
 export const { setAppErrorAC, setAppStatusAC, setAppInitializedAC } = slice.actions
+export type AppInitialState = ReturnType<typeof slice.getInitialState>
 
 //Thunks
 export const initializedTC = (): AppThunk => (dispatch) => {
@@ -45,8 +46,3 @@ export const initializedTC = (): AppThunk => (dispatch) => {
 
 //Types
 export type RequestStatusType = "idle" | "loading" | "succesed" | "failed"
-export type AppReducerStateType = {
-  status: RequestStatusType
-  error: string | null
-  isInitialized: boolean
-}
