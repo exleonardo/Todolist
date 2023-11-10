@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="refactor tests">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="fix logOut">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.storybook/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReduxStoreDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReduxStoreDecorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.stories.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +45,7 @@
     "WebServerToolWindowFactoryState": "false",
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/it-incubator/social-network",
+    "last_opened_file_path": "D:/it-incubator/Todolist",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -53,18 +54,22 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs.jest.jest_package": "D:/it-incubator/Todolist/node_modules/react-scripts",
     "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "D:\\it-incubator\\Todolist\\node_modules\\prettier",
     "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "preferences.general",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "D:\\it-incubator\\Todolist\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\it-incubator\Todolist" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist" />
+      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist\Task" />
       <recent name="D:\it-incubator\Todolist\src\features\Login" />
       <recent name="D:\it-incubator\Todolist\src" />
-      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist\Task" />
-      <recent name="D:\it-incubator\Todolist\src\features\TodolistsList\Todolist" />
       <recent name="D:\it-incubator\Todolist\src\app" />
     </key>
     <key name="es6.move.members.recent.items">
@@ -124,8 +129,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="npm.jest:integration" />
         <item itemvalue="npm.test" />
@@ -161,7 +166,11 @@
       <workItem from="1697110053545" duration="7550000" />
       <workItem from="1698755012409" duration="582000" />
       <workItem from="1698755657647" duration="17865000" />
-      <workItem from="1698925532847" duration="28236000" />
+      <workItem from="1698925532847" duration="29301000" />
+      <workItem from="1699032805533" duration="102000" />
+      <workItem from="1699032942857" duration="6336000" />
+      <workItem from="1699439748096" duration="1075000" />
+      <workItem from="1699628428921" duration="1059000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -299,7 +308,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699016452985</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add &lt;MemoryRouter&gt; in ReduxStoreProviderDecorator">
+      <option name="closed" value="true" />
+      <created>1699031561277</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1699031561277</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix logOut">
+      <option name="closed" value="true" />
+      <created>1699345553875</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699345553875</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +354,19 @@
     <MESSAGE value="refactor code after add RTK" />
     <MESSAGE value="refactor" />
     <MESSAGE value="refactor tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor tests" />
+    <MESSAGE value="add &lt;MemoryRouter&gt; in ReduxStoreProviderDecorator" />
+    <MESSAGE value="fix logOut" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix logOut" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/ReduxStoreDecorator.tsx</url>
+          <line>95</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
