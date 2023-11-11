@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add Return type for test">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="delete rootReducer">
+      <change afterPath="$PROJECT_DIR$/src/app/AppSelector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-reducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +166,7 @@
       <workItem from="1699032942857" duration="6336000" />
       <workItem from="1699439748096" duration="1075000" />
       <workItem from="1699628428921" duration="1851000" />
-      <workItem from="1699630335133" duration="2798000" />
+      <workItem from="1699630335133" duration="4253000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -342,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699634257860</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="delete rootReducer">
+      <option name="closed" value="true" />
+      <created>1699640424757</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699640424757</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +386,8 @@
     <MESSAGE value="fix logOut" />
     <MESSAGE value="add prettier" />
     <MESSAGE value="add Return type for test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Return type for test" />
+    <MESSAGE value="delete rootReducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete rootReducer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

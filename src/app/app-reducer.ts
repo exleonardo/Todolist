@@ -4,7 +4,7 @@ import { setIsLoggedInAC } from "features/Login/authReducer"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialState = {
-  status: "idle",
+  status: "idle" as RequestStatusType,
   error: null as null | string,
   //true когда приложение проинициализировалось (проверили юзера, получили настройки ... )
   isInitialized: false,

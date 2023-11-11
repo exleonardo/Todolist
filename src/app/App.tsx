@@ -10,13 +10,13 @@ import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
 import { TodolistsList } from "./features/Todolist/TodolistsList"
 import CustomizedSnackbars from "../components/ErrorSnackBar/ErrorSnackbar"
-import { useSelector } from "react-redux"
-import { AppRootStateType, useAppDispatch } from "state/store"
-import { initializedTC, RequestStatusType } from "./app-reducer"
+import { useAppDispatch, useAppSelector } from "state/store"
+import { initializedTC } from "./app-reducer"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Login } from "features/Login/Login"
 import { CircularProgress } from "@mui/material"
 import { logoutTC } from "features/Login/authReducer"
+import { selectIsInitialized, selectIsLoggedIn, selectStatusApp } from "app/AppSelector"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
@@ -27,9 +27,9 @@ type PropsType = {
 }
 
 function App({ demo = false, ...props }: PropsType) {
-  const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
-  const isInitialized = useSelector<AppRootStateType, boolean>((state) => state.app.isInitialized)
-  const isLoggedIn = useSelector<AppRootStateType, boolean>((state) => state.auth.isLoggedIn)
+  const status = useAppSelector(selectStatusApp)
+  const isInitialized = useAppSelector(selectIsInitialized)
+  const isLoggedIn = useAppSelector(selectIsLoggedIn)
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (!demo) {
