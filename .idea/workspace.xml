@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add Selector App">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add selector TodolistList">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/AppSelector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppSelector.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/features/Todolist/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/Todolist/TodolistsList.tsx" afterDir="false" />
     </list>
@@ -165,7 +166,7 @@
       <workItem from="1699032942857" duration="6336000" />
       <workItem from="1699439748096" duration="1075000" />
       <workItem from="1699628428921" duration="1851000" />
-      <workItem from="1699630335133" duration="6017000" />
+      <workItem from="1699630335133" duration="7637000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -359,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699690123828</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="add selector TodolistList">
+      <option name="closed" value="true" />
+      <created>1699691973830</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1699691973831</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +404,8 @@
     <MESSAGE value="add Return type for test" />
     <MESSAGE value="delete rootReducer" />
     <MESSAGE value="add Selector App" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Selector App" />
+    <MESSAGE value="add selector TodolistList" />
+    <option name="LAST_COMMIT_MESSAGE" value="add selector TodolistList" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
