@@ -1,9 +1,9 @@
 import {
-  updateTaskAC,
   tasksReducer,
   fetchTaskTC,
   removeTaskTC,
   addTaskTC,
+  updateTaskTC,
 } from "features/TodolistsList/Todolist/Task/tasks-reducer"
 import {
   addTodolistAC,
@@ -142,13 +142,14 @@ test("correct task should be added to correct array", () => {
   expect(endState["todolistId2"][0].status).toBe(TaskStatuses.New)
 })
 test("status of specified task should be changed", () => {
-  const action = updateTaskAC({
+  const updateModel = {
     taskId: "2",
-    model: {
+    domainModel: {
       status: TaskStatuses.New,
     },
     todolistId: "todolistId2",
-  })
+  }
+  const action = updateTaskTC.fulfilled(updateModel, "", updateModel)
 
   const endState = tasksReducer(startState, action)
 
@@ -156,11 +157,12 @@ test("status of specified task should be changed", () => {
   expect(endState["todolistId2"][1].status).toBe(TaskStatuses.New)
 })
 test("title of specified task should be changed", () => {
-  const action = updateTaskAC({
+  const taskTitle = {
     taskId: "2",
-    model: { title: "yogurt" },
+    domainModel: { title: "yogurt" },
     todolistId: "todolistId2",
-  })
+  }
+  const action = updateTaskTC.fulfilled(taskTitle, "", taskTitle)
 
   const endState = tasksReducer(startState, action)
 
