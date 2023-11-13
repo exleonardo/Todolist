@@ -4,10 +4,10 @@ import { TasksStateType } from "app/App"
 import { setAppStatusAC } from "app/app-reducer"
 import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
 import {
-  addTodolistAC,
+  addTodolistTC,
   clearTodosData,
-  removeTodolistAC,
-  setTodolistsAC,
+  fetchTodolistTC,
+  removeTodolistTC,
 } from "../todolists-reducer"
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
@@ -107,13 +107,13 @@ const slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addTodolistAC, (state, action) => {
+    builder.addCase(addTodolistTC.fulfilled, (state, action) => {
       state[action.payload.todolist.id] = []
     })
-    builder.addCase(removeTodolistAC, (state, action) => {
+    builder.addCase(removeTodolistTC.fulfilled, (state, action) => {
       delete state[action.payload.id]
     })
-    builder.addCase(setTodolistsAC, (state, action) => {
+    builder.addCase(fetchTodolistTC.fulfilled, (state, action) => {
       action.payload.todolists.forEach((tl) => {
         state[tl.id] = []
       })
