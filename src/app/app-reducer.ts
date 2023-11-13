@@ -1,17 +1,29 @@
-import { AppThunk } from "state/store"
 import { authApi } from "api/todolists-api"
-import { setIsLoggedInAC } from "features/Login/authReducer"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState = {
-  status: "idle" as RequestStatusType,
-  error: null as null | string,
-  //true когда приложение проинициализировалось (проверили юзера, получили настройки ... )
-  isInitialized: false,
-}
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { setIsLoggedInAC } from "features/Login/authReducer"
+
+export const initializedTC = createAsyncThunk("app/initializeApp", async (param, { dispatch }) => {
+  try {
+    const res = await authApi.me()
+    if (res.data.resultCode === 0) {
+      dispatch(setIsLoggedInAC({ value: true }))
+    }
+    return { value: true }
+  } catch (error) {
+    return { value: false }
+  } finally {
+    return { value: true }
+  }
+})
+
 const slice = createSlice({
   name: "app",
-  initialState: initialState,
+  initialState: {
+    status: "idle" as RequestStatusType,
+    error: null as null | string,
+    isInitialized: false,
+  },
   reducers: {
     setAppErrorAC(state, action: PayloadAction<{ error: string | null }>) {
       state.error = action.payload.error
@@ -19,30 +31,17 @@ const slice = createSlice({
     setAppStatusAC(state, action: PayloadAction<{ status: RequestStatusType }>) {
       state.status = action.payload.status
     },
-    setAppInitializedAC(state, action: PayloadAction<{ value: boolean }>) {
-      state.isInitialized = action.payload.value
-    },
   },
+  extraReducers: (builder) =>
+    builder.addCase(initializedTC.fulfilled, (state, action) => {
+      state.isInitialized = true
+    }),
 })
 
 export const appReducer = slice.reducer
 
-export const { setAppErrorAC, setAppStatusAC, setAppInitializedAC } = slice.actions
+export const { setAppErrorAC, setAppStatusAC } = slice.actions
 export type AppInitialState = ReturnType<typeof slice.getInitialState>
-
-//Thunks
-export const initializedTC = (): AppThunk => (dispatch) => {
-  authApi
-    .me()
-    .then((res) => {
-      if (res.data.resultCode === 0) {
-        dispatch(setIsLoggedInAC({ value: true }))
-      } else {
-      }
-      dispatch(setAppInitializedAC({ value: true }))
-    })
-    .finally(() => dispatch(setAppInitializedAC({ value: true })))
-}
 
 //Types
 export type RequestStatusType = "idle" | "loading" | "succesed" | "failed"
