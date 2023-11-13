@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="createAsyncThunk fetchTodolistTC">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="createAsyncThunk addTodolistTC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/Todolist/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/Todolist/TodolistsList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolist-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolist-tasks-reducer.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/state/todolists-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-reducer.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/todolists-tasks-reducer.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +168,7 @@
       <workItem from="1699032942857" duration="6336000" />
       <workItem from="1699439748096" duration="1075000" />
       <workItem from="1699628428921" duration="1851000" />
-      <workItem from="1699630335133" duration="44159000" />
+      <workItem from="1699630335133" duration="44792000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -429,7 +426,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699901728509</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="createAsyncThunk addTodolistTC">
+      <option name="closed" value="true" />
+      <created>1699904372128</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1699904372128</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,7 +452,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add snapshot" />
     <MESSAGE value="refactor Type" />
     <MESSAGE value="add thunk and tests" />
     <MESSAGE value="add thunk creator" />
@@ -472,7 +476,8 @@
     <MESSAGE value="add extraReducers ,add createAsyncThunk initializedTC" />
     <MESSAGE value="createAsyncThunk addTaskTC" />
     <MESSAGE value="createAsyncThunk fetchTodolistTC" />
-    <option name="LAST_COMMIT_MESSAGE" value="createAsyncThunk fetchTodolistTC" />
+    <MESSAGE value="createAsyncThunk addTodolistTC" />
+    <option name="LAST_COMMIT_MESSAGE" value="createAsyncThunk addTodolistTC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

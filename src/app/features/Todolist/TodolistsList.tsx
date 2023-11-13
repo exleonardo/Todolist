@@ -91,7 +91,7 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false, 
 
   const changeTodolistTitle = useCallback(
     (id: string, title: string) => {
-      const thunk = changeTodolistTitleTC(id, title)
+      const thunk = changeTodolistTitleTC({ id, title })
       dispatch(thunk)
     },
     [dispatch],

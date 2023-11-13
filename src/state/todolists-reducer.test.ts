@@ -2,7 +2,7 @@ import {
   addTodolistTC,
   changeTodolistEntityStatusAC,
   changeTodolistFilterAC,
-  changeTodolistTitleAC,
+  changeTodolistTitleTC,
   FilterValuesType,
   removeTodolistTC,
   TodolistDomainType,
@@ -68,8 +68,8 @@ test("correct todolist should be added", () => {
 
 test("correct todolist should change its name", () => {
   let newTodolistTitle = "New Todolist"
-
-  const action = changeTodolistTitleAC({ id: todolistId2, title: newTodolistTitle })
+  const todolistTitle = { id: todolistId2, title: newTodolistTitle }
+  const action = changeTodolistTitleTC.fulfilled(todolistTitle, "", todolistTitle)
 
   const endState = todolistsReducer(startState, action)
 
