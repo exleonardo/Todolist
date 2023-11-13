@@ -1,9 +1,9 @@
 import {
-  addTaskAC,
   updateTaskAC,
   tasksReducer,
   fetchTaskTC,
   removeTaskTC,
+  addTaskTC,
 } from "features/TodolistsList/Todolist/Task/tasks-reducer"
 import {
   addTodolistAC,
@@ -113,7 +113,7 @@ test("correct task should be deleted from correct array", () => {
   expect(endState["todolistId2"].every((t) => t.id !== "2")).toBeTruthy()
 })
 test("correct task should be added to correct array", () => {
-  const action = addTaskAC({
+  const task = {
     task: {
       id: "1",
       title: "juce",
@@ -127,6 +127,10 @@ test("correct task should be added to correct array", () => {
       completed: false,
       description: "",
     },
+  }
+  const action = addTaskTC.fulfilled(task, "", {
+    todolistId: task.task.todoListId,
+    title: task.task.title,
   })
 
   const endState = tasksReducer(startState, action)
