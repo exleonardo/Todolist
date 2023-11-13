@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add createThunk">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add loginTC createAsyncThunk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ErrorSnackBar/ErrorSnackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ErrorSnackBar/ErrorSnackbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Login/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/tasks-reducer.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     "WebServerToolWindowFactoryState": "false",
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/it-incubator/todo15v3",
+    "last_opened_file_path": "D:/it-incubator/04-sprint-01-add-lesson-for-students-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -168,7 +171,7 @@
       <workItem from="1699032942857" duration="6336000" />
       <workItem from="1699439748096" duration="1075000" />
       <workItem from="1699628428921" duration="1851000" />
-      <workItem from="1699630335133" duration="16663000" />
+      <workItem from="1699630335133" duration="28822000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -386,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699787945184</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add loginTC createAsyncThunk">
+      <option name="closed" value="true" />
+      <created>1699796342713</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1699796342713</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +435,8 @@
     <MESSAGE value="add Selector App" />
     <MESSAGE value="add selector TodolistList" />
     <MESSAGE value="add createThunk" />
-    <option name="LAST_COMMIT_MESSAGE" value="add createThunk" />
+    <MESSAGE value="add loginTC createAsyncThunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="add loginTC createAsyncThunk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

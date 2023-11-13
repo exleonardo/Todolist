@@ -39,17 +39,24 @@ export const Login = () => {
       password: "",
       rememberMe: false,
     },
-    onSubmit: async (values, _) => {
-      _.setSubmitting(true)
+    onSubmit: async (values, formikHelpers) => {
+      formikHelpers.setSubmitting(true)
       const res = await dispatch(loginTC(values))
-      _.setSubmitting(false)
+      if (loginTC.rejected.match(res)) {
+        if (res.payload?.fildsErrors?.length) {
+          const error = res.payload.fildsErrors[0]
+          formikHelpers.setFieldError(error.field, error.messages)
+        } else {
+          //Если не придёт payload
+        }
+      }
+      formikHelpers.setSubmitting(false)
       formik.resetForm()
     },
   })
   if (isLoggedIn) {
     return <Navigate to={"/"} />
   }
-  console.log(formik.isSubmitting)
   return (
     <Grid container justifyContent={"center"}>
       <Grid item justifyContent={"center"}>
@@ -61,8 +68,7 @@ export const Login = () => {
                 <a
                   href={"https://social-network.samuraijs.com/"}
                   target={"_blank"}
-                  rel="noreferrer"
-                >
+                  rel="noreferrer">
                   {" "}
                   here
                 </a>
@@ -76,16 +82,16 @@ export const Login = () => {
                 label="Email"
                 margin="normal"
                 {...formik.getFieldProps("email")}
-                error={!!(formik.errors.email && formik.touched.email)}
-                helperText={formik.errors.email && formik.touched.email}
+                error={!!(formik.touched.email && formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
               <TextField
                 type="password"
                 label="Password"
                 margin="normal"
                 {...formik.getFieldProps("password")}
-                error={!!(formik.errors.password && formik.touched.password)}
-                helperText={formik.errors.password && formik.touched.password}
+                error={!!(formik.touched.password && formik.errors.password)}
+                helperText={formik.touched.password && formik.errors.password}
               />
               <FormControlLabel
                 label={"Remember me"}
@@ -100,8 +106,7 @@ export const Login = () => {
                 type={"submit"}
                 variant={"contained"}
                 color={"primary"}
-                disabled={formik.isSubmitting}
-              >
+                disabled={formik.isSubmitting}>
                 Login
               </Button>
             </FormGroup>
