@@ -11,7 +11,7 @@ import { FilterValuesType, TodolistDomainType } from "./todolists-reducer"
 
 type PropsType = {
   todolist: TodolistDomainType
-  tasks: Array<TaskType>
+  tasks: TaskType[]
   changeFilter: (value: FilterValuesType, todolistId: string) => void
   addTask: (title: string, todolistId: string) => void
   changeTaskStatus: (id: string, status: TaskStatuses, todolistId: string) => void
@@ -87,22 +87,19 @@ export const Todolist = React.memo(function ({ demo = false, ...props }: PropsTy
         <Button
           variant={props.todolist.filter === "all" ? "outlined" : "text"}
           onClick={onAllClickHandler}
-          color={"inherit"}
-        >
+          color={"inherit"}>
           All
         </Button>
         <Button
           variant={props.todolist.filter === "active" ? "outlined" : "text"}
           onClick={onActiveClickHandler}
-          color={"primary"}
-        >
+          color={"primary"}>
           Active
         </Button>
         <Button
           variant={props.todolist.filter === "completed" ? "outlined" : "text"}
           onClick={onCompletedClickHandler}
-          color={"secondary"}
-        >
+          color={"secondary"}>
           Completed
         </Button>
       </div>

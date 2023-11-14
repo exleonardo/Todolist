@@ -3,7 +3,7 @@ import { RequestStatusType, setAppStatusAC } from "app/app-reducer"
 
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchTaskTC } from "./Task/tasks-reducer"
-import { handleServerNetworkError } from "utils/error-utils"
+import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
 import { isAxiosError } from "axios"
 
 export const fetchTodolistTC = createAsyncThunk(
@@ -39,11 +39,21 @@ export const removeTodolistTC = createAsyncThunk(
 
 export const addTodolistTC = createAsyncThunk(
   "todolists/addTodolists",
-  async (title: string, { dispatch }) => {
+  async (title: string, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
-    const res = await todolistsApi.createTodolist(title)
-    dispatch(setAppStatusAC({ status: "succesed" }))
-    return { todolist: res.data.data.item }
+    try {
+      const res = await todolistsApi.createTodolist(title)
+      if (res.data.resultCode === 0) {
+        dispatch(setAppStatusAC({ status: "succesed" }))
+        return { todolist: res.data.data.item }
+      } else {
+        handleServerAppError(res.data, dispatch)
+        return rejectWithValue(null)
+      }
+    } catch (error) {
+      if (isAxiosError(error)) handleServerNetworkError(error, dispatch)
+      return rejectWithValue(null)
+    }
   },
 )
 
@@ -66,7 +76,7 @@ export const changeTodolistTitleTC = createAsyncThunk(
 
 const slice = createSlice({
   name: "todolists",
-  initialState: [] as Array<TodolistDomainType>,
+  initialState: [] as TodolistDomainType[],
   reducers: {
     changeTodolistFilterAC(state, action: PayloadAction<{ id: string; filter: FilterValuesType }>) {
       const index = state.findIndex((tl) => tl.id === action.payload.id)
