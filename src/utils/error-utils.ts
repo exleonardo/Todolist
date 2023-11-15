@@ -12,7 +12,6 @@ export const handleServerAppError = <D>(data: ResponseType<D>, dispatch: Dispatc
   dispatch(setAppStatusAC({ status: "failed" }))
 }
 
-// нужно типизировать аксиос объектом который вернет сервер
 export const handleServerNetworkError = (
   error: AxiosError<{ message: string }>,
   dispatch: Dispatch,
