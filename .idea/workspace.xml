@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="del comment">
-      <change afterPath="$PROJECT_DIR$/src/utils/createAppAsyncThunk.ts" afterDir="false" />
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add createAppAsyncThunk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Login/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Login/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/tasks-reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/todolists-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +168,7 @@
       <workItem from="1699628428921" duration="1851000" />
       <workItem from="1699630335133" duration="54931000" />
       <workItem from="1700039978597" duration="601000" />
-      <workItem from="1700076762128" duration="5108000" />
+      <workItem from="1700076762128" duration="6323000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -461,7 +458,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700076942508</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="add createAppAsyncThunk">
+      <option name="closed" value="true" />
+      <created>1700238157266</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1700238157267</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +484,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add type Thunk adnn type Dispatch" />
     <MESSAGE value="add error loading , status loading" />
     <MESSAGE value="add error loading ,status" />
     <MESSAGE value="login" />
@@ -504,7 +508,8 @@
     <MESSAGE value="createAsyncThunk changeTodolistTitleTC" />
     <MESSAGE value="обработка ошибки на 100 символов" />
     <MESSAGE value="del comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="del comment" />
+    <MESSAGE value="add createAppAsyncThunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="add createAppAsyncThunk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
