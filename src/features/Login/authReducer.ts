@@ -4,8 +4,9 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { setAppStatusAC } from "app/app-reducer"
 import { clearTodosData } from "../TodolistsList/Todolist/todolists-reducer"
 import { AxiosError, isAxiosError } from "axios"
+import { createAppAsyncThunk } from "utils/createAppAsyncThunk"
 
-export const loginTC = createAsyncThunk<
+export const loginTC = createAppAsyncThunk<
   undefined,
   LoginParamsType,
   {

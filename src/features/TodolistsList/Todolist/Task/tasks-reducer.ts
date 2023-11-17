@@ -11,16 +11,23 @@ import {
 } from "../todolists-reducer"
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { isAxiosError } from "axios"
+import { AxiosError, AxiosResponse, isAxiosError } from "axios"
 
 const initialState: TasksStateType = {}
 export const fetchTaskTC = createAsyncThunk(
   "tasks/fetchTasks",
-  async (todolistId: string, thunkAPI) => {
-    thunkAPI.dispatch(setAppStatusAC({ status: "loading" }))
-    const res = await todolistsApi.getTasks(todolistId)
-    thunkAPI.dispatch(setAppStatusAC({ status: "succesed" }))
-    return { tasks: res.data.items, todolistId }
+  async (todolistId: string, { dispatch, rejectWithValue }) => {
+    try {
+      dispatch(setAppStatusAC({ status: "loading" }))
+      const res = await todolistsApi.getTasks(todolistId)
+      dispatch(setAppStatusAC({ status: "succesed" }))
+      return { tasks: res.data.items, todolistId }
+    } catch (error) {
+      if (isAxiosError(error)) {
+        handleServerNetworkError(error, dispatch)
+      }
+      return rejectWithValue(null)
+    }
   },
 )
 export const removeTaskTC = createAsyncThunk(
