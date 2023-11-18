@@ -29,7 +29,7 @@ export const loginTC = createAppAsyncThunk<
       })
     }
   } catch (err) {
-    if (isAxiosError<any>(err)) {
+    if (isAxiosError(err)) {
       handleServerNetworkError(err, thunkAPI.dispatch)
     }
     const error = err as AxiosError
@@ -39,7 +39,7 @@ export const loginTC = createAppAsyncThunk<
     })
   }
 })
-export const logoutTC = createAsyncThunk("auth/logout", async (arg, thunkAPI) => {
+export const logoutTC = createAppAsyncThunk("auth/logout", async (arg, thunkAPI) => {
   thunkAPI.dispatch(setAppStatusAC({ status: "loading" }))
 
   try {

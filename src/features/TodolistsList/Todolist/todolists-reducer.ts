@@ -51,7 +51,7 @@ const slice = createSlice({
     })
   },
 })
-export const fetchTodolistTC = createAppAsyncThunk(
+export const fetchTodolistTC = createAppAsyncThunk<{ todolists: TodolistType[] }>(
   `${slice.name}/fetchTodolists`,
   async (param, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
@@ -72,7 +72,7 @@ export const fetchTodolistTC = createAppAsyncThunk(
 )
 
 export const removeTodolistTC = createAppAsyncThunk(
-  "todolists/removeTodolists",
+  `${slice.name}/removeTodolists`,
   async (todolistId: string, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
     dispatch(changeTodolistEntityStatusAC({ id: todolistId, status: "loading" }))
