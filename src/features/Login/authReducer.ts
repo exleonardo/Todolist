@@ -1,10 +1,10 @@
 import { authApi, FieldErrorType, LoginParamsType } from "api/todolists-api"
-import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
+import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { setAppStatusAC } from "app/app-reducer"
 import { clearTodosData } from "../TodolistsList/Todolist/todolists-reducer"
 import { AxiosError, isAxiosError } from "axios"
-import { createAppAsyncThunk } from "utils/createAppAsyncThunk"
+import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 
 export const loginTC = createAppAsyncThunk<
   undefined,

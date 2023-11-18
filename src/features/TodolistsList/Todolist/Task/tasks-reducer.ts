@@ -2,7 +2,7 @@ import { TaskPrioties, todolistsApi, UpdateTaskType } from "api/todolists-api"
 import { AppRootStateType } from "state/store"
 import { TasksStateType } from "app/App"
 import { setAppStatusAC } from "app/app-reducer"
-import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
+import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import {
   addTodolistTC,
   clearTodosData,
@@ -11,7 +11,8 @@ import {
 } from "../todolists-reducer"
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { AxiosError, AxiosResponse, isAxiosError } from "axios"
+import { isAxiosError } from "axios"
+import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 
 const initialState: TasksStateType = {}
 export const fetchTaskTC = createAsyncThunk(
@@ -38,7 +39,7 @@ export const removeTaskTC = createAsyncThunk(
   },
 )
 
-export const addTaskTC = createAsyncThunk(
+export const addTaskTC = createAppAsyncThunk(
   "tasks/addTask",
   async (
     {

@@ -1,11 +1,11 @@
 import { todolistsApi, TodolistType } from "api/todolists-api"
 import { RequestStatusType, setAppStatusAC } from "app/app-reducer"
 
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { fetchTaskTC } from "./Task/tasks-reducer"
-import { handleServerAppError, handleServerNetworkError } from "utils/error-utils"
+import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { isAxiosError } from "axios"
-import { createAppAsyncThunk } from "utils/createAppAsyncThunk"
+import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 
 const slice = createSlice({
   name: "todolists",

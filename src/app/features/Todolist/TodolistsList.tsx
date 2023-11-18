@@ -15,7 +15,7 @@ import {
 } from "features/TodolistsList/Todolist/Task/tasks-reducer"
 import { TaskStatuses } from "api/todolists-api"
 import { Grid, Paper } from "@mui/material"
-import { AddItemForm } from "components/AddItemForm/AddItemForm"
+import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
 import { Todolist } from "features/TodolistsList/Todolist/Todolist"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn, selectorTodolists, selectTasks } from "app/AppSelector"
