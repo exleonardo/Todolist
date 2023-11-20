@@ -8,15 +8,16 @@ import LinearProgress from "@mui/material/LinearProgress"
 import Toolbar from "@mui/material/Toolbar"
 import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
-import { TodolistsList } from "./features/Todolist/TodolistsList"
+import { TodolistsList } from "features/TodolistsList/TodolistsList"
 import CustomizedSnackbars from "../common/components/ErrorSnackBar/ErrorSnackbar"
 import { useAppDispatch, useAppSelector } from "state/store"
 import { initializedTC } from "./app-reducer"
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Login } from "features/Login/Login"
+import { Login } from "features/Auth/Login"
 import { CircularProgress } from "@mui/material"
-import { logoutTC } from "features/Login/authReducer"
-import { selectIsInitialized, selectIsLoggedIn, selectStatusApp } from "app/AppSelector"
+import { logoutTC } from "features/Auth/authReducer"
+import { authSelector } from "features/Auth"
+import { selectIsInitialized, selectStatusApp } from "app/AppSelector"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
@@ -29,7 +30,7 @@ type PropsType = {
 function App({ demo = false, ...props }: PropsType) {
   const status = useAppSelector(selectStatusApp)
   const isInitialized = useAppSelector(selectIsInitialized)
-  const isLoggedIn = useAppSelector(selectIsLoggedIn)
+  const isLoggedIn = useAppSelector(authSelector.selectIsLoggedIn)
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (!demo) {
