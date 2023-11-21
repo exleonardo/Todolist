@@ -31,9 +31,6 @@ export const TaskBaseExample = () => {
           description: "",
           todoListId: "todolistID1",
         }}
-        changeTaskStatus={changeTaskStatusCallback}
-        changeTaskTitle={changeTaskTitleCallback}
-        removeTask={removeTaskCallback}
         todolistId={"todolistID1"}
       />
       <Task
@@ -51,9 +48,6 @@ export const TaskBaseExample = () => {
           todoListId: "todolistID2",
         }}
         todolistId={"todolistID2"}
-        changeTaskStatus={changeTaskStatusCallback}
-        changeTaskTitle={changeTaskTitleCallback}
-        removeTask={removeTaskCallback}
       />
     </>
   )

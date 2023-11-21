@@ -1,12 +1,11 @@
 import React, { useCallback } from "react"
-
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
 import { EditableSpan } from "common/components/EditableSpan/EditableSpan"
 import { Task } from "./Task/Task"
 import { Button, IconButton } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import { TaskStatuses, TaskType } from "api/todolists-api"
-import { TodolistDomainType } from "features/TodolistsList/todolistsReducer"
+import { FilterValuesType, TodolistDomainType } from "features/TodolistsList/todolistsReducer"
 import { useActions } from "state/store"
 import { tasksAction, todolistsActions } from "features/TodolistsList/index"
 
@@ -52,18 +51,25 @@ export const Todolist = React.memo(function ({ demo = false, ...props }: PropsTy
     [props.todolist.id],
   )
 
-  const onAllClickHandler = useCallback(
-    () => changeTodolistFilter({ filter: "all", id: props.todolist.id }),
+  const onFilterButtonClickHandler = useCallback(
+    (filter: FilterValuesType) => changeTodolistFilter({ filter, id: props.todolist.id }),
     [props.todolist.id],
   )
-  const onActiveClickHandler = useCallback(
-    () => changeTodolistFilter({ filter: "active", id: props.todolist.id }),
-    [props.todolist.id],
-  )
-  const onCompletedClickHandler = useCallback(
-    () => changeTodolistFilter({ filter: "completed", id: props.todolist.id }),
-    [props.todolist.id],
-  )
+
+  const renderFilterButton = (
+    color: "inherit" | "secondary" | "primary" | "success" | "error" | "info" | "warning",
+    buttonFilter: FilterValuesType,
+    text: string,
+  ) => {
+    return (
+      <Button
+        variant={props.todolist.filter === buttonFilter ? "outlined" : "text"}
+        onClick={() => onFilterButtonClickHandler(buttonFilter)}
+        color={color}>
+        {text}
+      </Button>
+    )
+  }
 
   let tasksForTodolist = props.tasks
 
@@ -87,35 +93,13 @@ export const Todolist = React.memo(function ({ demo = false, ...props }: PropsTy
       <AddItemForm addItem={addTaskCallback} />
       <div>
         {tasksForTodolist.map((t) => (
-          <Task
-            task={t}
-            changeTaskStatus={changeStatus}
-            changeTaskTitle={changeTaskTitle}
-            removeTask={removeTask}
-            todolistId={props.todolist.id}
-            key={t.id}
-          />
+          <Task task={t} todolistId={props.todolist.id} key={t.id} />
         ))}
       </div>
       <div style={{ paddingTop: "10px" }}>
-        <Button
-          variant={props.todolist.filter === "all" ? "outlined" : "text"}
-          onClick={onAllClickHandler}
-          color={"inherit"}>
-          All
-        </Button>
-        <Button
-          variant={props.todolist.filter === "active" ? "outlined" : "text"}
-          onClick={onActiveClickHandler}
-          color={"primary"}>
-          Active
-        </Button>
-        <Button
-          variant={props.todolist.filter === "completed" ? "outlined" : "text"}
-          onClick={onCompletedClickHandler}
-          color={"secondary"}>
-          Completed
-        </Button>
+        {renderFilterButton("inherit", "all", "All")}
+        {renderFilterButton("primary", "active", "Active")}
+        {renderFilterButton("secondary", "completed", "Completed")}
       </div>
     </div>
   )
