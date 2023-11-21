@@ -5,8 +5,8 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 
 import { configureStore, PayloadActionCreator } from "@reduxjs/toolkit"
 import { authReducer } from "features/Auth/authReducer"
-import { appReducer } from "app/app-reducer"
-import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasks-reducer"
+import { appReducer } from "app/appReducer"
+import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasksReducer"
 import { useMemo } from "react"
 
 // export const store = legacy_createStore ( rootReducer , applyMiddleware ( thunkMiddleWare ) )

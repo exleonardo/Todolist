@@ -1,4 +1,4 @@
-import { setAppErrorAC, setAppStatusAC } from "app/app-reducer"
+import { setAppErrorAC, setAppStatusAC } from "app/appReducer"
 import { ResponseType } from "api/todolists-api"
 import { Dispatch } from "redux"
 import { AxiosError, isAxiosError } from "axios"

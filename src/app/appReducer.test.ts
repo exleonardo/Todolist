@@ -1,4 +1,4 @@
-import { AppInitialState, appReducer, setAppErrorAC, setAppStatusAC } from "./app-reducer"
+import { AppInitialState, appReducer, setAppErrorAC, setAppStatusAC } from "app/appReducer"
 
 let startState: AppInitialState
 beforeEach(() => {

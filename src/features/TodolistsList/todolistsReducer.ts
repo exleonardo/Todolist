@@ -1,11 +1,12 @@
 import { todolistsApi, TodolistType } from "api/todolists-api"
-import { RequestStatusType, setAppStatusAC } from "app/app-reducer"
+import { RequestStatusType, setAppStatusAC } from "app/appReducer"
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
-import { fetchTask } from "features/TodolistsList/tasksActions"
+
 import { isAxiosError } from "axios"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
+import { fetchTask } from "features/TodolistsList/Todolist/Task/tasksReducer"
 
 export const slice = createSlice({
   name: "todolists",
@@ -52,7 +53,7 @@ export const slice = createSlice({
   },
 })
 
-export const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }>(
+const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }>(
   `${slice.name}/fetchTodolists`,
   async (param, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
@@ -71,7 +72,7 @@ export const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }>(
     }
   },
 )
-export const removeTodolist = createAppAsyncThunk(
+const removeTodolist = createAppAsyncThunk(
   `${slice.name}/removeTodolists`,
   async (todolistId: string, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
@@ -81,7 +82,7 @@ export const removeTodolist = createAppAsyncThunk(
     return { id: todolistId }
   },
 )
-export const addTodolist = createAppAsyncThunk(
+const addTodolist = createAppAsyncThunk(
   `${slice.name}/addTodolists`,
   async (title: string, { dispatch, rejectWithValue }) => {
     dispatch(setAppStatusAC({ status: "loading" }))
@@ -100,7 +101,7 @@ export const addTodolist = createAppAsyncThunk(
     }
   },
 )
-export const changeTodolistTitle = createAppAsyncThunk(
+const changeTodolistTitle = createAppAsyncThunk(
   `${slice.name}/changeTodolistTitle`,
   async (
     {

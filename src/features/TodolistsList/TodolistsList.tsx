@@ -1,7 +1,5 @@
-import React, { useCallback, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useActions, useAppDispatch, useAppSelector } from "state/store"
-import { FilterValuesType } from "features/TodolistsList/todolistsReducer"
-import { TaskStatuses } from "api/todolists-api"
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
@@ -9,8 +7,7 @@ import { Todolist } from "features/TodolistsList/Todolist/Todolist"
 import { Navigate } from "react-router-dom"
 import { selectorTodolists, selectTasks } from "app/AppSelector"
 import { selectIsLoggedIn } from "features/Auth/AuthSelector"
-import { updateTask } from "features/TodolistsList/tasksActions"
-import { tasksActions, todolistsActions } from "features/TodolistsList/index"
+import { todolistsActions } from "features/TodolistsList/index"
 
 type TodolistsListPropsType = {
   demo?: boolean

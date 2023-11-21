@@ -8,16 +8,15 @@ import LinearProgress from "@mui/material/LinearProgress"
 import Toolbar from "@mui/material/Toolbar"
 import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
-import { TodolistsList } from "features/TodolistsList/TodolistsList"
 import CustomizedSnackbars from "../common/components/ErrorSnackBar/ErrorSnackbar"
 import { useAppDispatch, useAppSelector } from "state/store"
-import { initializedTC } from "./app-reducer"
+import { asyncActions } from "app/appReducer"
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Login } from "features/Auth/Login"
 import { CircularProgress } from "@mui/material"
-import { logoutTC } from "features/Auth/authReducer"
-import { authSelector } from "features/Auth"
+import { logout } from "features/Auth/authReducer"
+import { authSelector, Login } from "features/Auth"
 import { selectIsInitialized, selectStatusApp } from "app/AppSelector"
+import { TodolistsList } from "features/TodolistsList"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
@@ -34,11 +33,11 @@ function App({ demo = false, ...props }: PropsType) {
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (!demo) {
-      dispatch(initializedTC())
+      dispatch(asyncActions.initialized())
     }
   }, [demo, dispatch])
   const logoutHandler = useCallback(() => {
-    dispatch(logoutTC())
+    dispatch(logout())
   }, [dispatch])
   if (!isInitialized) {
     return (

@@ -2,14 +2,13 @@ import React, { useCallback } from "react"
 
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
 import { EditableSpan } from "common/components/EditableSpan/EditableSpan"
-
 import { Task } from "./Task/Task"
 import { Button, IconButton } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import { TaskStatuses, TaskType } from "api/todolists-api"
 import { TodolistDomainType } from "features/TodolistsList/todolistsReducer"
 import { useActions } from "state/store"
-import { tasksActions, todolistsActions } from "features/TodolistsList/index"
+import { tasksAction, todolistsActions } from "features/TodolistsList/index"
 
 type PropsType = {
   todolist: TodolistDomainType
@@ -19,7 +18,7 @@ type PropsType = {
 
 export const Todolist = React.memo(function ({ demo = false, ...props }: PropsType) {
   const { removeTodolist, changeTodolistTitle, changeTodolistFilter } = useActions(todolistsActions)
-  const { addTask, updateTask, removeTask } = useActions(tasksActions)
+  const { addTask, updateTask, removeTask } = useActions(tasksAction)
   const changeStatus = useCallback(
     function (taskId: string, status: TaskStatuses, todolistId: string) {
       updateTask({ taskId, domainModel: { status }, todolistId })

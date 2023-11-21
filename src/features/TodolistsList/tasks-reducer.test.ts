@@ -1,9 +1,14 @@
-import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasks-reducer"
+import {
+  addTask,
+  fetchTask,
+  removeTask,
+  tasksReducer,
+  updateTask,
+} from "features/TodolistsList/Todolist/Task/tasksReducer"
 import { TaskPrioties, TaskStatuses } from "api/todolists-api"
 import { v1 } from "uuid"
 import { TasksStateType } from "app/App"
-import { addTask, fetchTask, removeTask, updateTask } from "features/TodolistsList/tasksActions"
-import { addTodolist, fetchTodolist, removeTodolist } from "features/TodolistsList/todolistsReducer"
+import { todolistsActions } from "features/TodolistsList/index"
 
 let startState: TasksStateType = {}
 beforeEach(() => {
@@ -170,7 +175,7 @@ test("new array should be added when new todolist is added", () => {
       order: 0,
     },
   }
-  const action = addTodolist.fulfilled(todolist, "", todolist.todolist.title)
+  const action = todolistsActions.addTodolist.fulfilled(todolist, "", todolist.todolist.title)
 
   const endState = tasksReducer(startState, action)
 
@@ -185,7 +190,7 @@ test("new array should be added when new todolist is added", () => {
 })
 test("propertry with todolistId should be deleted", () => {
   const todo = { id: "todolistId2" }
-  const action = removeTodolist.fulfilled(todo, "", todo.id)
+  const action = todolistsActions.removeTodolist.fulfilled(todo, "", todo.id)
 
   const endState = tasksReducer(startState, action)
 
@@ -201,7 +206,7 @@ test("empty array should be added when we set todolist", () => {
       { id: "2", title: "What to buy", addedDate: "", order: 0 },
     ],
   }
-  const action = fetchTodolist.fulfilled(todolist, "")
+  const action = todolistsActions.fetchTodolist.fulfilled(todolist, "")
 
   const endState = tasksReducer({}, action)
 
