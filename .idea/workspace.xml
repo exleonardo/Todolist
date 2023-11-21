@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="global refactoring fix import">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="global refactoring fix task">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,7 @@
       <recent name="D:\it-incubator\Todolist\src\app\features\Todolist\TodolistsList.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.tasks shuold be added for todolist">
+  <component name="RunManager" selected="npm.storybook">
     <configuration name="tasks shuold be added for todolist" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
@@ -129,9 +127,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.start" />
         <item itemvalue="Jest.tasks shuold be added for todolist" />
-        <item itemvalue="npm.storybook" />
         <item itemvalue="npm.test:integration" />
         <item itemvalue="npm.jest:integration" />
       </list>
@@ -175,7 +173,7 @@
       <workItem from="1700039978597" duration="601000" />
       <workItem from="1700076762128" duration="16310000" />
       <workItem from="1700490275019" duration="9180000" />
-      <workItem from="1700509709074" duration="15732000" />
+      <workItem from="1700509709074" duration="16262000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -513,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700565928308</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="global refactoring fix task">
+      <option name="closed" value="true" />
+      <created>1700574893376</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1700574893376</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor code after add RTK" />
     <MESSAGE value="refactor" />
     <MESSAGE value="refactor tests" />
     <MESSAGE value="add &lt;MemoryRouter&gt; in ReduxStoreProviderDecorator" />
@@ -556,6 +561,7 @@
     <MESSAGE value="add createAppAsyncThunk" />
     <MESSAGE value="global refactoring" />
     <MESSAGE value="global refactoring fix import" />
-    <option name="LAST_COMMIT_MESSAGE" value="global refactoring fix import" />
+    <MESSAGE value="global refactoring fix task" />
+    <option name="LAST_COMMIT_MESSAGE" value="global refactoring fix task" />
   </component>
 </project>

@@ -2,6 +2,7 @@ import { Task } from "./Task"
 import React from "react"
 import { action } from "@storybook/addon-actions"
 import { TaskPrioties, TaskStatuses } from "../../../../api/todolists-api"
+import { ReduxStoreProviderDecorator } from "ReduxStoreDecorator"
 
 export default {
   title: "Task Component",
@@ -9,10 +10,8 @@ export default {
   parameters: {
     layout: "centered",
   },
+  decorators: [ReduxStoreProviderDecorator],
 }
-const changeTaskStatusCallback = action("Status changed")
-const changeTaskTitleCallback = action("Title changed")
-const removeTaskCallback = action("Task removed")
 
 export const TaskBaseExample = () => {
   return (
