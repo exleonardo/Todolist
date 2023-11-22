@@ -1,10 +1,10 @@
-import { todolistsApi, TodolistType } from "api/todolists-api"
+import { FieldErrorType, todolistsApi, TodolistType } from "api/todolists-api"
 import { RequestStatusType, setAppStatusAC } from "app/appReducer"
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 
-import { isAxiosError } from "axios"
+import { AxiosError, isAxiosError } from "axios"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { fetchTask } from "features/TodolistsList/Todolist/Task/tasksReducer"
 
@@ -82,25 +82,38 @@ const removeTodolist = createAppAsyncThunk(
     return { id: todolistId }
   },
 )
-const addTodolist = createAppAsyncThunk(
-  `${slice.name}/addTodolists`,
-  async (title: string, { dispatch, rejectWithValue }) => {
-    dispatch(setAppStatusAC({ status: "loading" }))
-    try {
-      const res = await todolistsApi.createTodolist(title)
-      if (res.data.resultCode === 0) {
-        dispatch(setAppStatusAC({ status: "succesed" }))
-        return { todolist: res.data.data.item }
-      } else {
-        handleServerAppError(res.data, dispatch)
-        return rejectWithValue(null)
-      }
-    } catch (error) {
-      if (isAxiosError(error)) handleServerNetworkError(error, dispatch)
-      return rejectWithValue(null)
+const addTodolist = createAppAsyncThunk<
+  { todolist: TodolistType },
+  string,
+  {
+    rejectValue: {
+      errors: string[]
+      fieldsErrors?: FieldErrorType[]
     }
-  },
-)
+  }
+>(`${slice.name}/addTodolists`, async (title, { dispatch, rejectWithValue }) => {
+  dispatch(setAppStatusAC({ status: "loading" }))
+  try {
+    const res = await todolistsApi.createTodolist(title)
+    if (res.data.resultCode === 0) {
+      dispatch(setAppStatusAC({ status: "succesed" }))
+      return { todolist: res.data.data.item }
+    } else {
+      handleServerAppError(res.data, dispatch, false)
+      return rejectWithValue({
+        errors: res.data.messages,
+        fieldsErrors: res.data.fieldsErrors,
+      })
+    }
+  } catch (err) {
+    if (isAxiosError(err)) handleServerNetworkError(err, dispatch)
+    const error = err as AxiosError
+    return rejectWithValue({
+      errors: [error.message],
+      fieldsErrors: undefined,
+    })
+  }
+})
 const changeTodolistTitle = createAppAsyncThunk(
   `${slice.name}/changeTodolistTitle`,
   async (
