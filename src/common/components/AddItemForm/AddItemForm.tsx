@@ -2,6 +2,7 @@ import TextField from "@mui/material/TextField/TextField"
 import React, { ChangeEvent, KeyboardEvent, memo, useState } from "react"
 import { IconButton } from "@mui/material"
 import { AddBox } from "@mui/icons-material"
+import { AxiosError, isAxiosError } from "axios"
 
 type AddItemFormPropsType = {
   addItem: (title: string) => void
@@ -12,10 +13,18 @@ export const AddItemForm = memo(({ disabled = false, ...props }: AddItemFormProp
   let [title, setTitle] = useState("")
   let [error, setError] = useState<string | null>(null)
 
-  const addItem = () => {
+  const addItem = async () => {
     if (title.trim() !== "") {
-      props.addItem(title)
-      setTitle("")
+      try {
+        await props.addItem(title)
+        setTitle("")
+      } catch (error) {
+        if (isAxiosError(error)) {
+          setError(error.message)
+        }
+        const err = error as Error
+        setError(err.message)
+      }
     } else {
       setError("Title is required")
     }
@@ -46,7 +55,11 @@ export const AddItemForm = memo(({ disabled = false, ...props }: AddItemFormProp
         helperText={error}
         disabled={disabled}
       />
-      <IconButton color="primary" onClick={addItem} disabled={disabled}>
+      <IconButton
+        color="primary"
+        onClick={addItem}
+        disabled={disabled}
+        style={{ marginLeft: "5px" }}>
         <AddBox />
       </IconButton>
     </div>

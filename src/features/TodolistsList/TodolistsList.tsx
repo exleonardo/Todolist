@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"
-import { useActions, useAppDispatch, useAppSelector } from "state/store"
+import React, { useCallback, useEffect } from "react"
+import { useActions, useAppSelector } from "state/store"
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
@@ -16,15 +16,16 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false, 
   const todolists = useAppSelector(selectorTodolists)
   const tasks = useAppSelector(selectTasks)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
-  const dispatch = useAppDispatch()
   const { fetchTodolist, addTodolist } = useActions(todolistsActions)
   useEffect(() => {
     if (demo || !isLoggedIn) {
       return
     }
     fetchTodolist()
-  }, [dispatch])
-
+  }, [])
+  const addTodolistCallback = useCallback(async (title: string) => {
+    addTodolist(title)
+  }, [])
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />
   }
@@ -32,13 +33,13 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false, 
   return (
     <>
       <Grid container style={{ padding: "20px" }}>
-        <AddItemForm addItem={addTodolist} />
+        <AddItemForm addItem={addTodolistCallback} />
       </Grid>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} style={{ flexWrap: "nowrap", overflowX: "scroll" }}>
         {todolists.map((tl) => {
           return (
             <Grid item key={tl.id}>
-              <Paper style={{ padding: "10px" }}>
+              <Paper style={{ width: "300px" }}>
                 <Todolist todolist={tl} tasks={tasks[tl.id]} demo={demo} />
               </Paper>
             </Grid>

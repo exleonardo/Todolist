@@ -1,8 +1,6 @@
 import React from "react"
 import { Provider } from "react-redux"
 
-import { combineReducers } from "redux"
-
 import { v1 } from "uuid"
 import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasksReducer"
 import { todolistsReducer } from "features/TodolistsList/todolistsReducer"
@@ -13,13 +11,6 @@ import { appReducer } from "app/appReducer"
 import { authReducer } from "features/Auth/authReducer"
 import { configureStore } from "@reduxjs/toolkit"
 import { MemoryRouter } from "react-router-dom"
-
-const rootReducer = combineReducers({
-  tasks: tasksReducer,
-  todolists: todolistsReducer,
-  app: appReducer,
-  auth: authReducer,
-})
 
 const initialGlobalState: AppRootStateType = {
   todolists: [
@@ -109,7 +100,12 @@ const initialGlobalState: AppRootStateType = {
 }
 
 export const storyBookStore = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    tasks: tasksReducer,
+    todolists: todolistsReducer,
+    app: appReducer,
+    auth: authReducer,
+  },
   preloadedState: initialGlobalState,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunkMiddleWare),
 })

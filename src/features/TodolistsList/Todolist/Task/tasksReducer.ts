@@ -3,11 +3,18 @@ import { clearTodosData } from "features/TodolistsList/todolistsReducer"
 import { asyncActions as asyncTodolistsAction } from "features/TodolistsList/todolistsReducer"
 import { createSlice } from "@reduxjs/toolkit"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
-import { TaskPrioties, TaskType, todolistsApi, UpdateTaskType } from "api/todolists-api"
+import {
+  FieldErrorType,
+  TaskPrioties,
+  TaskType,
+  todolistsApi,
+  UpdateTaskType,
+} from "api/todolists-api"
 import { setAppStatusAC } from "app/appReducer"
 import { isAxiosError } from "axios"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { AppRootStateType } from "state/store"
+import { AxiosError } from "axios/index"
 
 const initialState: TasksStateType = {}
 const slice = createSlice({
@@ -79,35 +86,41 @@ export const removeTask = createAppAsyncThunk<RemoveTaskType, RemoveTaskType>(
     }
   },
 )
-export const addTask = createAppAsyncThunk(
-  `${slice.name}/addTask`,
-  async (
-    {
-      title,
-      todolistId,
-    }: {
-      title: string
-      todolistId: string
-    },
-    { dispatch, rejectWithValue },
-  ) => {
-    dispatch(setAppStatusAC({ status: "loading" }))
-
-    try {
-      const res = await todolistsApi.createTask(todolistId, title)
-      if (res.data.resultCode === 0) {
-        dispatch(setAppStatusAC({ status: "succesed" }))
-        return { task: res.data.data.item }
-      } else {
-        handleServerAppError(res.data, dispatch)
-        return rejectWithValue(null)
-      }
-    } catch (error) {
-      if (isAxiosError(error)) handleServerNetworkError(error, dispatch)
-      return rejectWithValue(null)
+export const addTask = createAppAsyncThunk<
+  { task: TaskType },
+  { title: string; todolistId: string },
+  {
+    rejectValue: {
+      errors: string[]
+      fieldsErrors?: FieldErrorType[]
     }
-  },
-)
+  }
+>(`${slice.name}/addTask`, async ({ title, todolistId }, { dispatch, rejectWithValue }) => {
+  dispatch(setAppStatusAC({ status: "loading" }))
+
+  try {
+    const res = await todolistsApi.createTask(todolistId, title)
+    if (res.data.resultCode === 0) {
+      dispatch(setAppStatusAC({ status: "succesed" }))
+      return { task: res.data.data.item }
+    } else {
+      handleServerAppError(res.data, dispatch, false)
+      return rejectWithValue({
+        errors: res.data.messages,
+        fieldsErrors: res.data.fieldsErrors,
+      })
+    }
+  } catch (err) {
+    if (isAxiosError(err)) {
+      handleServerNetworkError(err, dispatch)
+    }
+    const error = err as AxiosError
+    return rejectWithValue({
+      errors: [error.message],
+      fieldsErrors: undefined,
+    })
+  }
+})
 export const updateTask = createAppAsyncThunk<ReturnTaskType, ReturnTaskType>(
   `${slice.name}/updateTask`,
   async (

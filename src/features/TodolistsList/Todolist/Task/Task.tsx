@@ -38,6 +38,7 @@ export const Task = React.memo((props: TaskPropsType) => {
   return (
     <>
       <div
+        style={{ position: "relative" }}
         key={props.task.id}
         className={props.task.status === TaskStatuses.Completed ? "is-done" : ""}>
         <Checkbox
@@ -47,8 +48,10 @@ export const Task = React.memo((props: TaskPropsType) => {
         />
 
         <EditableSpan value={props.task.title} onChange={onTitleChangeHandler} />
-        <IconButton onClick={onClickHandler}>
-          <Delete />
+        <IconButton
+          onClick={onClickHandler}
+          style={{ position: "absolute", top: "2px", right: "2px" }}>
+          <Delete fontSize={"small"} />
         </IconButton>
       </div>
     </>
