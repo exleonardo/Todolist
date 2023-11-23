@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect } from "react"
-import { useActions, useAppDispatch, useAppSelector } from "state/store"
+import { useAppSelector } from "state/store"
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
 import { AddItemForm, AddItemFormSubmitHelperType } from "common/components/AddItemForm/AddItemForm"
 import { Todolist } from "features/TodolistsList/Todolist/Todolist"
 import { Navigate } from "react-router-dom"
-import { selectorTodolists, selectTasks } from "app/AppSelector"
+import { selectorTodolists, selectTasks } from "features/Application/AppSelector"
 import { selectIsLoggedIn } from "features/Auth/AuthSelector"
 import { tasksAction, todolistsActions } from "features/TodolistsList/index"
+import { useActions, useAppDispatch } from "common/utils/redux-utils"
 
 type TodolistsListPropsType = {
   demo?: boolean

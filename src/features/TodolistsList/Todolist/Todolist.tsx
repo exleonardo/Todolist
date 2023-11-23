@@ -6,9 +6,9 @@ import { Button, IconButton } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import { TaskStatuses, TaskType } from "api/todolists-api"
 import { FilterValuesType, TodolistDomainType } from "features/TodolistsList/todolistsReducer"
-import { useActions, useAppDispatch } from "state/store"
 import { tasksAction, todolistsActions } from "features/TodolistsList/index"
 import Paper from "@mui/material/Paper"
+import { useActions, useAppDispatch } from "common/utils/redux-utils"
 
 type PropsType = {
   todolist: TodolistDomainType

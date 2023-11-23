@@ -1,7 +1,7 @@
-import { setAppErrorAC, setAppStatusAC } from "app/appReducer"
 import { ResponseType } from "api/todolists-api"
 import { Dispatch } from "redux"
 import { AxiosError, isAxiosError } from "axios"
+import { appActions } from "features/CommonActions/ApplicationCommonAction"
 
 export const handleServerAppError = <D>(
   data: ResponseType<D>,
@@ -10,10 +10,12 @@ export const handleServerAppError = <D>(
 ) => {
   if (showError) {
     dispatch(
-      setAppErrorAC({ error: data.messages.length ? data.messages[0] : "Some error occurred" }),
+      appActions.setAppError({
+        error: data.messages.length ? data.messages[0] : "Some error occurred",
+      }),
     )
   }
-  dispatch(setAppStatusAC({ status: "failed" }))
+  dispatch(appActions.setAppStatus({ status: "failed" }))
 }
 
 export const _handleServerNetworkError = (
@@ -21,9 +23,11 @@ export const _handleServerNetworkError = (
   dispatch: Dispatch,
 ) => {
   dispatch(
-    setAppErrorAC(error.message ? { error: error.message } : { error: "Some error occurred" }),
+    appActions.setAppError(
+      error.message ? { error: error.message } : { error: "Some error occurred" },
+    ),
   )
-  dispatch(setAppStatusAC({ status: "failed" }))
+  dispatch(appActions.setAppStatus({ status: "failed" }))
 }
 
 export const handleServerNetworkError = (err: unknown, dispatch: Dispatch): void => {
@@ -41,6 +45,6 @@ export const handleServerNetworkError = (err: unknown, dispatch: Dispatch): void
   } else {
     errorMessage = JSON.stringify(err)
   }
-  dispatch(setAppErrorAC({ error: errorMessage }))
-  dispatch(setAppStatusAC({ status: "failed" }))
+  dispatch(appActions.setAppError({ error: errorMessage }))
+  dispatch(appActions.setAppStatus({ status: "failed" }))
 }

@@ -8,7 +8,7 @@ import App from "./App"
 // More on how to set up stories at:
 // https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof App> = {
-  title: "App/Stories",
+  title: "Application/Stories",
   component: () => <App demo={true} />,
   args: {
     demo: true,

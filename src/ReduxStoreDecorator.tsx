@@ -1,16 +1,15 @@
 import React from "react"
 import { Provider } from "react-redux"
-
 import { v1 } from "uuid"
-import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasksReducer"
-import { todolistsReducer } from "features/TodolistsList/todolistsReducer"
+
 import { TaskPrioties, TaskStatuses } from "api/todolists-api"
 import { AppRootStateType } from "state/store"
 import thunkMiddleWare from "redux-thunk"
-import { appReducer } from "app/appReducer"
-import { authReducer } from "features/Auth/authReducer"
 import { configureStore } from "@reduxjs/toolkit"
 import { MemoryRouter } from "react-router-dom"
+import { tasksReducer, todolistsReducer } from "features/TodolistsList"
+import { appReducer } from "features/Application"
+import { authReducer } from "features/Auth"
 
 const initialGlobalState: AppRootStateType = {
   todolists: [

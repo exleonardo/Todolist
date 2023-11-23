@@ -1,13 +1,12 @@
-import { todolistsReducer } from "features/TodolistsList/todolistsReducer"
-import { ActionCreatorsMapObject, AnyAction, bindActionCreators } from "redux"
+import { AnyAction } from "redux"
 import thunkMiddleWare, { ThunkAction } from "redux-thunk"
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
+import { TypedUseSelectorHook, useSelector } from "react-redux"
 
-import { configureStore, PayloadActionCreator } from "@reduxjs/toolkit"
-import { authReducer } from "features/Auth/authReducer"
-import { appReducer } from "app/appReducer"
-import { tasksReducer } from "features/TodolistsList/Todolist/Task/tasksReducer"
-import { useMemo } from "react"
+import { configureStore } from "@reduxjs/toolkit"
+import { authReducer } from "features/Auth/"
+import { FieldErrorType } from "api/todolists-api"
+import { tasksReducer, todolistsReducer } from "features/TodolistsList"
+import { appReducer } from "features/Application"
 
 // export const store = legacy_createStore ( rootReducer , applyMiddleware ( thunkMiddleWare ) )
 export const store = configureStore({
@@ -28,15 +27,14 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   AnyAction
 >
-export const useAppDispatch = useDispatch<AppDispatchType>
+
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 // @ts-ignore
 window.store = store
 
-export function useActions<T extends ActionCreatorsMapObject>(actions: T) {
-  const dispatch = useAppDispatch()
-  const boundActions = useMemo(() => {
-    return bindActionCreators(actions, dispatch)
-  }, [])
-  return boundActions
+export type ThunkError = {
+  rejectValue: {
+    errors: string[]
+    fieldsErrors?: FieldErrorType[]
+  }
 }

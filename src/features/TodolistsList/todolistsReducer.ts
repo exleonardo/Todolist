@@ -1,12 +1,12 @@
-import { FieldErrorType, todolistsApi, TodolistType } from "api/todolists-api"
-import { RequestStatusType, setAppStatusAC } from "app/appReducer"
-
+import { todolistsApi, TodolistType } from "api/todolists-api"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
-
 import { AxiosError, isAxiosError } from "axios"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
-import { fetchTask } from "features/TodolistsList/Todolist/Task/tasksReducer"
+import { fetchTask } from "features/TodolistsList/tasksReducer"
+import { ThunkError } from "state/store"
+import { RequestStatusType } from "features/Application"
+import { appActions } from "features/CommonActions/ApplicationCommonAction"
 
 export const slice = createSlice({
   name: "todolists",
@@ -56,10 +56,10 @@ export const slice = createSlice({
 const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }>(
   `${slice.name}/fetchTodolists`,
   async (param, { dispatch, rejectWithValue }) => {
-    dispatch(setAppStatusAC({ status: "loading" }))
+    dispatch(appActions.setAppStatus({ status: "loading" }))
     try {
       const res = await todolistsApi.getTodolists()
-      dispatch(setAppStatusAC({ status: "succesed" }))
+      dispatch(appActions.setAppStatus({ status: "succesed" }))
 
       const todos = res.data
       todos.forEach((tl) => {
@@ -74,30 +74,49 @@ const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }>(
 )
 const removeTodolist = createAppAsyncThunk(
   `${slice.name}/removeTodolists`,
-  async (todolistId: string, { dispatch, rejectWithValue }) => {
-    dispatch(setAppStatusAC({ status: "loading" }))
+  async (todolistId: string, { dispatch }) => {
+    dispatch(appActions.setAppStatus({ status: "loading" }))
     dispatch(changeTodolistEntityStatus({ id: todolistId, status: "loading" }))
-    const res = await todolistsApi.deleteTodolist(todolistId)
-    dispatch(setAppStatusAC({ status: "succesed" }))
+    await todolistsApi.deleteTodolist(todolistId)
+    dispatch(appActions.setAppStatus({ status: "succesed" }))
     return { id: todolistId }
   },
 )
-const addTodolist = createAppAsyncThunk<
-  { todolist: TodolistType },
-  string,
-  {
-    rejectValue: {
-      errors: string[]
-      fieldsErrors?: FieldErrorType[]
+const addTodolist = createAppAsyncThunk<{ todolist: TodolistType }, string, ThunkError>(
+  `${slice.name}/addTodolists`,
+  async (title, { dispatch, rejectWithValue }) => {
+    dispatch(appActions.setAppStatus({ status: "loading" }))
+    try {
+      const res = await todolistsApi.createTodolist(title)
+      if (res.data.resultCode === 0) {
+        dispatch(appActions.setAppStatus({ status: "succesed" }))
+        return { todolist: res.data.data.item }
+      } else {
+        handleServerAppError(res.data, dispatch, false)
+        return rejectWithValue({
+          errors: res.data.messages,
+          fieldsErrors: res.data.fieldsErrors,
+        })
+      }
+    } catch (err) {
+      if (isAxiosError(err)) handleServerNetworkError(err, dispatch)
+      const error = err as AxiosError
+      return rejectWithValue({
+        errors: [error.message],
+        fieldsErrors: undefined,
+      })
     }
-  }
->(`${slice.name}/addTodolists`, async (title, { dispatch, rejectWithValue }) => {
-  dispatch(setAppStatusAC({ status: "loading" }))
+  },
+)
+const changeTodolistTitle = createAppAsyncThunk<
+  { id: string; title: string },
+  { id: string; title: string }
+>(`${slice.name}/changeTodolistTitle`, async ({ id, title }, { dispatch, rejectWithValue }) => {
   try {
-    const res = await todolistsApi.createTodolist(title)
+    const res = await todolistsApi.updateTodolistTitle(id, title)
     if (res.data.resultCode === 0) {
-      dispatch(setAppStatusAC({ status: "succesed" }))
-      return { todolist: res.data.data.item }
+      dispatch(appActions.setAppStatus({ status: "succesed" }))
+      return { id, title }
     } else {
       handleServerAppError(res.data, dispatch, false)
       return rejectWithValue({
@@ -114,29 +133,12 @@ const addTodolist = createAppAsyncThunk<
     })
   }
 })
-const changeTodolistTitle = createAppAsyncThunk(
-  `${slice.name}/changeTodolistTitle`,
-  async (
-    {
-      id,
-      title,
-    }: {
-      id: string
-      title: string
-    },
-    { dispatch },
-  ) => {
-    const res = await todolistsApi.updateTodolistTitle(id, title)
-    return { id, title }
-  },
-)
 export const asyncActions = {
   fetchTodolist,
   removeTodolist,
   changeTodolistTitle,
   addTodolist,
 }
-export const todolistsReducer = slice.reducer
 
 export const { changeTodolistFilter, changeTodolistEntityStatus, clearTodosData } = slice.actions
 

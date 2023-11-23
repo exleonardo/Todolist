@@ -6,4 +6,5 @@ const authActions = {
   ...asyncActions,
   ...slice.actions,
 }
-export { authSelector, Login, authActions }
+const authReducer = slice.reducer
+export { authSelector, Login, authActions, authReducer }

@@ -1,14 +1,8 @@
-import {
-  addTask,
-  fetchTask,
-  removeTask,
-  tasksReducer,
-  updateTask,
-} from "features/TodolistsList/Todolist/Task/tasksReducer"
+import { addTask, fetchTask, removeTask, updateTask } from "features/TodolistsList/tasksReducer"
 import { TaskPrioties, TaskStatuses } from "api/todolists-api"
 import { v1 } from "uuid"
 import { TasksStateType } from "app/App"
-import { todolistsActions } from "features/TodolistsList/index"
+import { tasksReducer, todolistsActions } from "features/TodolistsList/index"
 
 let startState: TasksStateType = {}
 beforeEach(() => {

@@ -5,8 +5,9 @@ import { EditableSpan } from "common/components/EditableSpan/EditableSpan"
 import { IconButton } from "@mui/material"
 import { Delete } from "@mui/icons-material"
 import { TaskStatuses, TaskType } from "api/todolists-api"
-import { useActions } from "state/store"
+
 import { tasksAction } from "features/TodolistsList/index"
+import { useActions } from "common/utils/redux-utils"
 
 type TaskPropsType = {
   task: TaskType

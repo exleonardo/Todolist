@@ -1,6 +1,8 @@
 import { TasksStateType } from "app/App"
-import { clearTodosData } from "features/TodolistsList/todolistsReducer"
-import { asyncActions as asyncTodolistsAction } from "features/TodolistsList/todolistsReducer"
+import {
+  asyncActions as asyncTodolistsAction,
+  clearTodosData,
+} from "features/TodolistsList/todolistsReducer"
 import { createSlice } from "@reduxjs/toolkit"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 import {
@@ -10,14 +12,15 @@ import {
   todolistsApi,
   UpdateTaskType,
 } from "api/todolists-api"
-import { setAppStatusAC } from "app/appReducer"
 import { isAxiosError } from "axios"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { AppRootStateType } from "state/store"
-import { AxiosError } from "axios/index"
+import { AxiosError } from "axios"
+import { appActions } from "features/CommonActions/ApplicationCommonAction"
 
+const { setAppStatus } = appActions
 const initialState: TasksStateType = {}
-const slice = createSlice({
+export const slice = createSlice({
   name: "tasks",
   initialState,
   reducers: {},
@@ -61,10 +64,10 @@ const slice = createSlice({
 export const fetchTask = createAppAsyncThunk<{ tasks: TaskType[]; todolistId: string }, string>(
   `${slice.name}/fetchTasks`,
   async (todolistId: string, { dispatch, rejectWithValue }) => {
-    dispatch(setAppStatusAC({ status: "loading" }))
+    dispatch(setAppStatus({ status: "loading" }))
     try {
       const res = await todolistsApi.getTasks(todolistId)
-      dispatch(setAppStatusAC({ status: "succesed" }))
+      dispatch(setAppStatus({ status: "succesed" }))
       return { tasks: res.data.items, todolistId }
     } catch (error) {
       if (isAxiosError(error)) {
@@ -96,12 +99,12 @@ export const addTask = createAppAsyncThunk<
     }
   }
 >(`${slice.name}/addTask`, async ({ title, todolistId }, { dispatch, rejectWithValue }) => {
-  dispatch(setAppStatusAC({ status: "loading" }))
+  dispatch(setAppStatus({ status: "loading" }))
 
   try {
     const res = await todolistsApi.createTask(todolistId, title)
     if (res.data.resultCode === 0) {
-      dispatch(setAppStatusAC({ status: "succesed" }))
+      dispatch(setAppStatus({ status: "succesed" }))
       return { task: res.data.data.item }
     } else {
       handleServerAppError(res.data, dispatch, false)
@@ -185,6 +188,5 @@ type RemoveTaskType = {
   taskId: string
   todolistId: string
 }
-export const tasksReducer = slice.reducer
 
 //types

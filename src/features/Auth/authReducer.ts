@@ -1,18 +1,19 @@
 import { authApi, FieldErrorType, LoginParamsType } from "api/todolists-api"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { setAppStatusAC } from "app/appReducer"
 import { clearTodosData } from "features/TodolistsList/todolistsReducer"
 import { AxiosError, isAxiosError } from "axios"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
+import { appActions } from "features/CommonActions"
 
+const { setAppStatus } = appActions
 export const slice = createSlice({
   name: "auth",
   initialState: {
     isLoggedIn: false,
   },
   reducers: {
-    setIsLoggedInAC(state, action: PayloadAction<{ value: boolean }>) {
+    setIsLoggedIn(state, action: PayloadAction<{ value: boolean }>) {
       state.isLoggedIn = action.payload.value
     },
   },
@@ -26,12 +27,12 @@ export const slice = createSlice({
   },
 })
 export const logout = createAppAsyncThunk(`${slice.name}/logout`, async (arg, thunkAPI) => {
-  thunkAPI.dispatch(setAppStatusAC({ status: "loading" }))
+  thunkAPI.dispatch(setAppStatus({ status: "loading" }))
 
   try {
     const res = await authApi.logout()
     if (res.data.resultCode === 0) {
-      thunkAPI.dispatch(setAppStatusAC({ status: "succesed" }))
+      thunkAPI.dispatch(setAppStatus({ status: "succesed" }))
       thunkAPI.dispatch(clearTodosData())
     } else {
       handleServerAppError(res.data, thunkAPI.dispatch)
@@ -54,11 +55,11 @@ export const login = createAppAsyncThunk<
     }
   }
 >(`${slice.name}/login`, async (param, thunkAPI) => {
-  thunkAPI.dispatch(setAppStatusAC({ status: "loading" }))
+  thunkAPI.dispatch(setAppStatus({ status: "loading" }))
   try {
     const res = await authApi.auth(param)
     if (res.data.resultCode === 0) {
-      thunkAPI.dispatch(setAppStatusAC({ status: "succesed" }))
+      thunkAPI.dispatch(setAppStatus({ status: "succesed" }))
     } else {
       handleServerAppError(res.data, thunkAPI.dispatch)
       return thunkAPI.rejectWithValue({
@@ -81,6 +82,3 @@ export const asyncActions = {
   login,
   logout,
 }
-
-export const authReducer = slice.reducer
-export const { setIsLoggedInAC } = slice.actions

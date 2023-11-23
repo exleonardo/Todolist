@@ -9,14 +9,14 @@ import Toolbar from "@mui/material/Toolbar"
 import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
 import CustomizedSnackbars from "../common/components/ErrorSnackBar/ErrorSnackbar"
-import { useAppDispatch, useAppSelector } from "state/store"
-import { asyncActions } from "app/appReducer"
+import { useAppSelector } from "state/store"
+import { asyncActions } from "features/Application/applicationReducer"
 import { Navigate, Route, Routes } from "react-router-dom"
 import { CircularProgress } from "@mui/material"
-import { logout } from "features/Auth/authReducer"
-import { authSelector, Login } from "features/Auth"
-import { selectIsInitialized, selectStatusApp } from "app/AppSelector"
+import { authActions, authSelector, Login } from "features/Auth"
+import { selectIsInitialized, selectStatusApp } from "features/Application/AppSelector"
 import { TodolistsList } from "features/TodolistsList"
+import { useActions, useAppDispatch } from "common/utils/redux-utils"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
@@ -31,13 +31,15 @@ function App({ demo = false, ...props }: PropsType) {
   const isInitialized = useAppSelector(selectIsInitialized)
   const isLoggedIn = useAppSelector(authSelector.selectIsLoggedIn)
   const dispatch = useAppDispatch()
+  const { logout } = useActions(authActions)
+  const { initialized } = useActions(asyncActions)
   useEffect(() => {
     if (!demo) {
-      dispatch(asyncActions.initialized())
+      initialized()
     }
   }, [demo, dispatch])
   const logoutHandler = useCallback(() => {
-    dispatch(logout())
+    logout()
   }, [dispatch])
   if (!isInitialized) {
     return (
