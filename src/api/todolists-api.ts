@@ -17,38 +17,41 @@ export const todolistsApi = {
     return instanse.get<TodolistType[]>("todo-lists")
   },
   createTodolist(title: string) {
-    return instanse.post<ResponseType<{ item: TodolistType }>>("todo-lists", { title: title })
+    return instanse.post<BaseResponseType<{ item: TodolistType }>>("todo-lists", { title: title })
   },
   deleteTodolist(id: string) {
-    return instanse.delete<ResponseType>(`todo-lists/${id}`)
+    return instanse.delete<BaseResponseType>(`todo-lists/${id}`)
   },
   updateTodolistTitle(id: string, title: string) {
-    return instanse.put<ResponseType>(`todo-lists/${id}`, { title: title })
+    return instanse.put<BaseResponseType>(`todo-lists/${id}`, { title: title })
   },
   getTasks(todolistId: string) {
     return instanse.get<GetTaskResponse>(`todo-lists/${todolistId}/tasks`)
   },
   deleteTask(todolistId: string, taskId: string) {
-    return instanse.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
+    return instanse.delete<BaseResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
   },
   createTask(todolistId: string, title: string) {
-    return instanse.post<ResponseType<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, {
+    return instanse.post<BaseResponseType<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, {
       title: title,
     })
   },
   updateTask(todolistId: string, taskId: string, model: UpdateTaskType) {
-    return instanse.put<ResponseType<TaskType>>(`todo-lists/${todolistId}/tasks/${taskId}`, model)
+    return instanse.put<BaseResponseType<TaskType>>(
+      `todo-lists/${todolistId}/tasks/${taskId}`,
+      model,
+    )
   },
 }
 export const authApi = {
   auth(data: LoginParamsType) {
-    return instanse.post<ResponseType<{ userId?: number }>>("auth/login", data)
+    return instanse.post<BaseResponseType<{ userId?: number }>>("auth/login", data)
   },
   me() {
-    return instanse.get<ResponseType<{ id: number; email: string; login: string }>>("auth/me")
+    return instanse.get<BaseResponseType<{ id: number; email: string; login: string }>>("auth/me")
   },
   logout() {
-    return instanse.delete<ResponseType>("auth/login")
+    return instanse.delete<BaseResponseType>("auth/login")
   },
 }
 //Types
@@ -64,10 +67,10 @@ export type TodolistType = {
   addedDate: string
   order: number
 }
-export type FieldErrorType = { field: string; messages: string }
-export type ResponseType<D = {}> = {
+export type FieldErrorType = { field: string; error: string }
+export type BaseResponseType<D = {}> = {
   resultCode: number
-  messages: Array<string>
+  messages: string[]
   fieldsErrors?: FieldErrorType[]
   data: D
 }

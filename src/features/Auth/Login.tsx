@@ -13,51 +13,43 @@ import { login } from "features/Auth/authReducer"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn } from "features/Auth/AuthSelector"
 import { useAppDispatch } from "common/utils/redux-utils"
+import { BaseResponseType } from "api/todolists-api"
 
-type FormikErrorType = {
-  email?: string
-  password?: string
-  rememberMe?: boolean
-}
 export const Login = () => {
   const dispatch = useAppDispatch()
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
 
   const formik = useFormik({
-    validate: (values) => {
-      const errors: FormikErrorType = {}
-      if (!values.email) {
-        errors.email = "Required"
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = "Invalid email address"
-      } else if (values.email.length < 3) {
-        errors.password = "short password add letters"
-      }
-      return errors
-    },
+    // validate: (values) => {
+    //   const errors: FormikErrorType = {}
+    //   if (!values.email) {
+    //     errors.email = "Required"
+    //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    //     errors.email = "Invalid email address"
+    //   } else if (values.email.length < 3) {
+    //     errors.password = "short password add letters"
+    //   }
+    //   return errors
+    // },
     initialValues: {
       email: "",
       password: "",
       rememberMe: false,
     },
     onSubmit: async (values, formikHelpers) => {
-      formikHelpers.setSubmitting(true)
-      const res = await dispatch(login(values))
-      if (login.rejected.match(res)) {
-        if (res.payload?.fildsErrors?.length) {
-          const error = res.payload.fildsErrors[0]
-          formikHelpers.setFieldError(error.field, error.messages)
-        } else {
-          //Если не придёт payload
-        }
-      }
-      formikHelpers.setSubmitting(false)
-      formik.resetForm()
+      dispatch(login(values))
+        .unwrap()
+        .catch((err: BaseResponseType) => {
+          err.fieldsErrors?.forEach((fieldError) => {
+            return formikHelpers.setFieldError(fieldError.field, fieldError.error)
+          })
+        })
     },
   })
   if (isLoggedIn) {
     return <Navigate to={"/"} />
   }
+  console.log(formik.errors)
   return (
     <Grid container justifyContent={"center"}>
       <Grid item justifyContent={"center"}>
@@ -79,21 +71,19 @@ export const Login = () => {
               <p>Password: free</p>
             </FormLabel>
             <FormGroup>
-              <TextField
-                label="Email"
-                margin="normal"
-                {...formik.getFieldProps("email")}
-                error={!!(formik.touched.email && formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
+              <TextField label="Email" margin="normal" {...formik.getFieldProps("email")} />
+              {formik.errors.email ? (
+                <div style={{ color: "red" }}>{formik.errors.email}</div>
+              ) : null}
               <TextField
                 type="password"
                 label="Password"
                 margin="normal"
                 {...formik.getFieldProps("password")}
-                error={!!(formik.touched.password && formik.errors.password)}
-                helperText={formik.touched.password && formik.errors.password}
               />
+              {formik.errors.password ? (
+                <div style={{ color: "red" }}>{formik.errors.password}</div>
+              ) : null}
               <FormControlLabel
                 label={"Remember me"}
                 control={
