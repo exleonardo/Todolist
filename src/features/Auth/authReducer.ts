@@ -18,12 +18,13 @@ export const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.isLoggedIn = true
-    })
-    builder.addCase(logout.fulfilled, (state) => {
-      state.isLoggedIn = false
-    })
+    builder
+      .addCase(login.fulfilled, (state, action) => {
+        state.isLoggedIn = true
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.isLoggedIn = false
+      })
   },
 })
 export const logout = createAppAsyncThunk(`${slice.name}/logout`, async (arg, thunkAPI) => {
