@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="refactor Login Error">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="fix bug: enter invalid password (show global Error)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/CommonActions/ApplicationCommonAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/CommonActions/ApplicationCommonAction.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,15 +176,7 @@
       <workItem from="1700039978597" duration="601000" />
       <workItem from="1700076762128" duration="16310000" />
       <workItem from="1700490275019" duration="9180000" />
-      <workItem from="1700509709074" duration="65047000" />
-    </task>
-    <task id="LOCAL-00001" summary="add snapshot">
-      <option name="closed" value="true" />
-      <created>1694009735403</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1694009735403</updated>
+      <workItem from="1700509709074" duration="66822000" />
     </task>
     <task id="LOCAL-00002" summary="refactor Type">
       <option name="closed" value="true" />
@@ -568,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700854134010</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fix bug: enter invalid password (show global Error)">
+      <option name="closed" value="true" />
+      <created>1700855182850</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1700855182850</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Selector App" />
     <MESSAGE value="add selector TodolistList" />
     <MESSAGE value="add createThunk" />
     <MESSAGE value="add loginTC createAsyncThunk" />
@@ -611,6 +612,7 @@
     <MESSAGE value="refactor import" />
     <MESSAGE value="refactor builder" />
     <MESSAGE value="refactor Login Error" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor Login Error" />
+    <MESSAGE value="fix bug: enter invalid password (show global Error)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug: enter invalid password (show global Error)" />
   </component>
 </project>

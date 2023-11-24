@@ -10,13 +10,14 @@ import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
 import CustomizedSnackbars from "../common/components/ErrorSnackBar/ErrorSnackbar"
 import { useAppSelector } from "state/store"
-import { asyncActions } from "features/Application/applicationReducer"
+
 import { Navigate, Route, Routes } from "react-router-dom"
 import { CircularProgress } from "@mui/material"
 import { authActions, authSelector, Login } from "features/Auth"
 import { selectIsInitialized, selectStatusApp } from "features/Application/AppSelector"
 import { TodolistsList } from "features/TodolistsList"
 import { useActions, useAppDispatch } from "common/utils/redux-utils"
+import { asyncActions } from "features/Auth/authReducer"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>

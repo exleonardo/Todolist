@@ -1,10 +1,11 @@
 import { authApi, LoginParamsType } from "api/todolists-api"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { clearTodosData } from "features/TodolistsList/todolistsReducer"
 import { isAxiosError } from "axios"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 import { appActions } from "features/CommonActions"
+import { authActions } from "features/Auth/index"
 
 const { setAppStatus } = appActions
 export const slice = createSlice({
@@ -13,20 +14,37 @@ export const slice = createSlice({
     isLoggedIn: false,
   },
   reducers: {
-    setIsLoggedIn(state, action: PayloadAction<{ value: boolean }>) {
-      state.isLoggedIn = action.payload.value
+    setIsLoggedIn(state, action: PayloadAction<{ isLoggedIn: boolean }>) {
+      state.isLoggedIn = action.payload.isLoggedIn
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(login.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state) => {
         state.isLoggedIn = true
       })
       .addCase(logout.fulfilled, (state) => {
         state.isLoggedIn = false
       })
+      .addCase(initialized.fulfilled, (state, action) => {
+        state.isLoggedIn = true
+      })
   },
 })
+const initialized = createAsyncThunk(`${slice.name}/initializeApp`, async (param, { dispatch }) => {
+  try {
+    const res = await authApi.me()
+    if (res.data.resultCode === 0) {
+      dispatch(authActions.setIsLoggedIn({ isLoggedIn: true }))
+    }
+    return { isLoggedIn: true }
+  } catch (error) {
+    return { isLoggedIn: false }
+  } finally {
+    dispatch(appActions.setAppInitialized({ isInitialized: true }))
+  }
+})
+
 export const logout = createAppAsyncThunk(`${slice.name}/logout`, async (arg, thunkAPI) => {
   thunkAPI.dispatch(setAppStatus({ status: "loading" }))
 
@@ -69,4 +87,5 @@ export const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsTyp
 export const asyncActions = {
   login,
   logout,
+  initialized,
 }
