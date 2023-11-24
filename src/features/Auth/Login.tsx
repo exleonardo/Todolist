@@ -37,12 +37,16 @@ export const Login = () => {
       rememberMe: false,
     },
     onSubmit: async (values, formikHelpers) => {
+      formikHelpers.setSubmitting(true)
       dispatch(login(values))
         .unwrap()
         .catch((err: BaseResponseType) => {
           err.fieldsErrors?.forEach((fieldError) => {
             return formikHelpers.setFieldError(fieldError.field, fieldError.error)
           })
+        })
+        .finally(() => {
+          formikHelpers.setSubmitting(false)
         })
     },
   })
@@ -71,11 +75,17 @@ export const Login = () => {
               <p>Password: free</p>
             </FormLabel>
             <FormGroup>
-              <TextField label="Email" margin="normal" {...formik.getFieldProps("email")} />
+              <TextField
+                error={!!(formik.touched.email && formik.errors.email)}
+                label="Email"
+                margin="normal"
+                {...formik.getFieldProps("email")}
+              />
               {formik.errors.email ? (
                 <div style={{ color: "red" }}>{formik.errors.email}</div>
               ) : null}
               <TextField
+                error={!!(formik.touched.password && formik.errors.password)}
                 type="password"
                 label="Password"
                 margin="normal"

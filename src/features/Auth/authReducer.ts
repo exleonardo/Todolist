@@ -2,10 +2,9 @@ import { authApi, LoginParamsType } from "api/todolists-api"
 import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { clearTodosData } from "features/TodolistsList/todolistsReducer"
-import { AxiosError, isAxiosError } from "axios"
+import { isAxiosError } from "axios"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 import { appActions } from "features/CommonActions"
-import { ThunkError } from "state/store"
 
 const { setAppStatus } = appActions
 export const slice = createSlice({
@@ -57,7 +56,8 @@ export const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsTyp
         thunkAPI.dispatch(setAppStatus({ status: "succesed" }))
         return { isLoggedIn: true }
       } else {
-        handleServerAppError(res.data, thunkAPI.dispatch)
+        const isShowAppError = !res.data.fieldsErrors?.length
+        handleServerAppError(res.data, thunkAPI.dispatch, isShowAppError)
         return thunkAPI.rejectWithValue(res.data)
       }
     } catch (err) {

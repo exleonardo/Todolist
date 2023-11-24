@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="refactor builder">
-      <change afterPath="$PROJECT_DIR$/src/common/utils/thunkTryCatch.ts" afterDir="false" />
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="refactor Login Error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/error-utils.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" afterDir="false" />
     </list>
@@ -177,7 +174,7 @@
       <workItem from="1700039978597" duration="601000" />
       <workItem from="1700076762128" duration="16310000" />
       <workItem from="1700490275019" duration="9180000" />
-      <workItem from="1700509709074" duration="64085000" />
+      <workItem from="1700509709074" duration="65047000" />
     </task>
     <task id="LOCAL-00001" summary="add snapshot">
       <option name="closed" value="true" />
@@ -563,7 +560,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700824480252</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="refactor Login Error">
+      <option name="closed" value="true" />
+      <created>1700854134010</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1700854134010</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,7 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="delete rootReducer" />
     <MESSAGE value="add Selector App" />
     <MESSAGE value="add selector TodolistList" />
     <MESSAGE value="add createThunk" />
@@ -606,6 +610,7 @@
     <MESSAGE value="add error AddItemForm todolist" />
     <MESSAGE value="refactor import" />
     <MESSAGE value="refactor builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor builder" />
+    <MESSAGE value="refactor Login Error" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor Login Error" />
   </component>
 </project>
