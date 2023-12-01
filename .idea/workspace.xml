@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="fix bug: enter invalid password (show global Error)">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="move initialized to authReducer.ts">
+      <change afterPath="$PROJECT_DIR$/src/features/Auth/useLogin.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/CommonActions/ApplicationCommonAction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/CommonActions/ApplicationCommonAction.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/Auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/tasksReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/tasksReducer.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +40,7 @@
     "WebServerToolWindowFactoryState": "false",
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/exleo/OneDrive/Рабочий стол/src",
+    "last_opened_file_path": "D:/it-incubator/social-network",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -176,15 +175,8 @@
       <workItem from="1700039978597" duration="601000" />
       <workItem from="1700076762128" duration="16310000" />
       <workItem from="1700490275019" duration="9180000" />
-      <workItem from="1700509709074" duration="66822000" />
-    </task>
-    <task id="LOCAL-00002" summary="refactor Type">
-      <option name="closed" value="true" />
-      <created>1694789572652</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1694789572652</updated>
+      <workItem from="1700509709074" duration="71231000" />
+      <workItem from="1701427254571" duration="12724000" />
     </task>
     <task id="LOCAL-00003" summary="add thunk and tests">
       <option name="closed" value="true" />
@@ -570,7 +562,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700855182850</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="move initialized to authReducer.ts">
+      <option name="closed" value="true" />
+      <created>1700856951130</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1700856951130</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add selector TodolistList" />
     <MESSAGE value="add createThunk" />
     <MESSAGE value="add loginTC createAsyncThunk" />
     <MESSAGE value="type loginTC" />
@@ -613,6 +612,7 @@
     <MESSAGE value="refactor builder" />
     <MESSAGE value="refactor Login Error" />
     <MESSAGE value="fix bug: enter invalid password (show global Error)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug: enter invalid password (show global Error)" />
+    <MESSAGE value="move initialized to authReducer.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="move initialized to authReducer.ts" />
   </component>
 </project>

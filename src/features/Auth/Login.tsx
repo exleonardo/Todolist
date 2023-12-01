@@ -7,53 +7,20 @@ import FormGroup from "@mui/material/FormGroup"
 import FormLabel from "@mui/material/FormLabel"
 import TextField from "@mui/material/TextField"
 import Button from "@mui/material/Button"
-import { useFormik } from "formik"
+
 import { useAppSelector } from "state/store"
-import { login } from "features/Auth/authReducer"
 import { Navigate } from "react-router-dom"
 import { selectIsLoggedIn } from "features/Auth/AuthSelector"
-import { useAppDispatch } from "common/utils/redux-utils"
-import { BaseResponseType } from "api/todolists-api"
+import { useLogin } from "./useLogin"
 
 export const Login = () => {
-  const dispatch = useAppDispatch()
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
+  const { formik } = useLogin()
 
-  const formik = useFormik({
-    // validate: (values) => {
-    //   const errors: FormikErrorType = {}
-    //   if (!values.email) {
-    //     errors.email = "Required"
-    //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    //     errors.email = "Invalid email address"
-    //   } else if (values.email.length < 3) {
-    //     errors.password = "short password add letters"
-    //   }
-    //   return errors
-    // },
-    initialValues: {
-      email: "",
-      password: "",
-      rememberMe: false,
-    },
-    onSubmit: async (values, formikHelpers) => {
-      formikHelpers.setSubmitting(true)
-      dispatch(login(values))
-        .unwrap()
-        .catch((err: BaseResponseType) => {
-          err.fieldsErrors?.forEach((fieldError) => {
-            return formikHelpers.setFieldError(fieldError.field, fieldError.error)
-          })
-        })
-        .finally(() => {
-          formikHelpers.setSubmitting(false)
-        })
-    },
-  })
   if (isLoggedIn) {
     return <Navigate to={"/"} />
   }
-  console.log(formik.errors)
+
   return (
     <Grid container justifyContent={"center"}>
       <Grid item justifyContent={"center"}>
