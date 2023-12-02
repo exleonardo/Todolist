@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react"
+import React, { useEffect } from "react"
 import "./App.css"
 import AppBar from "@mui/material/AppBar"
 import Container from "@mui/material/Container"
@@ -34,14 +34,14 @@ function App({ demo = false, ...props }: PropsType) {
   const dispatch = useAppDispatch()
   const { logout } = useActions(authActions)
   const { initialized } = useActions(asyncActions)
+
   useEffect(() => {
     if (!demo) {
       initialized()
     }
   }, [demo, dispatch])
-  const logoutHandler = useCallback(() => {
-    logout()
-  }, [dispatch])
+  const logoutHandler = () => logout()
+
   if (!isInitialized) {
     return (
       <div style={{ position: "fixed", top: "30%", width: "100%", left: "50%" }}>

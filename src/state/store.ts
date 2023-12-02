@@ -14,7 +14,7 @@ export const store = configureStore({
     tasks: tasksReducer,
     todolists: todolistsReducer,
     app: appReducer,
-    auth: authReducer,
+    login: authReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunkMiddleWare),
 })

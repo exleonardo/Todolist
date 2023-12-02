@@ -1,5 +1,5 @@
 import React, { useCallback } from "react"
-import { AddItemForm, AddItemFormSubmitHelperType } from "common/components/AddItemForm/AddItemForm"
+import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
 import { EditableSpan } from "common/components/EditableSpan/EditableSpan"
 import { Task } from "./Task/Task"
 import { Button, IconButton } from "@mui/material"
@@ -8,7 +8,7 @@ import { TaskStatuses, TaskType } from "api/todolists-api"
 import { FilterValuesType, TodolistDomainType } from "features/TodolistsList/todolistsReducer"
 import { tasksAction, todolistsActions } from "features/TodolistsList/index"
 import Paper from "@mui/material/Paper"
-import { useActions, useAppDispatch } from "common/utils/redux-utils"
+import { useActions } from "common/utils/redux-utils"
 
 type PropsType = {
   todolist: TodolistDomainType
@@ -18,28 +18,11 @@ type PropsType = {
 
 export const Todolist = React.memo(function ({ demo = false, ...props }: PropsType) {
   const { removeTodolist, changeTodolistTitle, changeTodolistFilter } = useActions(todolistsActions)
+  const { addTask } = useActions(tasksAction)
 
-  const dispatch = useAppDispatch()
-
-  const addTaskCallback = useCallback(
-    async (title: string, helper: AddItemFormSubmitHelperType) => {
-      const thunk = tasksAction.addTask({ title, todolistId: props.todolist.id })
-
-      const resultAction = await dispatch(thunk)
-      if (tasksAction.addTask.rejected.match(resultAction)) {
-        console.log(resultAction)
-        if (resultAction.payload?.errors.length) {
-          const errorMessage = resultAction.payload?.errors[0]
-          helper.setError(errorMessage)
-        } else {
-          helper.setError("Some Error")
-        }
-      } else {
-        helper.setTitle("")
-      }
-    },
-    [],
-  )
+  const addTaskCallback = useCallback(async (title: string) => {
+    return addTask({ title, todolistId: props.todolist.id }).unwrap()
+  }, [])
 
   const removeTodolistCallback = () => {
     removeTodolist(props.todolist.id)

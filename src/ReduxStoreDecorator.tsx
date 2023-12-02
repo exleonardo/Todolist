@@ -93,7 +93,7 @@ const initialGlobalState: AppRootStateType = {
     status: "succesed",
     isInitialized: true,
   },
-  auth: {
+  login: {
     isLoggedIn: true,
   },
 }
@@ -103,7 +103,7 @@ export const storyBookStore = configureStore({
     tasks: tasksReducer,
     todolists: todolistsReducer,
     app: appReducer,
-    auth: authReducer,
+    login: authReducer,
   },
   preloadedState: initialGlobalState,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunkMiddleWare),

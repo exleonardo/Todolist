@@ -1,10 +1,12 @@
 import { useFormik } from "formik"
-import { login } from "features/Auth/authReducer"
 import { BaseResponseType } from "api/todolists-api"
-import { useAppDispatch } from "common/utils/redux-utils"
+import { useActions } from "common/utils/redux-utils"
+import { authActions } from "features/Auth/index"
+import { appActions } from "features/CommonActions/ApplicationCommonAction"
 
 export const useLogin = () => {
-  const dispatch = useAppDispatch()
+  const { login } = useActions(authActions)
+  const { setAppError } = useActions(appActions)
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -13,7 +15,7 @@ export const useLogin = () => {
     },
     onSubmit: async (values, formikHelpers) => {
       formikHelpers.setSubmitting(true)
-      dispatch(login(values))
+      login(values)
         .unwrap()
         .catch((err: BaseResponseType) => {
           err.fieldsErrors?.forEach((fieldError) => {
@@ -22,6 +24,7 @@ export const useLogin = () => {
         })
         .finally(() => {
           formikHelpers.setSubmitting(false)
+          setAppError({ error: null })
         })
     },
   })

@@ -44,7 +44,7 @@ export const todolistsApi = {
   },
 }
 export const authApi = {
-  auth(data: LoginParamsType) {
+  login(data: LoginParamsType) {
     return instanse.post<BaseResponseType<{ userId?: number }>>("auth/login", data)
   },
   me() {

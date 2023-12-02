@@ -2,22 +2,29 @@ import TextField from "@mui/material/TextField/TextField"
 import React, { ChangeEvent, KeyboardEvent, memo, useState } from "react"
 import { IconButton } from "@mui/material"
 import { AddBox } from "@mui/icons-material"
+import { appActions } from "features/CommonActions/ApplicationCommonAction"
+import { useActions } from "common/utils/redux-utils"
 
 type AddItemFormPropsType = {
-  addItem: (title: string, helpers: AddItemFormSubmitHelperType) => void
+  addItem: (title: string) => Promise<any>
   disabled?: boolean
-}
-export type AddItemFormSubmitHelperType = {
-  setError: (error: string) => void
-  setTitle: (title: string) => void
 }
 export const AddItemForm = memo(function ({ disabled = false, ...props }: AddItemFormPropsType) {
   let [title, setTitle] = useState("")
   let [error, setError] = useState<string | null>(null)
+  const { setAppError } = useActions(appActions)
 
   const addItem = async () => {
     if (title.trim() !== "") {
-      props.addItem(title, { setTitle, setError })
+      props
+        .addItem(title)
+        .then(() => {
+          setTitle("")
+        })
+        .catch((error) => {
+          error.messages ? setError(error.messages[0]) : setError(error.message)
+          setAppError({ error: null })
+        })
     } else {
       setError("Title is required")
     }

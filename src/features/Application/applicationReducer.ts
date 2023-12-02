@@ -1,5 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { appActions } from "features/CommonActions/ApplicationCommonAction"
+import {
+  createSlice,
+  isAnyOf,
+  isFulfilled,
+  isPending,
+  isRejected,
+  PayloadAction,
+} from "@reduxjs/toolkit"
+import { authActions } from "features/Auth"
+import { AnyAction } from "redux"
+import { tasksAction, todolistsActions } from "features/TodolistsList"
 
 export const slice = createSlice({
   name: "app",
@@ -8,17 +17,39 @@ export const slice = createSlice({
     error: null as null | string,
     isInitialized: false,
   },
-  reducers: {},
+  reducers: {
+    setAppError: (state, action: PayloadAction<{ error: string | null }>) => {
+      state.error = action.payload.error
+    },
+  },
   extraReducers: (builder) => {
     builder
-      .addCase(appActions.setAppStatus, (state, action) => {
-        state.status = action.payload.status
+      .addMatcher(isPending, (state) => {
+        state.status = "loading"
       })
-      .addCase(appActions.setAppError, (state, action) => {
-        state.error = action.payload.error
+      .addMatcher(isFulfilled, (state) => {
+        state.status = "succesed"
       })
-      .addCase(appActions.setAppInitialized, (state, action) => {
-        state.isInitialized = action.payload.isInitialized
+      .addMatcher(
+        isAnyOf(authActions.initialized.fulfilled, authActions.initialized.rejected),
+        (state, action) => {
+          state.isInitialized = true
+        },
+      )
+      .addMatcher(isRejected, (state, action: AnyAction) => {
+        state.status = "failed"
+        if (action.payload) {
+          if (
+            action.type === todolistsActions.addTodolist.rejected.type ||
+            action.type === tasksAction.addTask.rejected.type ||
+            action.type === authActions.initialized.rejected.type
+          )
+            return
+
+          state.error = action.payload.messages[0]
+        } else {
+          state.error = action.error.message ? action.error.message : "Some error occurred"
+        }
       })
   },
 })

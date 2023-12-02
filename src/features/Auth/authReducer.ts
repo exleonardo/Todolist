@@ -1,11 +1,10 @@
 import { authApi, LoginParamsType } from "api/todolists-api"
-import { handleServerAppError, handleServerNetworkError } from "common/utils/error-utils"
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { handleServerAppError } from "common/utils/error-utils"
+import { createSlice, isAnyOf } from "@reduxjs/toolkit"
 import { clearTodosData } from "features/TodolistsList/todolistsReducer"
-import { isAxiosError } from "axios"
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk"
 import { appActions } from "features/CommonActions"
-import { authActions } from "features/Auth/index"
+import { thunkTryCatch } from "common/utils/thunkTryCatch"
 
 const { setAppStatus } = appActions
 export const slice = createSlice({
@@ -13,74 +12,46 @@ export const slice = createSlice({
   initialState: {
     isLoggedIn: false,
   },
-  reducers: {
-    setIsLoggedIn(state, action: PayloadAction<{ isLoggedIn: boolean }>) {
-      state.isLoggedIn = action.payload.isLoggedIn
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(login.fulfilled, (state) => {
+    builder.addMatcher(
+      isAnyOf(login.fulfilled, logout.fulfilled, initialized.fulfilled),
+      (state, action) => {
         state.isLoggedIn = true
-      })
-      .addCase(logout.fulfilled, (state) => {
-        state.isLoggedIn = false
-      })
-      .addCase(initialized.fulfilled, (state, action) => {
-        state.isLoggedIn = true
-      })
+      },
+    )
   },
 })
-const initialized = createAsyncThunk(`${slice.name}/initializeApp`, async (param, { dispatch }) => {
-  try {
-    const res = await authApi.me()
-    if (res.data.resultCode === 0) {
-      dispatch(authActions.setIsLoggedIn({ isLoggedIn: true }))
-    }
+const initialized = createAppAsyncThunk(`${slice.name}/initializeApp`, async (param, thunkAPI) => {
+  const { rejectWithValue, dispatch } = thunkAPI
+
+  const res = await authApi.me()
+  if (res.data.resultCode === 0) {
     return { isLoggedIn: true }
-  } catch (error) {
-    return { isLoggedIn: false }
-  } finally {
-    dispatch(appActions.setAppInitialized({ isInitialized: true }))
+  } else {
+    return rejectWithValue(res.data)
   }
 })
 
-export const logout = createAppAsyncThunk(`${slice.name}/logout`, async (arg, thunkAPI) => {
-  thunkAPI.dispatch(setAppStatus({ status: "loading" }))
-
-  try {
-    const res = await authApi.logout()
-    if (res.data.resultCode === 0) {
-      thunkAPI.dispatch(setAppStatus({ status: "succesed" }))
-      thunkAPI.dispatch(clearTodosData())
-    } else {
-      handleServerAppError(res.data, thunkAPI.dispatch)
-      return thunkAPI.rejectWithValue({})
-    }
-  } catch (error) {
-    if (isAxiosError(error)) {
-      handleServerNetworkError(error, thunkAPI.dispatch)
-      return thunkAPI.rejectWithValue({})
-    }
+const logout = createAppAsyncThunk(`${slice.name}/logout`, async (arg, thunkAPI) => {
+  const { dispatch, rejectWithValue } = thunkAPI
+  const res = await authApi.logout()
+  if (res.data.resultCode === 0) {
+    dispatch(clearTodosData())
+  } else {
+    handleServerAppError(res.data, dispatch)
+    return rejectWithValue(null)
   }
 })
-export const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>(
+const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>(
   `${slice.name}/login`,
   async (param, thunkAPI) => {
-    thunkAPI.dispatch(setAppStatus({ status: "loading" }))
-    try {
-      const res = await authApi.auth(param)
-      if (res.data.resultCode === 0) {
-        thunkAPI.dispatch(setAppStatus({ status: "succesed" }))
-        return { isLoggedIn: true }
-      } else {
-        const isShowAppError = !res.data.fieldsErrors?.length
-        handleServerAppError(res.data, thunkAPI.dispatch, isShowAppError)
-        return thunkAPI.rejectWithValue(res.data)
-      }
-    } catch (err) {
-      handleServerNetworkError(err, thunkAPI.dispatch)
-      return thunkAPI.rejectWithValue(null)
+    const { rejectWithValue } = thunkAPI
+    const res = await authApi.login(param)
+    if (res.data.resultCode === 0) {
+      return { isLoggedIn: true }
+    } else {
+      return rejectWithValue(res.data)
     }
   },
 )

@@ -2,13 +2,13 @@ import React, { useCallback, useEffect } from "react"
 import { useAppSelector } from "state/store"
 import Grid from "@mui/material/Grid"
 import Paper from "@mui/material/Paper"
-import { AddItemForm, AddItemFormSubmitHelperType } from "common/components/AddItemForm/AddItemForm"
+import { AddItemForm } from "common/components/AddItemForm/AddItemForm"
 import { Todolist } from "features/TodolistsList/Todolist/Todolist"
 import { Navigate } from "react-router-dom"
 import { selectorTodolists, selectTasks } from "features/Application/AppSelector"
 import { selectIsLoggedIn } from "features/Auth/AuthSelector"
-import { tasksAction, todolistsActions } from "features/TodolistsList/index"
-import { useActions, useAppDispatch } from "common/utils/redux-utils"
+import { todolistsActions } from "features/TodolistsList/index"
+import { useActions } from "common/utils/redux-utils"
 
 type TodolistsListPropsType = {
   demo?: boolean
@@ -18,8 +18,6 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false, 
   const tasks = useAppSelector(selectTasks)
   const isLoggedIn = useAppSelector(selectIsLoggedIn)
 
-  const dispatch = useAppDispatch()
-
   const { fetchTodolist, addTodolist } = useActions(todolistsActions)
   useEffect(() => {
     if (demo || !isLoggedIn) {
@@ -27,25 +25,9 @@ export const TodolistsList: React.FC<TodolistsListPropsType> = ({ demo = false, 
     }
     fetchTodolist()
   }, [])
-  const addTodolistCallback = useCallback(
-    async (title: string, helper: AddItemFormSubmitHelperType) => {
-      const thunk = todolistsActions.addTodolist(title)
-
-      const resultAction = await dispatch(thunk)
-      if (todolistsActions.addTodolist.rejected.match(resultAction)) {
-        console.log(resultAction)
-        if (resultAction.payload?.errors.length) {
-          const errorMessage = resultAction.payload?.errors[0]
-          helper.setError(errorMessage)
-        } else {
-          helper.setError("Some Error")
-        }
-      } else {
-        helper.setTitle("")
-      }
-    },
-    [],
-  )
+  const addTodolistCallback = useCallback(async (title: string) => {
+    return addTodolist(title).unwrap()
+  }, [])
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />
   }
