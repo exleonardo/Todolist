@@ -1,37 +1,38 @@
-import { BaseResponseType } from "api/todolists-api"
-import { Dispatch } from "redux"
-import { AxiosError, isAxiosError } from "axios"
-import { appActions } from "features/common-actions/application-common-action"
+import { Dispatch } from 'redux'
+import { AxiosError, isAxiosError } from 'axios'
+
+import { BaseResponseType } from '@/api/todolists-api'
+import { appActions } from '@/features/common-actions/application-common-action'
 
 export const handleServerAppError = <D>(
   data: BaseResponseType<D>,
   dispatch: Dispatch,
-  showError = true,
+  showError = true
 ) => {
   if (showError) {
     dispatch(
       appActions.setAppError({
-        error: data.messages.length ? data.messages[0] : "Some error occurred",
-      }),
+        error: data.messages.length ? data.messages[0] : 'Some error occurred',
+      })
     )
   }
-  dispatch(appActions.setAppStatus({ status: "failed" }))
+  dispatch(appActions.setAppStatus({ status: 'failed' }))
 }
 
 export const _handleServerNetworkError = (
   error: AxiosError<{ message: string }>,
-  dispatch: Dispatch,
+  dispatch: Dispatch
 ) => {
   dispatch(
     appActions.setAppError(
-      error.message ? { error: error.message } : { error: "Some error occurred" },
-    ),
+      error.message ? { error: error.message } : { error: 'Some error occurred' }
+    )
   )
-  dispatch(appActions.setAppStatus({ status: "failed" }))
+  dispatch(appActions.setAppStatus({ status: 'failed' }))
 }
 
 export const handleServerNetworkError = (err: unknown, dispatch: Dispatch): void => {
-  let errorMessage = "Some error occurred"
+  let errorMessage = 'Some error occurred'
 
   // ❗Проверка на наличие axios ошибки
   if (isAxiosError(err)) {
@@ -46,5 +47,5 @@ export const handleServerNetworkError = (err: unknown, dispatch: Dispatch): void
     errorMessage = JSON.stringify(err)
   }
   dispatch(appActions.setAppError({ error: errorMessage }))
-  dispatch(appActions.setAppStatus({ status: "failed" }))
+  dispatch(appActions.setAppStatus({ status: 'failed' }))
 }

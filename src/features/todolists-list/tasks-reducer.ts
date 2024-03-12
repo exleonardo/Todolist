@@ -1,21 +1,21 @@
-import { TasksStateType } from "app/App"
+import { TasksStateType } from '@/App'
 import {
   asyncActions as asyncTodolistsAction,
   clearTodosData,
-} from "features/todolists-list/todolists-reducer"
-import { createSlice } from "@reduxjs/toolkit"
-import { createAppAsyncThunk } from "utils/create-app-async-thunk"
-import { TaskPrioties, TaskType, todolistsApi, UpdateTaskType } from "api/todolists-api"
-import { handleServerAppError } from "utils/error-utils"
-import { AppRootStateType } from "app/state/store"
-import { appActions } from "features/common-actions/application-common-action"
+} from '@/features/todolists-list/todolists-reducer'
+import { createSlice } from '@reduxjs/toolkit'
+import { createAppAsyncThunk } from '@/utils/create-app-async-thunk'
+import { TaskPrioties, TaskType, todolistsApi, UpdateTaskType } from '@/api/todolists-api'
+import { handleServerAppError } from '@/utils/error-utils'
+import { AppRootStateType } from '@/state/store'
+import { appActions } from '@/features/common-actions/application-common-action'
 
 const initialState: TasksStateType = {}
 export const slice = createSlice({
-  name: "tasks",
+  name: 'tasks',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(asyncTodolistsAction.addTodolist.fulfilled, (state, action) => {
         state[action.payload.todolist.id] = []
@@ -24,7 +24,7 @@ export const slice = createSlice({
         delete state[action.payload.id]
       })
       .addCase(asyncTodolistsAction.fetchTodolist.fulfilled, (state, action) => {
-        action.payload.todolists.forEach((tl) => {
+        action.payload.todolists.forEach(tl => {
           state[tl.id] = []
         })
       })
@@ -36,7 +36,7 @@ export const slice = createSlice({
       })
       .addCase(removeTask.fulfilled, (state, action) => {
         const tasks = state[action.payload.todolistId]
-        const index = tasks.findIndex((t) => t.id === action.payload.taskId)
+        const index = tasks.findIndex(t => t.id === action.payload.taskId)
         if (index > -1) {
           tasks.splice(index, 1)
         }
@@ -46,7 +46,7 @@ export const slice = createSlice({
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         const tasks = state[action.payload.todolistId]
-        const index = tasks.findIndex((t) => t.id === action.payload.taskId)
+        const index = tasks.findIndex(t => t.id === action.payload.taskId)
         if (index > -1) {
           tasks[index] = { ...tasks[index], ...action.payload.domainModel }
         }
@@ -55,10 +55,10 @@ export const slice = createSlice({
 })
 export const fetchTask = createAppAsyncThunk<{ tasks: TaskType[]; todolistId: string }, string>(
   `${slice.name}/fetchTasks`,
-  async (todolistId: string, thunkAPI) => {
+  async (todolistId: string) => {
     const res = await todolistsApi.getTasks(todolistId)
     return { tasks: res.data.items, todolistId }
-  },
+  }
 )
 export const removeTask = createAppAsyncThunk<RemoveTaskType, RemoveTaskType>(
   `${slice.name}/removeTask`,
@@ -71,7 +71,7 @@ export const removeTask = createAppAsyncThunk<RemoveTaskType, RemoveTaskType>(
     } else {
       return rejectWithValue(res.data)
     }
-  },
+  }
 )
 export const addTask = createAppAsyncThunk<
   { task: TaskType },
@@ -93,12 +93,12 @@ export const updateTask = createAppAsyncThunk<ReturnTaskType, ReturnTaskType>(
       domainModel: UpdateDomainTaskModelType
       todolistId: string
     },
-    { dispatch, getState, rejectWithValue },
+    { dispatch, getState, rejectWithValue }
   ) => {
     const state = getState() as AppRootStateType
-    const task = state.tasks[param.todolistId].find((el) => el.id === param.taskId)
+    const task = state.tasks[param.todolistId].find(el => el.id === param.taskId)
     if (!task) {
-      dispatch(appActions.setAppError({ error: "Task not found in the state" }))
+      dispatch(appActions.setAppError({ error: 'Task not found in the state' }))
       return rejectWithValue(null)
     }
     const apiModel: UpdateTaskType = {
@@ -118,7 +118,7 @@ export const updateTask = createAppAsyncThunk<ReturnTaskType, ReturnTaskType>(
       handleServerAppError(res.data, dispatch)
       return rejectWithValue(null)
     }
-  },
+  }
 )
 export const asyncActions = {
   updateTask,

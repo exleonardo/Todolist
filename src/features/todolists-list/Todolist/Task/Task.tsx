@@ -1,13 +1,13 @@
-import Checkbox from "@mui/material/Checkbox/Checkbox"
-import React, { ChangeEvent, useCallback } from "react"
-import { EditableSpan } from "common/components/editable-span/editable-span"
+import Checkbox from '@mui/material/Checkbox/Checkbox'
+import React, { ChangeEvent, useCallback } from 'react'
+import { EditableSpan } from '@/common/components/editable-span/editable-span'
 
-import { IconButton } from "@mui/material"
-import { Delete } from "@mui/icons-material"
-import { TaskStatuses, TaskType } from "api/todolists-api"
+import { IconButton } from '@mui/material'
+import { Delete } from '@mui/icons-material'
+import { TaskStatuses, TaskType } from '@/api/todolists-api'
 
-import { tasksAction } from "features/todolists-list/index"
-import { useActions } from "utils/redux-utils"
+import { tasksAction } from '@/features/todolists-list'
+import { useActions } from '@/utils/redux-utils'
 
 type TaskPropsType = {
   task: TaskType
@@ -18,7 +18,7 @@ export const Task = React.memo((props: TaskPropsType) => {
 
   const onClickHandler = () => removeTask({ taskId: props.task.id, todolistId: props.todolistId })
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    let newIsDoneValue = e.currentTarget.checked
+    const newIsDoneValue = e.currentTarget.checked
     updateTask({
       taskId: props.task.id,
       domainModel: { status: newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New },
@@ -33,15 +33,16 @@ export const Task = React.memo((props: TaskPropsType) => {
         domainModel: { title: newValue },
       })
     },
-    [props.task.id, props.todolistId],
+    [props.task.id, props.todolistId]
   )
 
   return (
     <>
       <div
-        style={{ position: "relative" }}
+        style={{ position: 'relative' }}
         key={props.task.id}
-        className={props.task.status === TaskStatuses.Completed ? "is-done" : ""}>
+        className={props.task.status === TaskStatuses.Completed ? 'is-done' : ''}
+      >
         <Checkbox
           checked={props.task.status === TaskStatuses.Completed}
           color="primary"
@@ -51,8 +52,9 @@ export const Task = React.memo((props: TaskPropsType) => {
         <EditableSpan value={props.task.title} onChange={onTitleChangeHandler} />
         <IconButton
           onClick={onClickHandler}
-          style={{ position: "absolute", top: "2px", right: "2px" }}>
-          <Delete fontSize={"small"} />
+          style={{ position: 'absolute', top: '2px', right: '2px' }}
+        >
+          <Delete fontSize={'small'} />
         </IconButton>
       </div>
     </>

@@ -1,32 +1,32 @@
-import TextField from "@mui/material/TextField/TextField"
-import React, { ChangeEvent, KeyboardEvent, memo, useState } from "react"
-import { IconButton } from "@mui/material"
-import { AddBox } from "@mui/icons-material"
-import { appActions } from "features/common-actions/application-common-action"
-import { useActions } from "utils/redux-utils"
+import TextField from '@mui/material/TextField/TextField'
+import { ChangeEvent, KeyboardEvent, memo, useState } from 'react'
+import { IconButton } from '@mui/material'
+import { AddBox } from '@mui/icons-material'
+import { appActions } from '@/features/common-actions/application-common-action'
+import { useActions } from '@/utils/redux-utils'
 
 type AddItemFormPropsType = {
   addItem: (title: string) => Promise<any>
   disabled?: boolean
 }
 export const AddItemForm = memo(function ({ disabled = false, ...props }: AddItemFormPropsType) {
-  let [title, setTitle] = useState("")
-  let [error, setError] = useState<string | null>(null)
+  const [title, setTitle] = useState('')
+  const [error, setError] = useState<string | null>(null)
   const { setAppError } = useActions(appActions)
 
   const addItem = async () => {
-    if (title.trim() !== "") {
+    if (title.trim() !== '') {
       props
         .addItem(title)
         .then(() => {
-          setTitle("")
+          setTitle('')
         })
-        .catch((error) => {
+        .catch(error => {
           error.messages ? setError(error.messages[0]) : setError(error.message)
           setAppError({ error: null })
         })
     } else {
-      setError("Title is required")
+      setError('Title is required')
     }
   }
 
@@ -59,7 +59,8 @@ export const AddItemForm = memo(function ({ disabled = false, ...props }: AddIte
         color="primary"
         onClick={addItem}
         disabled={disabled}
-        style={{ marginLeft: "5px" }}>
+        style={{ marginLeft: '5px' }}
+      >
         <AddBox />
       </IconButton>
     </div>

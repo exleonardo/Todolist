@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { AddItemForm } from "common/components/AddItemForm/add-Item-form"
+import type { Meta, StoryObj } from '@storybook/react'
+import { AddItemForm } from 'common/components/AddItemForm/add-Item-form'
 
 const meta: Meta<typeof AddItemForm> = {
-  title: "Todolist/AddItemForm",
+  title: 'Todolist/AddItemForm',
   component: AddItemForm,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   //argTypes пропсы которые заданы не явно задаем необязательные параметры
   argTypes: {
-    addItem: { action: "clicked", description: "Button clicked inside form" },
+    addItem: { action: 'clicked', description: 'Button clicked inside form' },
   },
 }
 

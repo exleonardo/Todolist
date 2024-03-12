@@ -1,96 +1,96 @@
-import React from "react"
-import { Provider } from "react-redux"
-import { v1 } from "uuid"
+import React from 'react'
+import { Provider } from 'react-redux'
+import { v1 } from 'uuid'
 
-import { TaskPrioties, TaskStatuses } from "api/todolists-api"
-import { AppRootStateType } from "app/state/store"
-import thunkMiddleWare from "redux-thunk"
-import { configureStore } from "@reduxjs/toolkit"
-import { MemoryRouter } from "react-router-dom"
-import { tasksReducer, todolistsReducer } from "features/todolists-list"
-import { appReducer } from "features/Application"
-import { authReducer } from "features/auth"
+import { TaskPrioties, TaskStatuses } from 'api/todolists-api'
+import { AppRootStateType } from 'state/store'
+import thunkMiddleWare from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit'
+import { MemoryRouter } from 'react-router-dom'
+import { tasksReducer, todolistsReducer } from 'features/todolists-list'
+import { appReducer } from 'features/Application'
+import { authReducer } from 'features/auth'
 
 const initialGlobalState: AppRootStateType = {
   todolists: [
     {
-      id: "todolistId1",
-      title: "What to learn",
-      filter: "all",
-      addedDate: "",
+      id: 'todolistId1',
+      title: 'What to learn',
+      filter: 'all',
+      addedDate: '',
       order: 0,
-      entityStatus: "idle",
+      entityStatus: 'idle',
     },
     {
-      id: "todolistId2",
-      title: "What to buy",
-      filter: "all",
-      addedDate: "",
+      id: 'todolistId2',
+      title: 'What to buy',
+      filter: 'all',
+      addedDate: '',
       order: 0,
-      entityStatus: "idle",
+      entityStatus: 'idle',
     },
   ],
   tasks: {
     todolistId1: [
       {
         id: v1(),
-        title: "HTML&CSS",
+        title: 'HTML&CSS',
         status: TaskStatuses.Completed,
-        todoListId: "todolistId1",
-        startDate: "",
-        deadline: "",
-        addedDate: "",
+        todoListId: 'todolistId1',
+        startDate: '',
+        deadline: '',
+        addedDate: '',
         order: 0,
         priority: TaskPrioties.Low,
         completed: false,
-        description: "",
+        description: '',
       },
       {
         id: v1(),
-        title: "JS",
+        title: 'JS',
         status: TaskStatuses.Completed,
-        todoListId: "todolistId1",
-        startDate: "",
-        deadline: "",
-        addedDate: "",
+        todoListId: 'todolistId1',
+        startDate: '',
+        deadline: '',
+        addedDate: '',
         order: 0,
         priority: TaskPrioties.Low,
         completed: false,
-        description: "",
+        description: '',
       },
     ],
     todolistId2: [
       {
         id: v1(),
-        title: "Milk",
+        title: 'Milk',
         status: TaskStatuses.Completed,
-        todoListId: "todolistId2",
-        startDate: "",
-        deadline: "",
-        addedDate: "",
+        todoListId: 'todolistId2',
+        startDate: '',
+        deadline: '',
+        addedDate: '',
         order: 0,
         priority: TaskPrioties.Low,
         completed: false,
-        description: "",
+        description: '',
       },
       {
         id: v1(),
-        title: "React Book",
+        title: 'React Book',
         status: TaskStatuses.Completed,
-        todoListId: "todolistId2",
-        startDate: "",
-        deadline: "",
-        addedDate: "",
+        todoListId: 'todolistId2',
+        startDate: '',
+        deadline: '',
+        addedDate: '',
         order: 0,
         priority: TaskPrioties.Low,
         completed: false,
-        description: "",
+        description: '',
       },
     ],
   },
   app: {
     error: null,
-    status: "succesed",
+    status: 'succesed',
     isInitialized: true,
   },
   login: {
@@ -106,7 +106,7 @@ export const storyBookStore = configureStore({
     login: authReducer,
   },
   preloadedState: initialGlobalState,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(thunkMiddleWare),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleWare),
 })
 
 export const ReduxStoreProviderDecorator = (storyFn: () => React.ReactNode) => {
