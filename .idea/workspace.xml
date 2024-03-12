@@ -4,26 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add hook useLogin.ts">
-      <change afterPath="$PROJECT_DIR$/src/common/components/ErrorSnackBar/ErrorSelector.ts" afterDir="false" />
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="add addMatcher and fix error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReduxStoreDecorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReduxStoreDecorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/AddItemForm/AddItemForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/AddItemForm/AddItemForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/ErrorSnackBar/ErrorSnackbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/ErrorSnackBar/ErrorSnackbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/createAppAsyncThunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/createAppAsyncThunk.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/redux-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/redux-utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/utils/thunkTryCatch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/utils/thunkTryCatch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Application/applicationReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Auth/AuthSelector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/AuthSelector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/authReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Auth/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Auth/useLogin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/Todolist/Todolist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/TodolistsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/tasksReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/tasksReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/TodolistsList/todolistsReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/TodolistsList/todolistsReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,7 +41,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/exleo/OneDrive/Рабочий стол/Новая папка&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/it-incubator/Todolist&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -66,7 +52,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\it-incubator\\Todolist\\node_modules\\prettier&quot;,
     &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
     &quot;ts.external.directory.path&quot;: &quot;D:\\it-incubator\\Todolist\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -192,15 +178,16 @@
       <workItem from="1700490275019" duration="9180000" />
       <workItem from="1700509709074" duration="71231000" />
       <workItem from="1701427254571" duration="27454000" />
-      <workItem from="1701511075100" duration="12989000" />
-    </task>
-    <task id="LOCAL-00004" summary="add thunk creator">
-      <option name="closed" value="true" />
-      <created>1695300042455</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1695300042455</updated>
+      <workItem from="1701511075100" duration="15744000" />
+      <workItem from="1701627709374" duration="3626000" />
+      <workItem from="1701863545206" duration="1099000" />
+      <workItem from="1701973741197" duration="7880000" />
+      <workItem from="1704578092918" duration="6904000" />
+      <workItem from="1704704700700" duration="3598000" />
+      <workItem from="1704996542680" duration="8152000" />
+      <workItem from="1707503049534" duration="782000" />
+      <workItem from="1707905253458" duration="847000" />
+      <workItem from="1708020096570" duration="631000" />
     </task>
     <task id="LOCAL-00005" summary="refactor">
       <option name="closed" value="true" />
@@ -586,7 +573,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701445919229</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="add addMatcher and fix error">
+      <option name="closed" value="true" />
+      <created>1701528268450</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1701528268450</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -604,7 +599,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add loginTC createAsyncThunk" />
     <MESSAGE value="type loginTC" />
     <MESSAGE value="add extraReducers ,add createAsyncThunk initializedTC" />
     <MESSAGE value="createAsyncThunk addTaskTC" />
@@ -629,6 +623,7 @@
     <MESSAGE value="fix bug: enter invalid password (show global Error)" />
     <MESSAGE value="move initialized to authReducer.ts" />
     <MESSAGE value="add hook useLogin.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="add hook useLogin.ts" />
+    <MESSAGE value="add addMatcher and fix error" />
+    <option name="LAST_COMMIT_MESSAGE" value="add addMatcher and fix error" />
   </component>
 </project>

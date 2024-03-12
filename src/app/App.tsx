@@ -8,16 +8,16 @@ import LinearProgress from "@mui/material/LinearProgress"
 import Toolbar from "@mui/material/Toolbar"
 import { Menu } from "@mui/icons-material"
 import { TaskType } from "api/todolists-api"
-import CustomizedSnackbars from "../common/components/ErrorSnackBar/ErrorSnackbar"
-import { useAppSelector } from "state/store"
+import CustomizedSnackbars from "common/components/error-snack-bar/error-snackbar"
+import { useAppSelector } from "app/state/store"
 
 import { Navigate, Route, Routes } from "react-router-dom"
 import { CircularProgress } from "@mui/material"
-import { authActions, authSelector, Login } from "features/Auth"
-import { selectIsInitialized, selectStatusApp } from "features/Application/AppSelector"
-import { TodolistsList } from "features/TodolistsList"
-import { useActions, useAppDispatch } from "common/utils/redux-utils"
-import { asyncActions } from "features/Auth/authReducer"
+import { authActions, authSelector, Login } from "features/auth"
+import { selectIsInitialized, selectStatusApp } from "features/Application/app-selector"
+import { TodolistsList } from "features/todolists-list"
+import { useActions, useAppDispatch } from "utils/redux-utils"
+import { asyncActions } from "features/auth/auth-reducer"
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
