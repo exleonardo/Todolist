@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps eslint types">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps eslint parser">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +105,7 @@
       <recent name="D:\it-incubator\Todolist\src\app\features\Todolist\TodolistsList.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.storybook">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="correct error message should be set" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -134,6 +136,7 @@
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
+      <package-manager value="pnpm" />
       <envs />
       <method v="2" />
     </configuration>
@@ -221,14 +224,6 @@
       <workItem from="1707905253458" duration="847000" />
       <workItem from="1708020096570" duration="631000" />
       <workItem from="1710166944702" duration="9855000" />
-    </task>
-    <task id="LOCAL-00012" summary="add RTK , refactor">
-      <option name="closed" value="true" />
-      <created>1698760390044</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1698760390044</updated>
     </task>
     <task id="LOCAL-00013" summary="refactor code after add RTK">
       <option name="closed" value="true" />
@@ -614,7 +609,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710325498589</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="feat: fix deps eslint parser">
+      <option name="closed" value="true" />
+      <created>1710325744011</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325744011</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +635,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="del comment" />
     <MESSAGE value="add new handleServerNetworkError" />
     <MESSAGE value="move folder" />
     <MESSAGE value="add createAppAsyncThunk" />
@@ -657,6 +659,7 @@
     <MESSAGE value="feat: fix deps" />
     <MESSAGE value="feat: fix deps eslint" />
     <MESSAGE value="feat: fix deps eslint types" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps eslint types" />
+    <MESSAGE value="feat: fix deps eslint parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps eslint parser" />
   </component>
 </project>

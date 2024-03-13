@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
-import thunkMiddleWare, { ThunkAction } from 'redux-thunk'
-import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
+import { TypedUseSelectorHook, useSelector } from 'react-redux'
+import { ThunkAction, thunk } from 'redux-thunk'
 import { configureStore } from '@reduxjs/toolkit'
 
 import { authReducer } from '@/features/auth'
@@ -16,7 +16,7 @@ export const store = configureStore({
     app: appReducer,
     login: authReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleWare),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
 })
 
 export type AppRootStateType = ReturnType<typeof store.getState>
