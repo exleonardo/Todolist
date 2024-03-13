@@ -5,46 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="change name">
-      <change afterPath="$PROJECT_DIR$/.storybook/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.storybook/preview.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/AddItemForm/add-Item-form.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/AddItemForm/add-Item-form.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/editable-span/editable-span.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/editable-span/editable-span.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/components/editable-span/editable-span.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/editable-span/editable-span.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/auth/auth-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/auth-selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists-list/Todolist/Task/Task.stories.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists-list/Todolist/Task/Task.stories.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/todolists-list/Todolist/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/todolists-list/Todolist/Task/Task.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux-store-decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux-store-decorator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.stories.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Configure.mdx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.stories.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.stories.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/Page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/accessibility.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/accessibility.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/addon-library.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/assets.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/context.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/discord.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/docs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/figma-plugin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/github.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/share.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/styling.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/testing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/theming.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/tutorials.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/assets/youtube.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/button.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stories/todolists-api.stories.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/components/error-snack-bar/error-selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/components/error-snack-bar/error-selector.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/common-actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/common-actions/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/create-app-async-thunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/create-app-async-thunk.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +70,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "migrate-to-vite",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "D:/it-incubator/Todolist/.storybook",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -156,6 +120,16 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -188,6 +162,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.storybook" />
         <item itemvalue="Vitest.correct error message should be set" />
         <item itemvalue="npm.test" />
