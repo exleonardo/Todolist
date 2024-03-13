@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: remove webpack 5.90.3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps eslint types">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,38 +221,6 @@
       <workItem from="1707905253458" duration="847000" />
       <workItem from="1708020096570" duration="631000" />
       <workItem from="1710166944702" duration="9855000" />
-    </task>
-    <task id="LOCAL-00008" summary="refactor">
-      <option name="closed" value="true" />
-      <created>1695734613799</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1695734613799</updated>
-    </task>
-    <task id="LOCAL-00009" summary="add error loading , status loading">
-      <option name="closed" value="true" />
-      <created>1695758091396</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1695758091396</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add error loading ,status">
-      <option name="closed" value="true" />
-      <created>1695915248358</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1695915248358</updated>
-    </task>
-    <task id="LOCAL-00011" summary="login">
-      <option name="closed" value="true" />
-      <created>1696278690490</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1696278690490</updated>
     </task>
     <task id="LOCAL-00012" summary="add RTK , refactor">
       <option name="closed" value="true" />
@@ -615,7 +582,39 @@
       <option name="project" value="LOCAL" />
       <updated>1710323713810</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="feat: remove test">
+      <option name="closed" value="true" />
+      <created>1710324453766</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1710324453766</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat: fix deps">
+      <option name="closed" value="true" />
+      <created>1710325067767</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325067767</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat: fix deps eslint">
+      <option name="closed" value="true" />
+      <created>1710325314879</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325314879</updated>
+    </task>
+    <task id="LOCAL-00060" summary="feat: fix deps eslint types">
+      <option name="closed" value="true" />
+      <created>1710325498589</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1710325498589</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,10 +632,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="createAsyncThunk fetchTodolistTC" />
-    <MESSAGE value="createAsyncThunk addTodolistTC" />
-    <MESSAGE value="createAsyncThunk changeTodolistTitleTC" />
-    <MESSAGE value="обработка ошибки на 100 символов" />
     <MESSAGE value="del comment" />
     <MESSAGE value="add new handleServerNetworkError" />
     <MESSAGE value="move folder" />
@@ -658,6 +653,10 @@
     <MESSAGE value="change name" />
     <MESSAGE value="feat: refactor bug" />
     <MESSAGE value="feat: remove webpack 5.90.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: remove webpack 5.90.3" />
+    <MESSAGE value="feat: remove test" />
+    <MESSAGE value="feat: fix deps" />
+    <MESSAGE value="feat: fix deps eslint" />
+    <MESSAGE value="feat: fix deps eslint types" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps eslint types" />
   </component>
 </project>
