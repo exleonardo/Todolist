@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: refactor bug">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: remove webpack 5.90.3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,11 +160,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.build" />
         <item itemvalue="npm.storybook" />
         <item itemvalue="Vitest.correct error message should be set" />
         <item itemvalue="npm.test" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -221,14 +222,6 @@
       <workItem from="1707905253458" duration="847000" />
       <workItem from="1708020096570" duration="631000" />
       <workItem from="1710166944702" duration="9855000" />
-    </task>
-    <task id="LOCAL-00007" summary="add type Thunk adnn type Dispatch">
-      <option name="closed" value="true" />
-      <created>1695320905837</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1695320905837</updated>
     </task>
     <task id="LOCAL-00008" summary="refactor">
       <option name="closed" value="true" />
@@ -614,7 +607,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710323322913</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="feat: remove webpack 5.90.3">
+      <option name="closed" value="true" />
+      <created>1710323713810</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1710323713810</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,7 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="createAsyncThunk addTaskTC" />
     <MESSAGE value="createAsyncThunk fetchTodolistTC" />
     <MESSAGE value="createAsyncThunk addTodolistTC" />
     <MESSAGE value="createAsyncThunk changeTodolistTitleTC" />
@@ -657,6 +657,7 @@
     <MESSAGE value="add addMatcher and fix error" />
     <MESSAGE value="change name" />
     <MESSAGE value="feat: refactor bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: refactor bug" />
+    <MESSAGE value="feat: remove webpack 5.90.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: remove webpack 5.90.3" />
   </component>
 </project>
