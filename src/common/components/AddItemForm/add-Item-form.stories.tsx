@@ -1,14 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AddItemForm } from 'common/components/AddItemForm/add-Item-form'
+import { AddItemForm } from '@/common/components/AddItemForm/add-Item-form'
+import { ReduxStoreProviderDecorator } from '@/redux-store-decorator'
 
 const meta: Meta<typeof AddItemForm> = {
-  title: 'Todolist/AddItemForm',
+  title: 'AddItemForm',
   component: AddItemForm,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  //argTypes пропсы которые заданы не явно задаем необязательные параметры
+  decorators: [ReduxStoreProviderDecorator],
   argTypes: {
     addItem: { action: 'clicked', description: 'Button clicked inside form' },
   },

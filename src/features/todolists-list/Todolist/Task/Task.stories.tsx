@@ -1,6 +1,6 @@
 import { Task } from './Task'
-import { TaskPrioties, TaskStatuses } from 'api/todolists-api'
-import { ReduxStoreProviderDecorator } from 'redux-store-decorator'
+import { TaskPrioties, TaskStatuses } from '@/api/todolists-api'
+import { ReduxStoreProviderDecorator } from '@/redux-store-decorator'
 
 export default {
   title: 'Task Component',

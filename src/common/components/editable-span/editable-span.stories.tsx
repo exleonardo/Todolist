@@ -1,15 +1,20 @@
-import React from 'react'
-import { action } from '@storybook/addon-actions'
-import { EditableSpan } from 'common/components/editable-span/editable-span'
+import { EditableSpan } from '@/common/components/editable-span/editable-span'
+import { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: 'Editable span',
+const meta: Meta<typeof EditableSpan> = {
+  title: 'editable span',
   component: EditableSpan,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
 }
-const callBack = action('Editable Span changed')
-export const EditableSpanBase = () => {
-  return <EditableSpan value={'Editable span'} onChange={callBack} />
+
+export default meta
+type Story = StoryObj<typeof EditableSpan>
+
+export const EditableSpanBase: Story = {
+  render: () => {
+    return <EditableSpan value={'title'} onChange={() => {}} />
+  },
 }
