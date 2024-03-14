@@ -6,7 +6,7 @@ import {
   isRejected,
   PayloadAction,
 } from '@reduxjs/toolkit'
-import { authActions } from '../pages/auth'
+import { authActions } from '@/pages/auth'
 import { AnyAction } from 'redux'
 import { tasksAction, todolistsActions } from '@/features/todolists-list'
 

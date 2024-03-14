@@ -4,7 +4,7 @@ import { v1 } from 'uuid'
 
 import { TaskPrioties, TaskStatuses } from '@/api/todolists-api'
 import { AppRootStateType } from '@/state/store'
-import thunkMiddleWare from 'redux-thunk'
+import { thunk } from 'redux-thunk'
 import { configureStore } from '@reduxjs/toolkit'
 import { MemoryRouter } from 'react-router-dom'
 import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
@@ -106,7 +106,7 @@ export const storyBookStore = configureStore({
     login: authReducer,
   },
   preloadedState: initialGlobalState,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleWare),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
 })
 
 export const ReduxStoreProviderDecorator = (storyFn: () => React.ReactNode) => {
