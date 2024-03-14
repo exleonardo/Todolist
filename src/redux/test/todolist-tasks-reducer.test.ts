@@ -1,8 +1,8 @@
-import { TodolistDomainType } from '@/features/todolists-list/todolists-reducer'
+import { TodolistDomainType } from '@/redux/todolists-reducer'
 import { expect, test } from 'vitest'
 import { v1 } from 'uuid'
-import { TasksStateType } from '@/App'
-import { tasksReducer, todolistsActions, todolistsReducer } from '@/features/todolists-list/index'
+import { TasksStateType } from '@/app/ui/App'
+import { tasksReducer, todolistsActions, todolistsReducer } from '@/features/todolists-list'
 
 test('ids should be equals', () => {
   const startTasksState: TasksStateType = {}
