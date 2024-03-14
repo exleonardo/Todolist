@@ -1,5 +1,5 @@
 import { handleServerNetworkError } from '@/utils/error-utils'
-import { appActions } from '@/features/common-actions/application-common-action'
+import { appActions } from '@/common/common-actions/application-common-action'
 import { AppDispatchType, AppRootStateType } from '@/state/store'
 import { BaseResponseType } from '@/api/todolists-api'
 import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk'
