@@ -4,8 +4,8 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import { ThunkAction, thunk } from 'redux-thunk'
 import { configureStore } from '@reduxjs/toolkit'
 
-import { authReducer } from '@/features/auth'
-import { appReducer } from '@/features/Application'
+import { authReducer } from '@/pages/auth'
+import { appReducer } from '@/app'
 import { FieldErrorType } from '@/api/todolists-api'
 import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
 
