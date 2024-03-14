@@ -68,7 +68,7 @@ export type TodolistType = {
   order: number
 }
 export type FieldErrorType = { field: string; error: string }
-export type BaseResponseType<D = {}> = {
+export type BaseResponseType<D = NonNullable<unknown>> = {
   resultCode: number
   messages: string[]
   fieldsErrors?: FieldErrorType[]
