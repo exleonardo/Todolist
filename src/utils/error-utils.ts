@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { AxiosError, isAxiosError } from 'axios'
 
 import { BaseResponseType } from '@/api/todolists-api'
-import { appActions } from '@/features/common-actions/application-common-action'
+import { appActions } from '@/common/common-actions/application-common-action'
 
 export const handleServerAppError = <D>(
   data: BaseResponseType<D>,
