@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react'
+
 import { EditableSpanPropsType } from '@/widgets/editable-span'
 
 export const useEditSpan = (props: EditableSpanPropsType) => {
@@ -16,10 +17,11 @@ export const useEditSpan = (props: EditableSpanPropsType) => {
   const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value)
   }
+
   return {
-    changeTitle,
-    activateViewMode,
     activateEditMode,
+    activateViewMode,
+    changeTitle,
     editMode,
     title,
   }
