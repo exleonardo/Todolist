@@ -1,8 +1,8 @@
-import { useFormik } from 'formik'
 import { BaseResponseType } from '@/api/todolists-api'
-import { useActions } from '@/utils/redux-utils'
-import { authActions } from '@/pages/auth'
 import { appActions } from '@/common/common-actions/application-common-action'
+import { authActions } from '@/pages/auth'
+import { useActions } from '@/utils/redux-utils'
+import { useFormik } from 'formik'
 
 export const useLogin = () => {
   const { login } = useActions(authActions)
@@ -28,5 +28,6 @@ export const useLogin = () => {
         })
     },
   })
+
   return { formik }
 }
