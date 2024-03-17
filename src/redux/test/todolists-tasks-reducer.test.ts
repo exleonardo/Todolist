@@ -1,15 +1,14 @@
-import { v1 } from 'uuid'
-import { TodolistDomainType } from '@/redux/todolists-reducer'
 import { TasksStateType } from '@/app/ui/App'
-
-import { expect, test } from 'vitest'
 import { tasksReducer, todolistsActions, todolistsReducer } from '@/features/todolists-list'
+import { TodolistDomainType } from '@/redux/todolists-reducer'
+import { v1 } from 'uuid'
+import { expect, test } from 'vitest'
 
 test('ids should be equals', () => {
   const startTasksState: TasksStateType = {}
   const startTodolistsState: Array<TodolistDomainType> = []
   const todolist = {
-    todolist: { id: v1(), title: 'newTitle', addedDate: '', order: 0 },
+    todolist: { addedDate: '', id: v1(), order: 0, title: 'newTitle' },
   }
   const action = todolistsActions.addTodolist.fulfilled(todolist, '', todolist.todolist.title)
 
