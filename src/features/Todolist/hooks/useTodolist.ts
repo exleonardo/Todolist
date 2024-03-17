@@ -1,11 +1,12 @@
-import { useActions } from '@/utils/redux-utils'
-import { tasksAction, todolistsActions } from '@/features/todolists-list'
 import { useCallback } from 'react'
-import { FilterValuesType, TodolistDomainType } from '@/redux/todolists-reducer'
+
 import { TaskStatuses, TaskType } from '@/api/todolists-api'
+import { tasksAction, todolistsActions } from '@/features/todolists-list'
+import { FilterValuesType, TodolistDomainType } from '@/redux/todolists-reducer'
+import { useActions } from '@/utils/redux-utils'
 
 export const useTodolist = (todolist: TodolistDomainType, tasks: TaskType[]) => {
-  const { removeTodolist, changeTodolistTitle, changeTodolistFilter } = useActions(todolistsActions)
+  const { changeTodolistFilter, changeTodolistTitle, removeTodolist } = useActions(todolistsActions)
   const { addTask } = useActions(tasksAction)
 
   const addTaskCallback = useCallback(async (title: string) => {
@@ -35,11 +36,12 @@ export const useTodolist = (todolist: TodolistDomainType, tasks: TaskType[]) => 
   if (todolist.filter === 'completed') {
     tasksForTodolist = tasks.filter(t => t.status === TaskStatuses.Completed)
   }
+
   return {
     addTaskCallback,
-    removeTodolistCallback,
     changeTodolistTitleCallback,
     onFilterButtonClickHandler,
+    removeTodolistCallback,
     tasksForTodolist,
   }
 }
