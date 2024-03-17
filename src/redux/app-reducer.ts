@@ -1,30 +1,16 @@
+import { tasksAction, todolistsActions } from '@/features/todolists-list'
+import { authActions } from '@/pages/auth'
 import {
+  PayloadAction,
   createSlice,
   isAnyOf,
   isFulfilled,
   isPending,
   isRejected,
-  PayloadAction,
 } from '@reduxjs/toolkit'
-import { authActions } from '@/pages/auth'
 import { AnyAction } from 'redux'
-import { tasksAction, todolistsActions } from '@/features/todolists-list'
 
 export const slice = createSlice({
-  name: 'app',
-  initialState: {
-    status: 'idle' as RequestStatusType,
-    error: null as null | string,
-    isInitialized: false,
-  },
-  reducers: {
-    setAppError: (state, action: PayloadAction<{ error: string | null }>) => {
-      state.error = action.payload.error
-    },
-    setAppStatus: (state, action: PayloadAction<{ status: RequestStatusType }>) => {
-      state.status = action.payload.status
-    },
-  },
   extraReducers: builder => {
     builder
       .addMatcher(isPending, state => {
@@ -46,8 +32,9 @@ export const slice = createSlice({
             action.type === todolistsActions.addTodolist.rejected.type ||
             action.type === tasksAction.addTask.rejected.type ||
             action.type === authActions.initialized.rejected.type
-          )
+          ) {
             return
+          }
 
           state.error = action.payload.messages[0]
         } else {
@@ -55,9 +42,23 @@ export const slice = createSlice({
         }
       })
   },
+  initialState: {
+    error: null as null | string,
+    isInitialized: false,
+    status: 'idle' as RequestStatusType,
+  },
+  name: 'app',
+  reducers: {
+    setAppError: (state, action: PayloadAction<{ error: null | string }>) => {
+      state.error = action.payload.error
+    },
+    setAppStatus: (state, action: PayloadAction<{ status: RequestStatusType }>) => {
+      state.status = action.payload.status
+    },
+  },
 })
 
 export type AppInitialState = ReturnType<typeof slice.getInitialState>
 
 //Types
-export type RequestStatusType = 'idle' | 'loading' | 'succesed' | 'failed'
+export type RequestStatusType = 'failed' | 'idle' | 'loading' | 'succesed'

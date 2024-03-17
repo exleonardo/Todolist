@@ -1,6 +1,6 @@
 import * as authSelector from '@/pages/auth/selectors/auth-selector'
-
 import { asyncActions, slice } from '@/redux/auth-reducer'
+
 import { Login } from './ui/Login'
 
 const authActions = {
@@ -8,4 +8,5 @@ const authActions = {
   ...slice.actions,
 }
 const authReducer = slice.reducer
-export { authSelector, Login, authActions, authReducer }
+
+export { Login, authActions, authReducer, authSelector }

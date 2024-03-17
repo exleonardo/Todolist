@@ -1,112 +1,112 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { v1 } from 'uuid'
+import { MemoryRouter } from 'react-router-dom'
 
 import { TaskPrioties, TaskStatuses } from '@/api/todolists-api'
-import { AppRootStateType } from '@/state/store'
-import { thunk } from 'redux-thunk'
-import { configureStore } from '@reduxjs/toolkit'
-import { MemoryRouter } from 'react-router-dom'
-import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
 import { appReducer } from '@/app'
+import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
 import { authReducer } from '@/pages/auth'
+import { AppRootStateType } from '@/state/store'
+import { configureStore } from '@reduxjs/toolkit'
+import { thunk } from 'redux-thunk'
+import { v1 } from 'uuid'
 
 const initialGlobalState: AppRootStateType = {
-  todolists: [
-    {
-      id: 'todolistId1',
-      title: 'What to learn',
-      filter: 'all',
-      addedDate: '',
-      order: 0,
-      entityStatus: 'idle',
-    },
-    {
-      id: 'todolistId2',
-      title: 'What to buy',
-      filter: 'all',
-      addedDate: '',
-      order: 0,
-      entityStatus: 'idle',
-    },
-  ],
-  tasks: {
-    todolistId1: [
-      {
-        id: v1(),
-        title: 'HTML&CSS',
-        status: TaskStatuses.Completed,
-        todoListId: 'todolistId1',
-        startDate: '',
-        deadline: '',
-        addedDate: '',
-        order: 0,
-        priority: TaskPrioties.Low,
-        completed: false,
-        description: '',
-      },
-      {
-        id: v1(),
-        title: 'JS',
-        status: TaskStatuses.Completed,
-        todoListId: 'todolistId1',
-        startDate: '',
-        deadline: '',
-        addedDate: '',
-        order: 0,
-        priority: TaskPrioties.Low,
-        completed: false,
-        description: '',
-      },
-    ],
-    todolistId2: [
-      {
-        id: v1(),
-        title: 'Milk',
-        status: TaskStatuses.Completed,
-        todoListId: 'todolistId2',
-        startDate: '',
-        deadline: '',
-        addedDate: '',
-        order: 0,
-        priority: TaskPrioties.Low,
-        completed: false,
-        description: '',
-      },
-      {
-        id: v1(),
-        title: 'React Book',
-        status: TaskStatuses.Completed,
-        todoListId: 'todolistId2',
-        startDate: '',
-        deadline: '',
-        addedDate: '',
-        order: 0,
-        priority: TaskPrioties.Low,
-        completed: false,
-        description: '',
-      },
-    ],
-  },
   app: {
     error: null,
-    status: 'succesed',
     isInitialized: true,
+    status: 'succesed',
   },
   login: {
     isLoggedIn: true,
   },
+  tasks: {
+    todolistId1: [
+      {
+        addedDate: '',
+        completed: false,
+        deadline: '',
+        description: '',
+        id: v1(),
+        order: 0,
+        priority: TaskPrioties.Low,
+        startDate: '',
+        status: TaskStatuses.Completed,
+        title: 'HTML&CSS',
+        todoListId: 'todolistId1',
+      },
+      {
+        addedDate: '',
+        completed: false,
+        deadline: '',
+        description: '',
+        id: v1(),
+        order: 0,
+        priority: TaskPrioties.Low,
+        startDate: '',
+        status: TaskStatuses.Completed,
+        title: 'JS',
+        todoListId: 'todolistId1',
+      },
+    ],
+    todolistId2: [
+      {
+        addedDate: '',
+        completed: false,
+        deadline: '',
+        description: '',
+        id: v1(),
+        order: 0,
+        priority: TaskPrioties.Low,
+        startDate: '',
+        status: TaskStatuses.Completed,
+        title: 'Milk',
+        todoListId: 'todolistId2',
+      },
+      {
+        addedDate: '',
+        completed: false,
+        deadline: '',
+        description: '',
+        id: v1(),
+        order: 0,
+        priority: TaskPrioties.Low,
+        startDate: '',
+        status: TaskStatuses.Completed,
+        title: 'React Book',
+        todoListId: 'todolistId2',
+      },
+    ],
+  },
+  todolists: [
+    {
+      addedDate: '',
+      entityStatus: 'idle',
+      filter: 'all',
+      id: 'todolistId1',
+      order: 0,
+      title: 'What to learn',
+    },
+    {
+      addedDate: '',
+      entityStatus: 'idle',
+      filter: 'all',
+      id: 'todolistId2',
+      order: 0,
+      title: 'What to buy',
+    },
+  ],
 }
 
 export const storyBookStore = configureStore({
+  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
+  preloadedState: initialGlobalState,
   reducer: {
-    tasks: tasksReducer,
-    todolists: todolistsReducer,
     app: appReducer,
     login: authReducer,
+    tasks: tasksReducer,
+    todolists: todolistsReducer,
   },
-  preloadedState: initialGlobalState,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
 })
 
 export const ReduxStoreProviderDecorator = (storyFn: () => React.ReactNode) => {

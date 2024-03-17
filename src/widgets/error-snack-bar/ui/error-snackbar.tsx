@@ -1,18 +1,18 @@
-import Snackbar from '@mui/material/Snackbar'
 import { Alert } from '@/features/alert'
 import { useErrorSnackbar } from '@/widgets/error-snack-bar/hooks/useErrorSnackbar'
+import Snackbar from '@mui/material/Snackbar'
 
 export default function CustomizedSnackbars() {
-  const { isOpen, handleClose, error } = useErrorSnackbar()
+  const { error, handleClose, isOpen } = useErrorSnackbar()
 
   return (
     <Snackbar
-      open={isOpen}
+      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
       autoHideDuration={3000}
       onClose={handleClose}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      open={isOpen}
     >
-      <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+      <Alert onClose={handleClose} severity={'error'} sx={{ width: '100%' }}>
         {error}
       </Alert>
     </Snackbar>

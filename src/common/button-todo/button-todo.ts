@@ -1,17 +1,17 @@
 import { FilterValuesType } from '@/redux/todolists-reducer'
 
 type ButtonTodo = {
-  color: 'inherit' | 'secondary' | 'primary' | 'success' | 'error' | 'info' | 'warning'
   buttonFilter: FilterValuesType
+  color: 'error' | 'info' | 'inherit' | 'primary' | 'secondary' | 'success' | 'warning'
   text: string
 }
 
 export const buttonTodo: ButtonTodo[] = [
-  { color: 'inherit', buttonFilter: 'all', text: 'All' },
+  { buttonFilter: 'all', color: 'inherit', text: 'All' },
   {
-    color: 'primary',
     buttonFilter: 'active',
+    color: 'primary',
     text: 'Active',
   },
-  { color: 'secondary', buttonFilter: 'completed', text: 'Completed' },
+  { buttonFilter: 'completed', color: 'secondary', text: 'Completed' },
 ]

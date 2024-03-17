@@ -1,22 +1,21 @@
-import { AnyAction } from 'redux'
-
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
-import { ThunkAction, thunk } from 'redux-thunk'
-import { configureStore } from '@reduxjs/toolkit'
 
-import { authReducer } from '@/pages/auth'
-import { appReducer } from '@/app'
 import { FieldErrorType } from '@/api/todolists-api'
+import { appReducer } from '@/app'
 import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
+import { authReducer } from '@/pages/auth'
+import { configureStore } from '@reduxjs/toolkit'
+import { AnyAction } from 'redux'
+import { ThunkAction, thunk } from 'redux-thunk'
 
 export const store = configureStore({
+  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
   reducer: {
-    tasks: tasksReducer,
-    todolists: todolistsReducer,
     app: appReducer,
     login: authReducer,
+    tasks: tasksReducer,
+    todolists: todolistsReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
 })
 
 export type AppRootStateType = ReturnType<typeof store.getState>
