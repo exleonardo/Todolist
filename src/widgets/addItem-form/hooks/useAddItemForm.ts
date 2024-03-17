@@ -1,11 +1,12 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react'
-import { useActions } from '@/utils/redux-utils'
+
 import { appActions } from '@/common/common-actions/application-common-action'
+import { useActions } from '@/utils/redux-utils'
 import { AddItemFormPropsType } from '@/widgets/addItem-form'
 
 export const useAddItemForm = (props: AddItemFormPropsType) => {
   const [title, setTitle] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<null | string>(null)
   const { setAppError } = useActions(appActions)
 
   const addItem = async () => {
@@ -38,10 +39,10 @@ export const useAddItemForm = (props: AddItemFormPropsType) => {
   }
 
   return {
+    addItem,
+    error,
     onChangeHandler,
     onKeyPressHandler,
     title,
-    error,
-    addItem,
   }
 }
