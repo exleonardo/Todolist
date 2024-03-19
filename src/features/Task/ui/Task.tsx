@@ -10,12 +10,12 @@ import { IconButton } from '@mui/material'
 import s from '../style/task.module.scss'
 
 export type TaskPropsType = {
-  index: number
+  index?: number
   task: TaskType
   todolistId: string
 }
 export const Task = React.memo(
-  forwardRef<any, TaskPropsType>(({ index, task, todolistId }: TaskPropsType) => {
+  forwardRef<any, TaskPropsType>(({ index = 0, task, todolistId }: TaskPropsType) => {
     const { onChangeHandler, onClickHandler, onTitleChangeHandler } = useTask({
       index,
       task,
