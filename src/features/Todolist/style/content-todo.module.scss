@@ -1,5 +1,11 @@
 .blockButtonFilter {
   padding-top: 10px;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+
 }
 
 .titleFirstTask {
@@ -8,11 +14,122 @@
 }
 
 .deleteIcon {
-  position: absolute;
-  right: 5px;
+
+
+  display: flex;
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+  align-items: center;
+  width: 100%;
+  background: inherit;
+  border-bottom: 1px solid grey;
+  border-top-left-radius: 30px;
+
+  border-top-right-radius: 30px;
+
+  &:hover {
+    background: #fc4878;
+    cursor: pointer;
+  }
+
+  > svg {
+    margin: 0 auto;
+    fill: white;
+  }
+
 }
 
 .contentTodo {
-  padding: 10px;
-  position: relative;
+  gap: 2rem;
+  min-height: 350px;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  min-width: 300px;
+  margin: 8px;
+  border-radius: 30px;
+  background: rgb(34, 34, 34);
+}
+
+.title {
+  display: flex;
+  margin-bottom: 5px;
+  text-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  background: rgb(34, 34, 34);
+
+  transition: background-color 0.2s ease 0s;
+
+
+  &:hover {
+    background: rgb(40, 40, 40);
+  }
+}
+
+.contentBlock {
+
+
+  display: flex;
+  flex-direction: column;
+  opacity: inherit;
+  padding: 8px 8px 0px;
+  border: 8px;
+  transition: background-color 0.2s ease 0s, opacity 0.1s ease 0s;
+  user-select: none;
+  width: 300px;
+}
+
+.taskContent {
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.taskblock {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 5px;
+  background: inherit;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #4c4c4c;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: #808080;
+    }
+  }
+
+}
+
+.addedDate {
+  display: flex;
+  justify-content: space-around;
+  background-color: inherit;
+
+  color: #cccccc;
+}
+
+.addTask {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
 }
