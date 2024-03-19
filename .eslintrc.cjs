@@ -1,15 +1,15 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended', 'plugin:storybook/recommended'],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  overrides: [
+    {
+      files: ["**/*.stories.tsx"],
+      rules: {
+        "react-hooks/rules-of-hooks": "off",
+        "no-console": "off"
+      }
+    }
+  ],
+  extends: ["@it-incubator/eslint-config", "plugin:storybook/recommended"],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
     "@typescript-eslint/no-explicit-any": "off"
-  },
+  }
 }
