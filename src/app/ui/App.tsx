@@ -1,24 +1,19 @@
 import { useEffect } from 'react'
-
-import AppBar from '@mui/material/AppBar'
-import Container from '@mui/material/Container'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import LinearProgress from '@mui/material/LinearProgress'
-import Toolbar from '@mui/material/Toolbar'
-import { Menu } from '@mui/icons-material'
-
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { CircularProgress } from '@mui/material'
 
 import { TaskType } from '@/api/todolists-api'
-import CustomizedSnackbars from '@/widgets/error-snack-bar/ui/error-snackbar'
-import { asyncActions } from '@/redux/auth-reducer'
-import { useAppSelector } from '@/state/store'
-import { authActions, authSelector, Login } from '../../pages/auth'
 import { selectIsInitialized, selectStatusApp } from '@/app/selectors/app-selector'
 import { TodolistsList } from '@/features/todolists-list/ui/todolists-list'
+import { asyncActions } from '@/redux/auth-reducer'
+import { useAppSelector } from '@/state/store'
 import { useActions, useAppDispatch } from '@/utils/redux-utils'
+import CustomizedSnackbars from '@/widgets/error-snack-bar/ui/error-snackbar'
+import { CircularProgress } from '@mui/material'
+import LinearProgress from '@mui/material/LinearProgress'
+
+import s from '../style/app.module.scss'
+
+import { Login, authActions, authSelector } from '../../pages/auth'
 
 export type TasksStateType = {
   [key: string]: Array<TaskType>
@@ -45,36 +40,34 @@ export const App = ({ demo = false }: PropsType) => {
 
   if (!isInitialized) {
     return (
-      <div style={{ position: 'fixed', top: '30%', width: '100%', left: '50%' }}>
+      <div style={{ left: '50%', position: 'fixed', top: '30%', width: '100%' }}>
         <CircularProgress />
       </div>
     )
   }
 
   return (
-    <div className="App">
+    <div>
       <CustomizedSnackbars />
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <Menu />
-          </IconButton>
-          {isLoggedIn && (
-            <Button onClick={logoutHandler} color="inherit">
-              Log out
-            </Button>
-          )}
-        </Toolbar>
-        {status === 'loading' && <LinearProgress />}
-      </AppBar>
-      <Container fixed>
+
+      {isLoggedIn && (
+        <div className={s.header}>
+          <button className={s.button} color={'inherit'} onClick={logoutHandler}>
+            Log out
+          </button>
+        </div>
+      )}
+
+      {status === 'loading' && <LinearProgress />}
+
+      <div className={s.content}>
         <Routes>
-          <Route path={'/'} element={<TodolistsList demo={demo} />} />
-          <Route path={'/login'} element={<Login />} />
-          <Route path={'/404'} element={<h1>404: PAGE NOT FOUND</h1>} />
-          <Route path={'*'} element={<Navigate to="/404" />} />
+          <Route element={<TodolistsList demo={demo} />} path={'/'} />
+          <Route element={<Login />} path={'/login'} />
+          <Route element={<h1>404: PAGE NOT FOUND</h1>} path={'/404'} />
+          <Route element={<Navigate to={'/404'} />} path={'*'} />
         </Routes>
-      </Container>
+      </div>
     </div>
   )
 }
