@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const setting = {
-  withCredentials: true,
   headers: {
     'API-KEY': 'f3eb22c4-26f8-436d-a4bb-37315a600abf',
   },
+  withCredentials: true,
 }
 const instanse = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.1/',
@@ -13,28 +13,41 @@ const instanse = axios.create({
 
 //API
 export const todolistsApi = {
-  getTodolists() {
-    return instanse.get<TodolistType[]>('todo-lists')
+  changeTaskOrder({
+    id,
+    putAfterItemId,
+    todolistId,
+  }: {
+    id: string
+    putAfterItemId: null | string
+    todolistId: string
+  }) {
+    return instanse.put<BaseResponseType>(`todo-lists/${todolistId}/tasks/${id}/reorder`, {
+      putAfterItemId,
+    })
   },
-  createTodolist(title: string) {
-    return instanse.post<BaseResponseType<{ item: TodolistType }>>('todo-lists', { title: title })
-  },
-  deleteTodolist(id: string) {
-    return instanse.delete<BaseResponseType>(`todo-lists/${id}`)
-  },
-  updateTodolistTitle(id: string, title: string) {
-    return instanse.put<BaseResponseType>(`todo-lists/${id}`, { title: title })
-  },
-  getTasks(todolistId: string) {
-    return instanse.get<GetTaskResponse>(`todo-lists/${todolistId}/tasks`)
-  },
-  deleteTask(todolistId: string, taskId: string) {
-    return instanse.delete<BaseResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
+  changeTodolistOrder({ id, putAfterItemId }: { id: string; putAfterItemId: null | string }) {
+    return instanse.put<BaseResponseType>(`todo-lists/${id}/reorder`, { putAfterItemId })
   },
   createTask(todolistId: string, title: string) {
     return instanse.post<BaseResponseType<{ item: TaskType }>>(`todo-lists/${todolistId}/tasks`, {
       title: title,
     })
+  },
+  createTodolist(title: string) {
+    return instanse.post<BaseResponseType<{ item: TodolistType }>>('todo-lists', { title: title })
+  },
+  deleteTask(todolistId: string, taskId: string) {
+    return instanse.delete<BaseResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
+  },
+  deleteTodolist(id: string) {
+    return instanse.delete<BaseResponseType>(`todo-lists/${id}`)
+  },
+  getTasks(todolistId: string) {
+    return instanse.get<GetTaskResponse>(`todo-lists/${todolistId}/tasks`)
+  },
+  getTodolists() {
+    return instanse.get<TodolistType[]>('todo-lists')
   },
   updateTask(todolistId: string, taskId: string, model: UpdateTaskType) {
     return instanse.put<BaseResponseType<TaskType>>(
@@ -42,37 +55,40 @@ export const todolistsApi = {
       model
     )
   },
+  updateTodolistTitle(id: string, title: string) {
+    return instanse.put<BaseResponseType>(`todo-lists/${id}`, { title })
+  },
 }
 export const authApi = {
   login(data: LoginParamsType) {
     return instanse.post<BaseResponseType<{ userId?: number }>>('auth/login', data)
   },
-  me() {
-    return instanse.get<BaseResponseType<{ id: number; email: string; login: string }>>('auth/me')
-  },
   logout() {
     return instanse.delete<BaseResponseType>('auth/login')
+  },
+  me() {
+    return instanse.get<BaseResponseType<{ email: string; id: number; login: string }>>('auth/me')
   },
 }
 //Types
 export type LoginParamsType = {
+  captcha?: string
   email: string
   password: string
   rememberMe: boolean
-  captcha?: string
 }
 export type TodolistType = {
-  id: string
-  title: string
   addedDate: string
+  id: string
   order: number
+  title: string
 }
-export type FieldErrorType = { field: string; error: string }
+export type FieldErrorType = { error: string; field: string }
 export type BaseResponseType<D = NonNullable<unknown>> = {
-  resultCode: number
-  messages: string[]
-  fieldsErrors?: FieldErrorType[]
   data: D
+  fieldsErrors?: FieldErrorType[]
+  messages: string[]
+  resultCode: number
 }
 
 export enum TaskStatuses {
@@ -91,29 +107,29 @@ export enum TaskPrioties {
 }
 
 export type TaskType = {
-  description: string
-  title: string
+  addedDate: string
   completed: boolean
-  status: TaskStatuses
+  deadline: string
+  description: string
+  id: string
+  order: number
   priority: TaskPrioties
   startDate: string
-  deadline: string
-  id: string
+  status: TaskStatuses
+  title: string
   todoListId: string
-  order: number
-  addedDate: string
 }
 type GetTaskResponse = {
+  error: null | string
   items: TaskType[]
   totalCount: number
-  error: string | null
 }
 export type UpdateTaskType = {
-  title: string
-  description: string
   completed: boolean
-  status: number
+  deadline: null | string
+  description: string
   priority: number
-  startDate: string | null
-  deadline: string | null
+  startDate: null | string
+  status: number
+  title: string
 }
