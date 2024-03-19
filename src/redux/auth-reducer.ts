@@ -1,4 +1,5 @@
 import { LoginParamsType, authApi } from '@/api/todolists-api'
+// eslint-disable-next-line import/namespace
 import { clearTodosData } from '@/redux/todolists-reducer'
 import { createAppAsyncThunk } from '@/utils/create-app-async-thunk'
 import { handleServerAppError } from '@/utils/error-utils'
