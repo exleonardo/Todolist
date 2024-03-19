@@ -3,12 +3,12 @@ import { ReduxStoreProviderDecorator } from '@/app/decorators/redux-store-decora
 import { Task } from '@/features/Task/ui/Task'
 
 export default {
-  title: 'Task Component',
   component: Task,
+  decorators: [ReduxStoreProviderDecorator],
   parameters: {
     layout: 'centered',
   },
-  decorators: [ReduxStoreProviderDecorator],
+  title: 'Task Component',
 }
 
 export const TaskBaseExample = () => {
@@ -16,32 +16,32 @@ export const TaskBaseExample = () => {
     <>
       <Task
         task={{
-          id: '1',
-          status: TaskStatuses.Completed,
-          title: 'CSS',
-          startDate: '',
-          deadline: '',
           addedDate: '',
+          completed: false,
+          deadline: '',
+          description: '',
+          id: '1',
           order: 0,
           priority: TaskPrioties.Low,
-          completed: false,
-          description: '',
+          startDate: '',
+          status: TaskStatuses.Completed,
+          title: 'CSS',
           todoListId: 'todolistID1',
         }}
         todolistId={'todolistID1'}
       />
       <Task
         task={{
-          id: '2',
-          status: TaskStatuses.New,
-          title: 'JS',
-          startDate: '',
-          deadline: '',
           addedDate: '',
+          completed: false,
+          deadline: '',
+          description: '',
+          id: '2',
           order: 0,
           priority: TaskPrioties.Low,
-          completed: false,
-          description: '',
+          startDate: '',
+          status: TaskStatuses.New,
+          title: 'JS',
           todoListId: 'todolistID2',
         }}
         todolistId={'todolistID2'}
