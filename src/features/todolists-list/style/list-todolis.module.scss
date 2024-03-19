@@ -2,6 +2,29 @@
   padding: 20px;
 }
 
-.contentTodo {
-  width: 300px;
+.todoPage {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.test {
+  display: flex;
+
+  justify-content: center;
+
+
+  background: inherit;
+  overflow: auto;
+
+}
+
+.addTodo {
+  position: fixed;
+ 
+  top: 115px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
