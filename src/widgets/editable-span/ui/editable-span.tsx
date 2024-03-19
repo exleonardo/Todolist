@@ -1,21 +1,37 @@
 import React from 'react'
-import { TextField } from '@mui/material'
+
 import { useEditSpan } from '@/widgets/editable-span/hooks/useEditSpan'
+import clsx from 'clsx'
+
+import s from '../style/editable-span.module.scss'
 
 export type EditableSpanPropsType = {
-  value: string
+  className?: string
   onChange: (newValue: string) => void
+  value: string
 }
 
-export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
-  const { editMode, activateEditMode, activateViewMode, changeTitle, title } = useEditSpan(props)
+export const EditableSpan = React.memo(function ({ className, ...props }: EditableSpanPropsType) {
+  const { activateEditMode, activateViewMode, changeTitle, editMode, title } = useEditSpan(props)
+  const classes = clsx(s.title, className)
 
   return (
     <>
       {editMode && (
-        <TextField value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode} />
+        <input
+          autoFocus
+          className={s.input}
+          onBlur={activateViewMode}
+          onChange={changeTitle}
+          value={title}
+        />
       )}
-      {!editMode && <span onDoubleClick={activateEditMode}>{props.value}</span>}
+
+      {!editMode && (
+        <h4 className={classes} onDoubleClick={activateEditMode} title={'double click to edit'}>
+          {props.value}
+        </h4>
+      )}
     </>
   )
 })
