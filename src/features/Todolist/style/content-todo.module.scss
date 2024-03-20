@@ -1,36 +1,35 @@
 .blockButtonFilter {
-  padding-top: 10px;
-  margin-top: auto;
   display: flex;
+  flex-shrink: 1;
   justify-content: center;
 
   width: 100%;
+  padding-top: 10px;
 
 }
 
 .titleFirstTask {
-  color: grey;
   padding: 10px;
+  color: grey;
 }
 
 .deleteIcon {
-
-
   display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  background: inherit;
   border-top: 1px solid grey;
   border-right: 1px solid grey;
-  border-left: 1px solid grey;
-  align-items: center;
-  width: 100%;
-  background: inherit;
   border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
   border-top-left-radius: 30px;
-
   border-top-right-radius: 30px;
 
   &:hover {
-    background: #fc4878;
     cursor: pointer;
+    background: #fc4878;
   }
 
   > svg {
@@ -42,65 +41,74 @@
 
 .contentTodo {
   gap: 2rem;
-  min-height: 350px;
-  border-bottom: 1px solid grey;
-  border-left: 1px solid grey;
-  border-right: 1px solid grey;
+
   min-width: 300px;
   margin: 8px;
+
+  background: rgb(34 34 34);
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
   border-radius: 30px;
-  background: rgb(34, 34, 34);
 }
 
 .title {
   display: flex;
-  margin-bottom: 5px;
-  text-align: center;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: center;
   justify-content: center;
+
+
+  margin-bottom: 5px;
+
+  text-align: center;
+
+  background: rgb(34 34 34);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  background: rgb(34, 34, 34);
 
   transition: background-color 0.2s ease 0s;
 
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+
 
   &:hover {
-    background: rgb(40, 40, 40);
+    background: rgb(40 40 40);
   }
 }
 
 .contentBlock {
+  user-select: none;
 
 
   display: flex;
   flex-direction: column;
-  opacity: inherit;
-  padding: 8px 8px 0px;
-  border: 8px;
-  transition: background-color 0.2s ease 0s, opacity 0.1s ease 0s;
-  user-select: none;
+
   width: 300px;
+  padding: 8px 8px 0;
+
+  opacity: inherit;
+  border: 8px;
+
+  transition: background-color 0.2s ease 0s, opacity 0.1s ease 0s;
 }
 
 .taskContent {
   display: flex;
   flex-direction: column;
-  min-height: 350px;
-  padding-bottom: 8px;
   width: 100%;
+  max-height: 350px;
 }
 
 .taskblock {
-  margin-top: 1rem;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 
   max-height: 180px;
-  overflow-y: auto;
+  margin-top: 1rem;
   padding-right: 5px;
+
   background: inherit;
 
   &::-webkit-scrollbar {
@@ -122,14 +130,12 @@
 .addedDate {
   display: flex;
   justify-content: space-around;
+  color: #ccc;
   background-color: inherit;
-
-  color: #cccccc;
 }
 
 .addTask {
   display: flex;
   flex-direction: column;
-
   width: 100%;
 }
