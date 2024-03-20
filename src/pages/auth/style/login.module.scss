@@ -1,0 +1,196 @@
+.input {
+  padding: 14px 24px;
+
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+
+  background-color: #292929;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+
+  &:first-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.input:hover {
+  border: 1px solid #fff;
+}
+
+.form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  margin: 0 auto;
+  padding: 2rem;
+
+
+  background-color: #292929;
+  border: 1px solid white;
+  border-radius: 5px;
+
+}
+
+.button {
+  cursor: pointer;
+
+  padding: 0.5em 1.7em;
+
+  font-size: 18px;
+  color: #090909;
+
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  border-radius: 2px;
+
+
+  transition: all 0.3s;
+
+
+  &:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #fff;
+  }
+}
+
+.description {
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.inputError {
+  padding: 14px 24px;
+
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+
+  background-color: #292929;
+  border: 1px solid red;
+  border-radius: 8px;
+
+  &:first-child {
+    margin-bottom: 1rem;
+  }
+
+
+  &:hover {
+    border: 1px solid red;
+  }
+}
+
+.uiCheckbox {
+  --primary-color: #1677ff;
+  --secondary-color: #fff;
+  --primary-hover-color: #4096ff;
+
+  /* checkbox */
+  --checkbox-diameter: 20px;
+  --checkbox-border-radius: 5px;
+  --checkbox-border-color: #d9d9d9;
+  --checkbox-border-width: 1px;
+  --checkbox-border-style: solid;
+
+  /* checkmark */
+  --checkmark-size: 1.2;
+}
+
+.uiCheckbox,
+.uiCheckbox *,
+.uiCheckbox *::before,
+.uiCheckbox *::after {
+  box-sizing: border-box;
+}
+
+.uiCheckbox {
+  cursor: pointer;
+
+  position: relative;
+
+  width: var(--checkbox-diameter);
+  height: var(--checkbox-diameter);
+
+
+  appearance: none;
+  background: var(--secondary-color);
+  border: var(--checkbox-border-width) var(--checkbox-border-style) var(--checkbox-border-color);
+  border-radius: var(--checkbox-border-radius);
+
+  transition: all 0.3s;
+}
+
+.uiCheckbox::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 calc(var(--checkbox-diameter) / 2.5) var(--primary-color);
+
+  transition: all 0.5s cubic-bezier(0.12, 0.4, 0.29, 1.46);
+}
+
+.uiCheckbox::before {
+  content: "";
+
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+
+  width: 4px;
+  height: 7px;
+
+  opacity: 0;
+  border-right: 2px solid var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+
+  transition: all 0.1s cubic-bezier(0.71, -0.46, 0.88, 0.6), opacity 0.1s;
+}
+
+
+.uiCheckbox:hover {
+  border-color: var(--primary-color);
+}
+
+.uiCheckbox:checked {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+.uiCheckbox:checked::before {
+  transform: translate(-50%, -50%) rotate(45deg) scale(var(--checkmark-size));
+  opacity: 1;
+  transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+
+
+}
+
+.uiCheckbox:active:not(:checked)::after {
+  opacity: 1;
+  box-shadow: none;
+  transition: none;
+
+
+}
+
+input[type="checkbox"] {
+  margin: 0;
+}
+
+.formControl {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 11px;
+  color: white;
+
+  & > span {
+    margin-left: 10px;
+  }
+
+}
