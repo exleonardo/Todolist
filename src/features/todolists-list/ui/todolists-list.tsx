@@ -18,30 +18,34 @@ export const TodolistsList = ({ demo = false }: TodolistsListPropsType) => {
   }
 
   return (
-    <>
-      <div className={s.todoPage}>
-        <AddItemForm addItem={addTodolistCallback} className={s.addTodo} />
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable direction={'horizontal'} droppableId={'todos'} type={'todos'}>
-            {provided => (
-              <div className={s.test} {...provided.droppableProps} ref={provided.innerRef}>
-                {todolists.map((tl, index) => {
-                  return (
-                    <Todolist
-                      demo={demo}
-                      index={index}
-                      key={tl.id}
-                      tasks={tasks[tl.id]}
-                      todolist={tl}
-                    />
-                  )
-                })}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-    </>
+    <div className={s.todoPage}>
+      <AddItemForm
+        addItem={addTodolistCallback}
+        buttonStyle={s.buttonStlyle}
+        buttonTitle={'+'}
+        className={s.addTodo}
+        inputStyle={s.inputStyle}
+      />
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable direction={'horizontal'} droppableId={'todos'} type={'todos'}>
+          {provided => (
+            <div className={s.test} {...provided.droppableProps} ref={provided.innerRef}>
+              {todolists.map((tl, index) => {
+                return (
+                  <Todolist
+                    demo={demo}
+                    index={index}
+                    key={tl.id}
+                    tasks={tasks[tl.id]}
+                    todolist={tl}
+                  />
+                )
+              })}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </div>
   )
 }
