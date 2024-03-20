@@ -6,7 +6,7 @@ import { selectIsInitialized, selectStatusApp } from '@/app/selectors/app-select
 import { TodolistsList } from '@/features/todolists-list/ui/todolists-list'
 import { asyncActions } from '@/redux/auth-reducer'
 import { useAppSelector } from '@/state/store'
-import { useActions, useAppDispatch } from '@/utils/redux-utils'
+import { useActions } from '@/utils/redux-utils'
 import CustomizedSnackbars from '@/widgets/error-snack-bar/ui/error-snackbar'
 import { CircularProgress } from '@mui/material'
 import LinearProgress from '@mui/material/LinearProgress'
@@ -27,7 +27,7 @@ export const App = ({ demo = false }: PropsType) => {
   const status = useAppSelector(selectStatusApp)
   const isInitialized = useAppSelector(selectIsInitialized)
   const isLoggedIn = useAppSelector(authSelector.selectIsLoggedIn)
-  const dispatch = useAppDispatch()
+
   const { logout } = useActions(authActions)
   const { initialized } = useActions(asyncActions)
 
@@ -35,7 +35,7 @@ export const App = ({ demo = false }: PropsType) => {
     if (!demo) {
       initialized()
     }
-  }, [demo, dispatch])
+  }, [demo, isLoggedIn])
   const logoutHandler = () => logout()
 
   if (!isInitialized) {
@@ -58,7 +58,12 @@ export const App = ({ demo = false }: PropsType) => {
         </div>
       )}
 
-      {status === 'loading' && <LinearProgress />}
+      {status === 'loading' && (
+        <LinearProgress
+          color={'warning'}
+          style={{ left: 0, position: 'fixed', top: '0', width: '100%' }}
+        />
+      )}
 
       <div className={s.content}>
         <Routes>
