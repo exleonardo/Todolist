@@ -3,28 +3,36 @@
 }
 
 .todoPage {
-  margin-top: 150px;
   display: flex;
   flex-direction: column;
+  margin-top: 150px;
   padding: 1rem;
 }
 
 .test {
-  display: flex;
-
-  justify-content: center;
-
-
-  background: inherit;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  background: inherit;
 
 }
 
 .addTodo {
   position: fixed;
- 
   top: 115px;
   left: 50%;
   transform: translate(-50%, -50%);
 
+  display: flex;
+
+
+}
+
+.buttonStlyle {
+  width: 60px;
+}
+
+.inputStyle {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
