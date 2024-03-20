@@ -1,7 +1,9 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
 import { FilterValuesType } from '@/redux/todolists-reducer'
-import Button from '@mui/material/Button'
+import clsx from 'clsx'
+
+import s from '../style/button-filter.module.scss'
 
 type ButtonProps<T extends ElementType = 'button'> = {
   as?: T
@@ -15,15 +17,11 @@ export const FilterButton = <T extends ElementType = 'button'>(
   props: ButtonProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>
 ) => {
   const { buttonFilter, callBack, color, filter, text, ...rest } = props
+  const classes = clsx(s.button, filter === buttonFilter ? s.buttonSelect : s.button)
 
   return (
-    <Button
-      {...rest}
-      color={color}
-      onClick={() => callBack(buttonFilter)}
-      variant={filter === buttonFilter ? 'outlined' : 'text'}
-    >
+    <button {...rest} className={classes} onClick={() => callBack(buttonFilter)}>
       {text}
-    </Button>
+    </button>
   )
 }
