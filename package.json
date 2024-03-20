@@ -19,11 +19,10 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
-    "@reduxjs/toolkit": "^1.9.7",
+    "@reduxjs/toolkit": "^2.2.1",
     "@types/node": "^18.11.2",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.0.6",
-    "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
     "@types/uuid": "^8.3.4",
     "axios": "^1.5.0",
@@ -40,7 +39,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "1.2.18",
     "@it-incubator/eslint-config": "^1.0.2",
     "@it-incubator/prettier-config": "^0.1.2",
     "@it-incubator/stylelint-config": "^0.1.5",

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix import">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,15 +228,7 @@
       <workItem from="1710504439682" duration="195000" />
       <workItem from="1710504645799" duration="115900000" />
       <workItem from="1710924830797" duration="16964000" />
-      <workItem from="1710959474225" duration="11673000" />
-    </task>
-    <task id="LOCAL-00106" summary="feat: add onDragEnd">
-      <option name="closed" value="true" />
-      <created>1710852305496</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1710852305496</updated>
+      <workItem from="1710959474225" duration="13521000" />
     </task>
     <task id="LOCAL-00107" summary="feat: add onDragEnd">
       <option name="closed" value="true" />
@@ -621,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710971148179</updated>
     </task>
-    <option name="localTasksCounter" value="155" />
+    <task id="LOCAL-00155" summary="feat: fix deps">
+      <option name="closed" value="true" />
+      <created>1710971414033</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1710971414033</updated>
+    </task>
+    <option name="localTasksCounter" value="156" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +640,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: refactor AddItemForm" />
     <MESSAGE value="feat: sort linter" />
     <MESSAGE value="feat: fix config" />
     <MESSAGE value="style: adnn add-item-form.module.scss" />
@@ -664,7 +664,8 @@
     <MESSAGE value="feat: config" />
     <MESSAGE value="feat: config fix" />
     <MESSAGE value="feat: fix import" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix import" />
+    <MESSAGE value="feat: fix deps" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Todolist$correct_task_should_be_deleted_from_correct_array.info" NAME="correct task should be deleted from correct array Coverage Results" MODIFIED="1710451436805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
