@@ -84,22 +84,21 @@ export const Todolist = React.memo(
                   {!tasksForTodolist.length && (
                     <div className={s.titleFirstTask}>Create your first task☝️</div>
                   )}
-
-                  <div className={s.blockButtonFilter}>
-                    {buttonTodo.map((button, index) => {
-                      return (
-                        <FilterButton
-                          buttonFilter={button.buttonFilter}
-                          callBack={onFilterButtonClickHandler}
-                          color={button.color}
-                          filter={todolist.filter}
-                          key={index}
-                          text={button.text}
-                        />
-                      )
-                    })}
-                  </div>
                 </div>
+              </div>
+              <div className={s.blockButtonFilter}>
+                {buttonTodo.map((button, index) => {
+                  return (
+                    <FilterButton
+                      buttonFilter={button.buttonFilter}
+                      callBack={onFilterButtonClickHandler}
+                      color={button.color}
+                      filter={todolist.filter}
+                      key={index}
+                      text={button.text}
+                    />
+                  )
+                })}
               </div>
             </div>
           )}
