@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: change type">
-      <change afterPath="$PROJECT_DIR$/src/features/filter-button/style/button-filter.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Todolist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Todolist.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: config fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/style/app.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/style/app.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ui/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ui/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/Todolist/style/content-todo.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Todolist/style/content-todo.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/addItem-form/style/add-item-form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/addItem-form/style/add-item-form.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widgets/addItem-form/ui/add-Item-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/addItem-form/ui/add-Item-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,17 +109,14 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
-    <configuration name="correct task should be deleted from correct array" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
       <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <vitest-options value="--run" />
       <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/redux/test/tasks-reducer.test.ts" />
-      <test-names>
-        <test-name value="correct task should be deleted from correct array" />
-      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -173,11 +162,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.test" />
-        <item itemvalue="Vitest.correct task should be deleted from correct array" />
       </list>
     </recent_temporary>
   </component>
@@ -239,71 +228,7 @@
       <workItem from="1710504439682" duration="195000" />
       <workItem from="1710504645799" duration="115900000" />
       <workItem from="1710924830797" duration="16964000" />
-      <workItem from="1710959474225" duration="7065000" />
-    </task>
-    <task id="LOCAL-00096" summary="feat: fix import">
-      <option name="closed" value="true" />
-      <created>1710662339263</created>
-      <option name="number" value="00096" />
-      <option name="presentableId" value="LOCAL-00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1710662339263</updated>
-    </task>
-    <task id="LOCAL-00097" summary="feat: fix import">
-      <option name="closed" value="true" />
-      <created>1710662352888</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1710662352888</updated>
-    </task>
-    <task id="LOCAL-00098" summary="feat: fix import">
-      <option name="closed" value="true" />
-      <created>1710662360986</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1710662360986</updated>
-    </task>
-    <task id="LOCAL-00099" summary="feat: fix import">
-      <option name="closed" value="true" />
-      <created>1710662371403</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1710662371404</updated>
-    </task>
-    <task id="LOCAL-00100" summary="feat: fix import">
-      <option name="closed" value="true" />
-      <created>1710662537576</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1710662537576</updated>
-    </task>
-    <task id="LOCAL-00101" summary="feat: add order feature">
-      <option name="closed" value="true" />
-      <created>1710702193007</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1710702193007</updated>
-    </task>
-    <task id="LOCAL-00102" summary="feat: add changeOrderTodo">
-      <option name="closed" value="true" />
-      <created>1710799227124</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1710799227124</updated>
-    </task>
-    <task id="LOCAL-00103" summary="feat: add format date">
-      <option name="closed" value="true" />
-      <created>1710799249899</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1710799249899</updated>
+      <workItem from="1710959474225" duration="9263000" />
     </task>
     <task id="LOCAL-00104" summary="feat: add format time">
       <option name="closed" value="true" />
@@ -633,7 +558,71 @@
       <option name="project" value="LOCAL" />
       <updated>1710966595532</updated>
     </task>
-    <option name="localTasksCounter" value="145" />
+    <task id="LOCAL-00145" summary="feat: remove dispatch">
+      <option name="closed" value="true" />
+      <created>1710966762262</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966762262</updated>
+    </task>
+    <task id="LOCAL-00146" summary="style: add style">
+      <option name="closed" value="true" />
+      <created>1710966775994</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966775994</updated>
+    </task>
+    <task id="LOCAL-00147" summary="style: fix style">
+      <option name="closed" value="true" />
+      <created>1710966788146</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966788146</updated>
+    </task>
+    <task id="LOCAL-00148" summary="style: fix style">
+      <option name="closed" value="true" />
+      <created>1710966797303</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966797303</updated>
+    </task>
+    <task id="LOCAL-00149" summary="feat: fix ui">
+      <option name="closed" value="true" />
+      <created>1710966817480</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966817480</updated>
+    </task>
+    <task id="LOCAL-00150" summary="style: fix style">
+      <option name="closed" value="true" />
+      <created>1710966828170</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966828170</updated>
+    </task>
+    <task id="LOCAL-00151" summary="feat: config">
+      <option name="closed" value="true" />
+      <created>1710966872849</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1710966872849</updated>
+    </task>
+    <task id="LOCAL-00152" summary="feat: config fix">
+      <option name="closed" value="true" />
+      <created>1710968447185</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1710968447185</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,11 +640,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: refactor import" />
-    <MESSAGE value="feat: add index type" />
-    <MESSAGE value="style: refactor style" />
-    <MESSAGE value="feat: add clsx and react-beautiful-dnd" />
-    <MESSAGE value="feat: add entry point" />
     <MESSAGE value="feat: linter sort" />
     <MESSAGE value="feat: refactor AddItemForm" />
     <MESSAGE value="feat: sort linter" />
@@ -673,10 +657,15 @@
     <MESSAGE value="feat: refactor ui" />
     <MESSAGE value="style: add style login.module.scss" />
     <MESSAGE value="feat: add file watchers.xml" />
-    <MESSAGE value="style: fix style" />
     <MESSAGE value="style: refactor ui" />
     <MESSAGE value="feat: change type" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: change type" />
+    <MESSAGE value="feat: remove dispatch" />
+    <MESSAGE value="style: add style" />
+    <MESSAGE value="feat: fix ui" />
+    <MESSAGE value="style: fix style" />
+    <MESSAGE value="feat: config" />
+    <MESSAGE value="feat: config fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: config fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Todolist$correct_task_should_be_deleted_from_correct_array.info" NAME="correct task should be deleted from correct array Coverage Results" MODIFIED="1710451436805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
