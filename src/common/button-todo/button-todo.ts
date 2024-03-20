@@ -2,7 +2,7 @@ import { FilterValuesType } from '@/redux/todolists-reducer'
 
 type ButtonTodo = {
   buttonFilter: FilterValuesType
-  color: 'error' | 'info' | 'inherit' | 'primary' | 'secondary' | 'success' | 'warning'
+  color: 'error' | 'inherit' | 'primary' | 'secondary'
   text: string
 }
 
