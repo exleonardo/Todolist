@@ -8,7 +8,7 @@ import {
   isPending,
   isRejected,
 } from '@reduxjs/toolkit'
-import { AnyAction } from 'redux'
+import { AnyAction } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
   extraReducers: builder => {

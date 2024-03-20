@@ -8,7 +8,6 @@ import { tasksReducer, todolistsReducer } from '@/features/todolists-list'
 import { authReducer } from '@/pages/auth'
 import { AppRootStateType } from '@/state/store'
 import { configureStore } from '@reduxjs/toolkit'
-import { thunk } from 'redux-thunk'
 import { v1 } from 'uuid'
 
 const initialGlobalState: AppRootStateType = {
@@ -99,7 +98,6 @@ const initialGlobalState: AppRootStateType = {
 }
 
 export const storyBookStore = configureStore({
-  middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunk),
   preloadedState: initialGlobalState,
   reducer: {
     app: appReducer,

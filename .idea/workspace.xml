@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: config fix">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix import">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/decorators/redux-store-decorator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/decorators/redux-store-decorator.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/app-reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/app-reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/redux-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/redux-utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,15 +233,7 @@
       <workItem from="1710504439682" duration="195000" />
       <workItem from="1710504645799" duration="115900000" />
       <workItem from="1710924830797" duration="16964000" />
-      <workItem from="1710959474225" duration="9263000" />
-    </task>
-    <task id="LOCAL-00104" summary="feat: add format time">
-      <option name="closed" value="true" />
-      <created>1710799259580</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1710799259580</updated>
+      <workItem from="1710959474225" duration="11258000" />
     </task>
     <task id="LOCAL-00105" summary="feat: add changeOrderTask">
       <option name="closed" value="true" />
@@ -622,7 +619,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710968447185</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="feat: config fix">
+      <option name="closed" value="true" />
+      <created>1710969055162</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1710969055162</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +645,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: linter sort" />
     <MESSAGE value="feat: refactor AddItemForm" />
     <MESSAGE value="feat: sort linter" />
     <MESSAGE value="feat: fix config" />
@@ -665,7 +669,8 @@
     <MESSAGE value="style: fix style" />
     <MESSAGE value="feat: config" />
     <MESSAGE value="feat: config fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: config fix" />
+    <MESSAGE value="feat: fix import" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: fix import" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Todolist$correct_task_should_be_deleted_from_correct_array.info" NAME="correct task should be deleted from correct array Coverage Results" MODIFIED="1710451436805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

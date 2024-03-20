@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
-import { useDispatch } from 'react-redux'
 
 import { AppDispatchType } from '@/state/store'
-import { ActionCreatorsMapObject, bindActionCreators } from 'redux'
+import { ActionCreatorsMapObject, bindActionCreators } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
 
-export const useAppDispatch = useDispatch<AppDispatchType>
+export const useAppDispatch: () => AppDispatchType = useDispatch
 
 export function useActions<T extends ActionCreatorsMapObject>(actions: T) {
   const dispatch = useAppDispatch()
