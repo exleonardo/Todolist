@@ -7,9 +7,13 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
   extraReducers: builder => {
-    builder.addMatcher(isAnyOf(login.fulfilled, logout.fulfilled, initialized.fulfilled), state => {
-      state.isLoggedIn = true
-    })
+    builder
+      .addMatcher(isAnyOf(login.fulfilled, initialized.fulfilled), state => {
+        state.isLoggedIn = true
+      })
+      .addMatcher(isAnyOf(logout.fulfilled), state => {
+        state.isLoggedIn = false
+      })
   },
   initialState: {
     isLoggedIn: false,
@@ -44,12 +48,14 @@ const logout = createAppAsyncThunk(`${slice.name}/logout`, async (_arg, thunkAPI
 const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>(
   `${slice.name}/login`,
   async (param, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI
+    const { dispatch, rejectWithValue } = thunkAPI
     const res = await authApi.login(param)
 
     if (res.data.resultCode === 0) {
       return { isLoggedIn: true }
     } else {
+      handleServerAppError(res.data, dispatch)
+
       return rejectWithValue(res.data)
     }
   }
