@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps ver 2">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: add vercel.json">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/redux-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/redux-utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/thunk-try-catch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/thunk-try-catch.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +73,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/it-incubator/project_cards/watchers.xml&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/it-incubator/Todolist&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -111,7 +109,7 @@
       <recent name="D:\it-incubator\Todolist\src\app\features\Todolist\TodolistsList.tsx" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -119,6 +117,7 @@
         <script value="build" />
       </scripts>
       <node-interpreter value="project" />
+      <package-manager value="pnpm" />
       <envs />
       <method v="2" />
     </configuration>
@@ -231,23 +230,8 @@
       <workItem from="1710504439682" duration="195000" />
       <workItem from="1710504645799" duration="115900000" />
       <workItem from="1710924830797" duration="16964000" />
-      <workItem from="1710959474225" duration="14802000" />
-    </task>
-    <task id="LOCAL-00108" summary="feat: move func to custom hook">
-      <option name="closed" value="true" />
-      <created>1710852341669</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1710852341669</updated>
-    </task>
-    <task id="LOCAL-00109" summary="feat: add new endpoint">
-      <option name="closed" value="true" />
-      <created>1710852357870</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1710852357870</updated>
+      <workItem from="1710959474225" duration="16209000" />
+      <workItem from="1711015649854" duration="170000" />
     </task>
     <task id="LOCAL-00110" summary="feat: refactor Task">
       <option name="closed" value="true" />
@@ -625,7 +609,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710973390336</updated>
     </task>
-    <option name="localTasksCounter" value="157" />
+    <task id="LOCAL-00157" summary="feat: add new api key">
+      <option name="closed" value="true" />
+      <created>1711014221259</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1711014221259</updated>
+    </task>
+    <task id="LOCAL-00158" summary="feat: add vercel.json">
+      <option name="closed" value="true" />
+      <created>1711014347682</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1711014347682</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,8 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: fix config" />
-    <MESSAGE value="style: adnn add-item-form.module.scss" />
     <MESSAGE value="style: add style content-todo.module.scss" />
     <MESSAGE value="style: add style editable-span.module.scss" />
     <MESSAGE value="style: add style list-todolis.module.scss" />
@@ -668,7 +666,9 @@
     <MESSAGE value="feat: fix import" />
     <MESSAGE value="feat: fix deps" />
     <MESSAGE value="feat: fix deps ver 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps ver 2" />
+    <MESSAGE value="feat: add new api key" />
+    <MESSAGE value="feat: add vercel.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add vercel.json" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Todolist$correct_task_should_be_deleted_from_correct_array.info" NAME="correct task should be deleted from correct array Coverage Results" MODIFIED="1710451436805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
