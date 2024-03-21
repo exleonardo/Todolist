@@ -2,7 +2,7 @@ import { BaseResponseType } from '@/api/todolists-api'
 import { appActions } from '@/common/common-actions/application-common-action'
 import { AppDispatchType, AppRootStateType } from '@/state/store'
 import { handleServerNetworkError } from '@/utils/error-utils'
-import { BaseThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk'
+import { BaseThunkAPI } from '@reduxjs/toolkit/src/createAsyncThunk'
 
 export const thunkTryCatch = async <T>(
   thunkAPI: BaseThunkAPI<AppRootStateType, unknown, AppDispatchType, BaseResponseType | null>,

@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps">
+    <list default="true" id="85d8651d-f182-48bc-b094-7d257b3034f5" name="Changes" comment="feat: fix deps ver 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/todolists-api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/todolists-api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/error-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/redux-utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/redux-utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/thunk-try-catch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/thunk-try-catch.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,15 +231,7 @@
       <workItem from="1710504439682" duration="195000" />
       <workItem from="1710504645799" duration="115900000" />
       <workItem from="1710924830797" duration="16964000" />
-      <workItem from="1710959474225" duration="13521000" />
-    </task>
-    <task id="LOCAL-00107" summary="feat: add onDragEnd">
-      <option name="closed" value="true" />
-      <created>1710852315703</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1710852315704</updated>
+      <workItem from="1710959474225" duration="14802000" />
     </task>
     <task id="LOCAL-00108" summary="feat: move func to custom hook">
       <option name="closed" value="true" />
@@ -622,7 +617,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710971414033</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="feat: fix deps ver 2">
+      <option name="closed" value="true" />
+      <created>1710973390336</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1710973390336</updated>
+    </task>
+    <option name="localTasksCounter" value="157" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -640,7 +643,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: sort linter" />
     <MESSAGE value="feat: fix config" />
     <MESSAGE value="style: adnn add-item-form.module.scss" />
     <MESSAGE value="style: add style content-todo.module.scss" />
@@ -665,7 +667,8 @@
     <MESSAGE value="feat: config fix" />
     <MESSAGE value="feat: fix import" />
     <MESSAGE value="feat: fix deps" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps" />
+    <MESSAGE value="feat: fix deps ver 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: fix deps ver 2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Todolist$correct_task_should_be_deleted_from_correct_array.info" NAME="correct task should be deleted from correct array Coverage Results" MODIFIED="1710451436805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="VitestJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
