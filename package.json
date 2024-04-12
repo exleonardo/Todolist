@@ -37,7 +37,8 @@
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "storybook-addon-react-router-v6": "^2.0.9",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vercel": "^34.0.0"
   },
   "devDependencies": {
     "@it-incubator/eslint-config": "^1.0.2",

@@ -100,8 +100,8 @@ test('correct task should be deleted from correct array', () => {
 
   const endState = tasksReducer(startState, action)
 
-  expect(endState['todolistId1'].length).includes(3)
-  expect(endState['todolistId2'].length).includes(2)
+  expect(endState['todolistId1'].length).toBe(3)
+  expect(endState['todolistId2'].length).toBe(2)
   expect(endState['todolistId2'].every(t => t.id !== '2')).true
 })
 test('correct task should be added to correct array', () => {
